@@ -9,8 +9,8 @@ import {
 } from "./local_storage_services";
 
 const axiosInstance = axios.create({
- // baseURL: "https://api.thesigurd.com/anzaapi/",
-   baseURL: "http://127.0.0.1:8080/anzaapi", //telkom router
+  baseURL: "https://api.thesigurd.com/anzaapi/",
+  // baseURL: "http://127.0.0.1:8080/anzaapi", //telkom router
   timeout: 15000,
 
   headers: {},
