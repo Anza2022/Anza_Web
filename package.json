@@ -24,7 +24,7 @@
     "framer-motion": "^6.2.8",
     "js-file-download": "^0.4.12",
     "moment": "^2.29.1",
-    "next": "^12.2.3",
+    "next": "^13.0.1",
     "nextjs-progressbar": "^0.0.14",
     "pdf-viewer-reactjs": "^2.2.3",
     "pdfjs-dist": "2.10.377",

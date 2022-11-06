@@ -303,7 +303,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
 
               <p className="">To upgrade your account kindly subscribe or contact Anza Team:</p>
               <p className="p-0 pl-5 pt-2 font-semibold text-green-900">
-              Tel:   +254704285929
+              Tel:   +254701020202
               </p>
               <p className="p-0 pl-5 pt-1 font-semibold text-green-900">
            OR

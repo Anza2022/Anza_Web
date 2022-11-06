@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import AppDataRepo from "../../data/repos/app_data_repo";
 import NavbarComponent from "../components/navbar";
+import CountdownTimer from "../layouts/countdownTimer";
 import { AppDataContext } from "../contexts/app_data_context";
 import { NavigationContext } from "../contexts/navigation_state_controller";
 import { RiseLoader } from "react-spinners";
@@ -20,7 +21,6 @@ import { LoggedInUserContext } from "../contexts/loggedin_user_controller";
 import whitelogo from "../../assets/images/anzawhitelogo.png";
 import logo from "../../assets/images/anzalogo.png";
 import { IsDarkThemeContext } from "../contexts/app_theme_controller";
-
 const AppLayout = (props: PropsWithChildren<{}>) => {
   const { lock, setLock } = useContext(NavigationContext);
   const { schools, setSchools } = useContext(AppDataContext);
@@ -48,11 +48,12 @@ const AppLayout = (props: PropsWithChildren<{}>) => {
         var s1 = document.createElement("script"),
           s0: any = document.getElementsByTagName("script")[0];
         s1.async = true;
-        s1.src = "https://embed.tawk.to/620b4189a34c245641264ae0/1frtvg17s";
+        s1.src = "https://embed.tawk.to/636764d8daff0e1306d5f442/1gh5u3rtl";
         s1.charset = "UTF-8";
         s1.setAttribute("crossorigin", "*");
         s0.parentNode.insertBefore(s1, s0);
-      })();
+      }
+      )();
     }
   }, []);
 
@@ -93,7 +94,7 @@ const AppLayout = (props: PropsWithChildren<{}>) => {
     router.prefetch("/signup");
     router.prefetch("/dashboard/videos");
   });
-  const { thememode } = useContext(IsDarkThemeContext);
+  const { thememode } = useContext(IsDarkThemeContext);  
   return (
     <AnimatePresence>
       <div
@@ -130,7 +131,7 @@ const AppLayout = (props: PropsWithChildren<{}>) => {
               transition={{
                 duration: 0.5,
               }}
-              className="h-64 md:h-[270px] w-80 md:w-[450px] rounded-xl  bg-white mb-28 md:mb-8 flex flex-col justify-start items-center p-2 dark:bg-slate-600   shadow-sm hover:shadow-2xl shadow-gray-400  dark:shadow-slate-900  "
+              className="h-90 md:h-[400px] w-120 md:w-120 md:w-[450px] rounded-xl  bg-white mb-28 md:mb-8 flex flex-col justify-start items-center p-2 dark:bg-slate-600   shadow-sm hover:shadow-2xl shadow-gray-400  dark:shadow-slate-900  "
             >
               <div className="flex w-full">
                 {" "}
@@ -149,15 +150,17 @@ const AppLayout = (props: PropsWithChildren<{}>) => {
                 )}
               </div>
               <div className="h-8"></div>
-              <p className="text-xl md:text-[22px]  font-black  text-center leading-4 font-sans">
+              <p className="text-xl md:text-[22px]  font-black  text-center leading-4 font-sans"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
                 Welcome to <br className="" />
               </p>
-              <p className="text-main text-xs md:text-sm  animate-pulse leading-4 font-sans font-semibold">
+              <p className="text-main text-xs md:text-sm  animate-pulse leading-4 font-sans font-semibold"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
                 Anza Academy
               </p>
-              <p className="text-[11px] text-indigo-900 dark:text-indigo-700 ">
+              <p className="text-[11px] text-indigo-900 dark:text-main "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
                 Learn at Ease
               </p>
+
+<CountdownTimer></CountdownTimer>
 
               <input
                 type="password"
@@ -167,11 +170,29 @@ const AppLayout = (props: PropsWithChildren<{}>) => {
                 className="outline-none p-2 md:p-3 text-sm shadow-xl dark:bg-slate-800   rounded-md focus:ring-2 ring-main ring-1   md:w-72  my-5 "
                 placeholder="Enter site password"
                 onChange={(e) => {
-                  if (e.target.value.toLowerCase() == "temp@22#") {
+                  if (e.target.value.toLowerCase() == "temp@200@") {
                     setLock(false);
                   }
                 }}
               />
+<p className="text-[14px] mb-1 text-indigo-900 dark:text-main "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+Leave your contact to book by clicking and filling the form provided below:
+              </p>
+
+              <p className="text-[14px] mb-1 dark:text-main "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+Whatsapp contact: <a href="tel:+254701020202" rel="noreferrer" target="_blank">+254701020202</a>
+              </p>
+              <p className="text-[14px] mb-1  dark:text-main "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+EMAIL: <a href="mailto:wecare@anzaacademy.com" rel="noreferrer" target="_blank">wecare@anzaacademy.com </a>
+              </p>
+
+<div className="flex space-x-2 justify-center">
+  <div>
+   <a href="https://forms.gle/gQ9wAZy9wfKanRyE6" rel="noreferrer" target="_blank"> <button type="button" className="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">CLICK TO FILL OUR FORM</button> </a>
+  </div>
+</div>
+
+
             </motion.div>
           </div>
         )}
