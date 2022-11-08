@@ -31,8 +31,8 @@ export const pastpaperCategories = [
   "Form 4",
 ];
 
-export const prodUrl = "https://api.thesigurd.com/anzaapi";
-export const websProdUrl = "wss://api.thesigurd.com/anzaapi";
+export const prodUrl = "https://anzaacademy.co/anzaapi";
+export const websProdUrl = "wss://anzaacademy.co/anzaapi";
 
 export const defaultSetbooks = [
   "Doll's House",

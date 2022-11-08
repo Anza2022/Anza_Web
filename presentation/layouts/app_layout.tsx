@@ -175,20 +175,20 @@ const AppLayout = (props: PropsWithChildren<{}>) => {
                   }
                 }}
               />
-<p className="text-[14px] mb-1 text-indigo-900 dark:text-main "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
-Leave your contact to book by clicking and filling the form provided below:
+<p className="text-[16px] mb-1  dark:text-white "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+Leave your booking contacts by filling form below:
               </p>
 
-              <p className="text-[14px] mb-1 dark:text-main "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
-Whatsapp contact: <a href="tel:+254701020202" rel="noreferrer" target="_blank">+254701020202</a>
+              <p className="text-[16px] mb-1 dark:text-white "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+Whatsapp contact: <a className="text-indigo-600" href="tel:+254701020202" rel="noreferrer" target="_blank">+254701020202</a>
               </p>
-              <p className="text-[14px] mb-1  dark:text-main "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
-EMAIL: <a href="mailto:wecare@anzaacademy.com" rel="noreferrer" target="_blank">wecare@anzaacademy.com </a>
+              <p className="text-[16px] mb-1  dark:text-white "   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+EMAIL: <a className="text-indigo-600" href="mailto:wecare@anzaacademy.com" rel="noreferrer" target="_blank">wecare@anzaacademy.com </a>
               </p>
 
-<div className="flex space-x-2 justify-center">
+<div className="flex space-x-2 justify-center mb-4">
   <div>
-   <a href="https://forms.gle/gQ9wAZy9wfKanRyE6" rel="noreferrer" target="_blank"> <button type="button" className="inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">CLICK TO FILL OUR FORM</button> </a>
+   <a href="https://forms.gle/gQ9wAZy9wfKanRyE6" rel="noreferrer" target="_blank"> <button type="button" className="inline-block px-6 py-2 border-2 border-main text-main font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out">CLICK HERE TO BOOK</button> </a>
   </div>
 </div>
 

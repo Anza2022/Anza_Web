@@ -9,7 +9,8 @@ import {
 } from "./local_storage_services";
 
 const axiosInstance = axios.create({
-  baseURL: "https://c5dc-102-217-158-14.in.ngrok.io",
+  baseURL: "https://anzaacademy.co/anzaapi/",
+  //baseURL: "http://127.0.0.1:8080/anzaapi", //telkom router
   timeout: 15000,
   headers: {},
 });
@@ -17,7 +18,6 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(function (config) {
   // Do something before request is sent
   //get auth token
-
   return config;
 });
 
@@ -26,9 +26,7 @@ axiosInstance.interceptors.response.use(
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
     // parse json to objects
-
     //check for  response
-
     return response;
   },
   function (error) {

@@ -120,7 +120,7 @@ const FaqsComponent = () => {
 
 
     <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
-      <strong> </strong> +254701020202
+      <strong> </strong> +254702010101
     </p>
 
     <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">

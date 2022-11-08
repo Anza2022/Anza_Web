@@ -56,6 +56,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
         <link rel="login" href="http://anzaacademy.com/login" />
         <link rel="signup" href="http://anzaacademy.com/register" />
+        
       </Head>
 
       <AboutLanding />

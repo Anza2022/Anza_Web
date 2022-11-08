@@ -60,8 +60,8 @@ const Footer = () => {
               />
             </svg>
 
-            <a href="tel:+254701020202" className="text-lg hover:text-main">
-              +254701020202
+            <a href="tel:+254704285929" className="text-lg hover:text-main">
+              +254704285929
             </a>
           </div>
           <div className="flex space-x-5">
