@@ -190,7 +190,7 @@ const UpdatePaper = () => {
             ) : (
               <div className="flex flex-col">
                 <p className="text-sm">Talk Thumbnail</p>
-            <img src={`https://api.thesigurd.com/anzaapi/view_thumbnail/career/${thumbnailUrl}`} alt="{`https://api.thesigurd.com/anzaapi/view_thumbnail/career/${thumbnailUrl}`}" className="w-[50%] h-[75%]" />
+            <img src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${thumbnailUrl}`} alt="image missing" className="w-[50%] h-[75%]" />
                 <label
                   htmlFor="paper"
                   className="bg-main p-1.5 px-4 mt-4 cursor-pointer text-white text-lg font-bold rounded-xl"
