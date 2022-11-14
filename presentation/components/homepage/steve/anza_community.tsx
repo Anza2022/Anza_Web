@@ -4,7 +4,7 @@ import { BsFillPlayFill } from "react-icons/bs";
 import man from "../../../../assets/images/manblob.png";
 import schoolimg from "../../../../assets/images/schoolimg.png";
 import mkuruu from "../../../../assets/images/mkuruu.png";
-import slideImage from "../../../../assets/images/slider.png";
+import slideImage from "../../../../assets/images/Careeer_Holder.png";
 import router from "next/router";
 import ViewMkurugenziLesson from "../../../../pages/dashboard/videos/mkurugenzi/view_video";
 import playbutton from "../../../../assets/icons/play.png";
@@ -53,10 +53,10 @@ Become a career partner
 
     </div>
 
-    <div className="md:shrink-20 hidden md:block -mt-2">
+    <div className="md:shrink-20 hidden md:block -mt-10">
    
     <div className=" duration-700 ease-in-out" data-carousel-item>
-            <span className="absolute text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
+         
             <img className="h-full w-full object-cover md:h-full"   src={slideImage.src} alt="slideImage"/>
         </div>
     </div>

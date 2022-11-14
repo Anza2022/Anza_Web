@@ -8,7 +8,7 @@ import riara from "../../../assets/images/riara.png";
 import sigurd from "../../../assets/images/sigurd.png";
 
 const PartnerShipsComponent = () => {
-  let pimages = [alliance.src, huawei.src, deliote.src, riara.src];
+  let pimages = [alliance.src, deliote.src, riara.src];
   return (
     <div className="w-full flex screen-h flex-col pt-10 bg-gray-200 dark:bg-darksec ">
       <p

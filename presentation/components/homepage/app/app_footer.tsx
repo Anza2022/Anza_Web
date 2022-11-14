@@ -62,10 +62,10 @@ const AppFooter = () => {
         <div className="flex space-x-2 items-center cursor-pointer py-1">
           <AiOutlinePhone size={21} className="" />
           <a
-            href="tel:+254704285929"
+            href="tel:+254702010101"
             className="cursor-pointer hover:text-violet-700 transform hover:scale-105 duration-200 hover:underline"
           >
-            +254704285929
+            +254702010101
           </a>
         </div>
         <div className="flex space-x-2 items-center cursor-pointer py-0">

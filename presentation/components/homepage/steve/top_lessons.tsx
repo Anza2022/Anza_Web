@@ -7,6 +7,10 @@ import { MasterClass } from "./stransform";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useRouter } from "next/router";
+import teacher1 from "../../../../assets/images/1.png";
+import teacher2 from "../../../../assets/images/2.png";
+import teacher3 from "../../../../assets/images/3.png";
+import teacher4 from "../../../../assets/images/4.png";
 
 const MySwal = withReactContent(Swal);
 
@@ -18,8 +22,8 @@ const TopLesssonsComponent = () => {
       "Form 3",
       "Chemistry",
       30,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/Chemistry Snippet.mp4",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/chem.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/Chemistry Snippet.mp4",
+      "teacher1",
       "Top Rated"
     ),
     new MasterClass(
@@ -244,7 +248,18 @@ cursor-pointer             "
           >
             <div className="w-72"></div>
             <img
-              src={e.thumbnailUrl}
+              src=
+              {
+              e.occupation == "Biology" ? teacher3.src
+               :
+               e.occupation == "Chemistry" ?  teacher4.src
+               :
+               e.occupation == "Physics" ?  teacher2.src
+               :
+               e.occupation == "Mathematics" ?  teacher1.src
+               :
+               ""
+              }
               alt="icon not found"
               className="h-82"
             />

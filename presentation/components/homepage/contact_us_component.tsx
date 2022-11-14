@@ -31,7 +31,7 @@ const ContactUsComponent = () => {
           </div>
           <div className="mt-5 flex justify-between">
             <p>Phone Number</p>
-            <p>+254704285929</p>
+            <p>+254702010101</p>
           </div>
           <div className="mt-5 flex justify-between">
             <p>Location</p>
