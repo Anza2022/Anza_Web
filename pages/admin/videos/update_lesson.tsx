@@ -376,7 +376,7 @@ const AdminUpdateLessonPage = () => {
         //   formData
         // );
         let res = await axios.post(
-          "https://api.thesigurd.com/anzaapi/upload_thumbnail/lesson",
+          "https://anzaacademy.co/anzaapi/upload_thumbnail/lesson",
           formData
         );
         if (res.status === 206) {
@@ -410,7 +410,7 @@ const AdminUpdateLessonPage = () => {
         //   formData
         // );
         let res = await axios.post(
-          "https://api.thesigurd.com/anzaapi/upload_video/lesson",
+          "https://anzaacademy.co/anzaapi/upload_video/lesson",
           formData
         );
         if (res.status === 206) {
@@ -854,7 +854,7 @@ const AdminUpdateLessonPage = () => {
                   value={videoUrl.split("view_video/lesson/")[1]}
                   onChange={(e) =>
                     setVideoUrl(
-                      `https://api.thesigurd.com/anzaapi/view_video/lesson/${e.target.value}`
+                      `https://anzaacademy.co/anzaapi/view_video/lesson/${e.target.value}`
                     )
                   }
                   autoComplete="off"

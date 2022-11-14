@@ -348,7 +348,7 @@ const CareerTalksPage = () => {
                       <a className="relative group-hover:opacity-100 group-hover:blur-sm">
                         <img
                           className="w-full"
-                          src={`https://api.thesigurd.com/anzaapi/view_thumbnail/career/${e.thumbnailUrl}`}
+                          src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${e.thumbnailUrl}`}
                           alt=""
                         />
                       </a>

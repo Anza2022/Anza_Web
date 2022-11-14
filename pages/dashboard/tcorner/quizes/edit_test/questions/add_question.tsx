@@ -132,7 +132,7 @@ const AddQuestionPage = () => {
         formData.append("type", "fun_quizes");
         formData.append("extension", e.target.files[0].name.split(".")[1]);
         let res = await axios.post(
-          "https://api.thesigurd.com/anzaapi/upload_video/lesson",
+          "https://anzaacademy.co/anzaapi/upload_video/lesson",
           formData
         );
         if (res.status === 206) {
@@ -159,7 +159,7 @@ const AddQuestionPage = () => {
         formData.append("type", "fun_quizes");
         formData.append("extension", e.target.files[0].name.split(".")[1]);
         let res = await axios.post(
-          "https://api.thesigurd.com/anzaapi/upload_video/lesson",
+          "https://anzaacademy.co/anzaapi/upload_video/lesson",
           formData
         );
         if (res.status === 206) {
@@ -189,7 +189,7 @@ const AddQuestionPage = () => {
         formData.append("type", "fun_quizes");
         formData.append("extension", e.target.files[0].name.split(".")[1]);
         let res = await axios.post(
-          "https://api.thesigurd.com/anzaapi/upload_video/lesson",
+          "https://anzaacademy.co/anzaapi/upload_video/lesson",
           formData
         );
         if (res.status === 206) {

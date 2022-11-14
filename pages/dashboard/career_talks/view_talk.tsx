@@ -175,7 +175,7 @@ const ViewCareerTalkPage = () => {
               className="w-52      dark:bg-darkmain cursor-pointer "
             >
               <img
-                src={`https://api.thesigurd.com/anzaapi/view_thumbnail/career/${k.thumbnailUrl}`} 
+                src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${k.thumbnailUrl}`} 
                 alt="thumbnail not found"
                 className="rounded-md p-2"
               />

@@ -1182,7 +1182,7 @@ const PdfNotesComponent = (props: PropsWithChildren<{ notesUrl: string }>) => {
   return (
     <div className="w-full h-full flex  items-center">
       <iframe
-        src={`https://api.thesigurd.com/anzaapi/notes/pdf_notes/${props.notesUrl}#toolbar=0`}
+        src={`https://anzaacademy.co/anzaapi/notes/pdf_notes/${props.notesUrl}#toolbar=0`}
         // type="application/pdf"
         // frameBorder="0"
         // scrolling="auto"
@@ -1219,7 +1219,7 @@ const PdfNotesComponent = (props: PropsWithChildren<{ notesUrl: string }>) => {
             //   }
             // }}
 
-            fileUrl={`https://api.thesigurd.com/anzaapi/notes/pdf_notes/${props.notesUrl}#toolbar=0`}
+            fileUrl={`https://anzaacademy.co/anzaapi/notes/pdf_notes/${props.notesUrl}#toolbar=0`}
             theme={thememode == "light" ? "" : "dark"}
             initialPage={0}
             renderError={renderError}
