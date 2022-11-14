@@ -211,6 +211,10 @@ const SignUpPage = () => {
           name="description"
           content="Create new account and get a learning exprience you will live to remember "
         />
+                <meta
+          name="keywords"
+          content="Past papers, KCSE, revision papers, form 1, form 2 form 4, free revision past papers, revision papers with answers, kcse past papers with answers pdf, free revision papers with answers. Tuition, private tuition centers in Nairobi, tuition centers near me, tuition centers in south c, tutors in nairobi, kcse, tuition centers in nairobi,online tutors in kenya, physics and maths tutor, physics and maths tutor, chemistry, physics past papers. Career guidance and counselling, career guidance for highschool students, career guidance in kenya,list of career chioces for highschool students, how do I choose a career path for students KCSE revision materials, Form 1,2,3,4 revision papers, free past papers and marking schemes,"
+        />
         <link rel="icon" href="/favicon.ico" />
         <link rel="login" href="http://anzaacademy.com/login" />
         <link rel="signup" href="http://anzaacademy.com/register" />
