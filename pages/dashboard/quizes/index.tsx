@@ -283,7 +283,7 @@ const { accountSubscription } = useContext(LoggedInUserContext);
                               ? quizholder.src
                               : `${prodUrl}/view_thumbnail/quizes/${l.thumbnailUrl}`
                           }
-                          alt=""
+                          alt="img missing"
                         />
                       </a>
                     </div>

@@ -891,7 +891,8 @@ const AdminUpdateLessonPage = () => {
                 )
               ) : (
                 <div className="flex flex-col">
-                  <p className="text-sm">Thumbnail Name</p>
+                  <p className="text-sm">Thumbnail</p>
+                  <img src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${thumbnailUrl.split("view_thumbnail/lesson/")[1]}`} alt="missing img" className="w-[50%] h-[75%] text-sm" />
                   <p className="text-sm">
                     {thumbnailUrl.split("view_thumbnail/lesson/")[1]}
                   </p>

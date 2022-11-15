@@ -348,7 +348,7 @@ const SubStatus = accountSubscription[0] != undefined
                         </h1>
                       </a>
                       <a className="relative group-hover:opacity-100 group-hover:blur-sm">
-                        <img className="w-full" src={e.thumbnailUrl} alt="" />
+                        <img className="w-full" src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${e.thumbnailUrl.split("view_thumbnail/lesson/")[1]}`}  />
                       </a>
                     </div>
 
@@ -705,7 +705,7 @@ const SubStatus = accountSubscription[0] != undefined
                         </h1>
                       </a>
                       <a className="relative group-hover:opacity-100 group-hover:blur-sm  rounded-md ">
-                        <img className="w-full rounded-md" src={e.thumbnailUrl} alt="" />
+                        <img className="w-full rounded-md" src={e.thumbnailUrl} alt={e.thumbnailUrl} />
                       </a>
                     </div>
 

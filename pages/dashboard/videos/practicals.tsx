@@ -127,7 +127,7 @@ const SubStatus = accountSubscription[0] != undefined
       </a>
     <a className="relative group-hover:opacity-100 group-hover:blur-sm">
         <div className="h-48 flex flex-wrap content-center">
-        <img className="w-full" src={e.thumbnailUrl} alt="" />
+        <img className="w-full" src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${e.thumbnailUrl.split("view_thumbnail/lesson/")[1]}`}  alt="" />
         </div>
     </a>
 
@@ -212,7 +212,7 @@ onClick={() => {
       </a>
     <a className="relative group-hover:opacity-100 group-hover:blur-sm">
         <div className="h-48 flex flex-wrap content-center">
-        <img className="w-full" src={l.thumbnailUrl} alt={l.thumbnailUrl} />
+        <img className="w-full" src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${l.thumbnailUrl.split("view_thumbnail/lesson/")[1]}`}  alt={l.thumbnailUrl} />
         </div>
     </a>
   </div>
