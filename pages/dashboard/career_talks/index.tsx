@@ -349,7 +349,7 @@ const CareerTalksPage = () => {
                         <img
                           className="w-full"
                           src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${e.thumbnailUrl}`}
-                          alt=""
+                          alt="img missing"
                         />
                       </a>
                     </div>

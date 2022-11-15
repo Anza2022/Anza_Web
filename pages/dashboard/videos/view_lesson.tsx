@@ -596,8 +596,8 @@ const ViewVideoLessonsPage = () => {
                       <source src={e.videoUrl} type="video/mp4" />
                     </video> */}
                     <img
-                      src={e.thumbnailUrl}
-                      alt="thumbnail not found"
+                      src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${e.thumbnailUrl.split("view_thumbnail/lesson/")[1]}`}
+                      alt="image missing"
                       className="h-24"
                     />
                     <p className="p-2 text-xs font-bold-700 dark:text-white ">
@@ -661,8 +661,8 @@ const StudyGroups = () => {
               className="w-72  rounded-xl my-3  bg-white   dark:bg-darkmain cursor-pointer  "
             >
               <img
-                src={e.thumbnailUrl}
-                alt="thumbnail not found"
+                src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${e.thumbnailUrl.split("view_thumbnail/lesson/")[1]}`}
+                alt="image missing"
                 className="rounded-lg"
               />
               <p className="p-2 text-sm">{e.title}</p>

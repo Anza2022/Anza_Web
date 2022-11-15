@@ -224,8 +224,8 @@ const SubjectTopicsPage = () => {
                                       <div className="h-48 flex flex-wrap content-center">
                                         <img
                                           className="w-full"
-                                          src={e.thumbnailUrl}
-                                          alt={e.thumbnailUrl}
+                                          src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${e.thumbnailUrl.split("view_thumbnail/lesson/")[1]}`}
+                                          alt="img missing"
                                         />
                                       </div>
                                     </a>

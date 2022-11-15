@@ -138,7 +138,7 @@ const ViewSetbookPage = () => {
                   
 
                   <div className="each mb-10 m-0  relative">
-                    <img className="w-full" src={videos['posters'] == undefined ? "" : videos['posters'][2]['url'] } alt="" />
+                    <img className="w-full" src={videos['posters'] == undefined ? "" : videos['posters'][2]['url'] } alt="img missing" />
                   </div>
                   
                   

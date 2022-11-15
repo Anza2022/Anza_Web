@@ -233,7 +233,7 @@ router.push("/dashboard/videos/setbooks/view_book");
          e.title == "A Doll's House" ?  dolls_thumbnail.src
          : ""
         }
-  alt={e.title} />  
+  alt="img missing" />  
     </a>
   </div>
 

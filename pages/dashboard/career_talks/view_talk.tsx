@@ -176,7 +176,7 @@ const ViewCareerTalkPage = () => {
             >
               <img
                 src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${k.thumbnailUrl}`} 
-                alt="thumbnail not found"
+                alt="img missing"
                 className="rounded-md p-2"
               />
               <p className="title pl-2 pr-2 text-sm font-normal ">{k.title}</p>            </div>
