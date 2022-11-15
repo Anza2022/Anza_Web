@@ -24,6 +24,7 @@ const PracticalsVideosPage = () => {
   const {setShowPremiumModal, setSelectedForm, setSelectedSubject, setSelectedVideoId, setSelectedVdocipher } =
     useContext(NavigationContext);
   let practicals = lessons.filter((e) => e.isPractical);
+  //console.log(practicals);
   const { accountSubscription } = useContext(LoggedInUserContext);
 const SubStatus = accountSubscription[0] != undefined
  ? accountSubscription[0].isSubscriptionActive
