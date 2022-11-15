@@ -208,13 +208,13 @@ const CareerTalksPage = () => {
               <div id="scroll_me" className="w-full lg:w-3/3">
                 <div className='bg-[url("https://anzaacademy.co/anzaapi/view_thumbnail/career/3.png")] object-cover h-full w-full bg-cover bg-left p-5'>
                   <h2
-                    className="text-4xl text-white mt-10 mb-2 pt-8 pb-5 justify-left text-left"
+                    className="text-3xl text-black mt-10 mb-2 pt-8 pb-5 justify-left text-left"
                     style={{ fontFamily: "Montserrat", fontWeight: 900 }}
                   >
                     BUILDING A FULLY CONNECTED, INTELLIGENT WORLD
                   </h2>
                   <div className="flex  justify-around w-[100%]">
-                    <div className="mb-8 text-white mt-2 w-[77%]  text-2xl justify-left text-left">
+                    <div className="mb-8 text-black mt-2 w-[77%]  text-2xl justify-left text-left">
                       Huawei&lsquo;s Mission Is To Bring Digital To Every
                       Person, Home And Organization For A Fully Connected,
                       Intelligent World. To This End, We Will Drive Ubiquitous
