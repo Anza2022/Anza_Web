@@ -1234,4 +1234,4 @@ const PdfNotesComponent = (props: PropsWithChildren<{ notesUrl: string }>) => {
   );
 };
 
-// https://api.thesigurd.com/anzaapi/view_past_paper/2928651b-3f6c-4b3b-b04b-f4d85011a366.pdf
+// https://anzaacademy.co/anzaapi/view_past_paper/2928651b-3f6c-4b3b-b04b-f4d85011a366.pdf

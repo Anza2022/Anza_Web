@@ -18,8 +18,8 @@ const Stransform = () => {
       "Mr.Bob Iger",
       "Anza",
       3,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/Bob Iger Teaches Business Strategy and Leadership _ MasterClass.mp4",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/bobiger.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/Bob Iger Teaches Business Strategy and Leadership _ MasterClass.mp4",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/bobiger.png",
       "toprated"
     ),
     new MasterClass(
@@ -27,8 +27,8 @@ const Stransform = () => {
       "James Patterson",
       "Anza",
       2,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/James Patterson Teaches Writing _  MasterClass.mp4",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/jamespeterson.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/James Patterson Teaches Writing _  MasterClass.mp4",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/jamespeterson.png",
       "toprated"
     ),
     new MasterClass(
@@ -36,8 +36,8 @@ const Stransform = () => {
       "Kelly Wearstler",
       "Anza",
       6,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/Kelly Wearstler Teaches Interior Design _ MasterClass.mp4",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/kellywrestler.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/Kelly Wearstler Teaches Interior Design _ MasterClass.mp4",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/kellywrestler.png",
       "toprated"
     ),
     new MasterClass(
@@ -45,8 +45,8 @@ const Stransform = () => {
       "Wayne Gretzky ",
       "Anza",
       4,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/Wayne Gretzky Teaches the Athlete’s Mindset  _ MasterClass.mp4",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/wayne.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/Wayne Gretzky Teaches the Athlete’s Mindset  _ MasterClass.mp4",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/wayne.png",
       "toprated"
     ),
     new MasterClass(
@@ -54,8 +54,8 @@ const Stransform = () => {
       "Nas",
       "Anza",
       3,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/Nas Teaches Hip-Hop Storytelling _ MasterClass.mp4",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/nashiphop.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/Nas Teaches Hip-Hop Storytelling _ MasterClass.mp4",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/nashiphop.png",
       "toprated"
     ),
   ];
@@ -330,6 +330,3 @@ export class MasterClass {
     public playbackInfo: string
   ) {}
 }
-
-// "videoUrl" : "https://api.thesigurd.com/anzaapi/view_video/lesson/The Cosine Rule.mp4",
-// "thumbnailUrl" : "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/The Cosine Rule.png"

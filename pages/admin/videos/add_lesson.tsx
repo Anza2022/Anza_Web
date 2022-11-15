@@ -93,7 +93,7 @@ const AddVideoLesson = () => {
         //   formData
         // );
         let res = await axios.post(
-          "https://api.thesigurd.com/anzaapi/upload_thumbnail/lesson",
+          "https://anzaacademy.co/anzaapi/upload_thumbnail/lesson",
           formData
         );
         setUploadingThumbnail(false);
@@ -142,19 +142,19 @@ const AddVideoLesson = () => {
       "",
       title,
       subjectType == "mathematics"
-        ? "https://api.thesigurd.com/anzaapi/view_video/lesson/The Cosine Rule.mp4"
+        ? "https://anzaacademy.co/anzaapi/view_video/lesson/The Cosine Rule.mp4"
         : subjectType == "chemistry"
-        ? "https://api.thesigurd.com/anzaapi/view_video/lesson/main  thrid comp.mp4"
+        ? "https://anzaacademy.co/anzaapi/view_video/lesson/main  thrid comp.mp4"
         : subjectType == "physics"
-        ? "https://api.thesigurd.com/anzaapi/view_video/lesson/POTENTIAL Energy.mp4"
-        : "https://api.thesigurd.com/anzaapi/view_video/lesson/The Cosine Rule.mp4",
+        ? "https://anzaacademy.co/anzaapi/view_video/lesson/POTENTIAL Energy.mp4"
+        : "https://anzaacademy.co/anzaapi/view_video/lesson/The Cosine Rule.mp4",
       subjectType == "mathematics"
-        ? "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/The Cosine Rule.png"
+        ? "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/The Cosine Rule.png"
         : subjectType == "chemistry"
-        ? "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/main  thrid comp.png"
+        ? "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/main  thrid comp.png"
         : subjectType == "physics"
-        ? "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/POTENTIAL Energy.png"
-        : "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/The Cosine Rule.png",
+        ? "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/POTENTIAL Energy.png"
+        : "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/The Cosine Rule.png",
 
       topicName,
       classLevel,

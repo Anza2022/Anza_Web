@@ -303,4 +303,4 @@ const SuggestTalks = () => {
   );
 };
 
-//  `https://api.thesigurd.com/anzaapi/view_thumbnail/career/${res.data.url}`
+//  `https://anzaacademy.co/anzaapi/view_thumbnail/career/${res.data.url}`

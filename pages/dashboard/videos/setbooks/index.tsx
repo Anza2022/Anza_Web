@@ -91,7 +91,7 @@ const { accountSubscription } = useContext(LoggedInUserContext);
 
   <div className="flex mb-10 -mt-2">
     <div  id="scroll_me" className="w-full lg:w-3/3">
-          <div className='bg-[url("https://api.thesigurd.com/anzaapi/view_thumbnail/career/dolls_house.png")] object-cover h-full w-full bg-cover bg-right p-8'>
+          <div className='bg-[url("https://anzaacademy.co/anzaapi/view_thumbnail/career/dolls_house.png")] object-cover h-full w-full bg-cover bg-right p-8'>
               <h2 className="text-4xl text-white mt-10 mb-2 pt-8 pb-0 justify-left text-left"          style={{ fontFamily: "Montserrat", fontWeight: 900 }}>A Doll&lsquo;s House</h2>
             <div className="flex justify-around w-[100%]"> 
               <div className="mb-8 w-[77%]  text-white mt-2 text-2xl justify-left text-left"    >
@@ -217,7 +217,7 @@ router.push("/dashboard/videos/setbooks/view_book");
         </h1>
       </a>
     <a className="relative group-hover:opacity-100 group-hover:blur-sm">
-        {/* <img className="w-full"  src={`https://api.thesigurd.com/anzaapi/view_thumbnail/career/${e.thumbnailUrl}`} alt="" /> */}
+        {/* <img className="w-full"  src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${e.thumbnailUrl}`} alt="" /> */}
         <img className="w-full"  src=
         {
         e.title == "blossoms" ? blossom.src

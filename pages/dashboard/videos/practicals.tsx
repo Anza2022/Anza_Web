@@ -211,7 +211,7 @@ onClick={() => {
       </a>
     <a className="relative group-hover:opacity-100 group-hover:blur-sm">
         <div className="h-48 flex flex-wrap content-center">
-        <img className="w-full" src={l.thumbnailUrl} alt="" />
+        <img className="w-full" src={l.thumbnailUrl} alt={l.thumbnailUrl} />
         </div>
     </a>
   </div>

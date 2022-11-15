@@ -77,7 +77,7 @@ const CareerTalksPage = () => {
   //     "Engineer",
   //     "Huawei",
   //     "22",
-  //     "https://api.thesigurd.com/anzaapi/view_thumbnail/career/birir.png",
+  //     "https://anzaacademy.co/anzaapi/view_thumbnail/career/birir.png",
   //   ),
   //   new RLessonsModel(
   //     "3129552a45ef4633869653f76268336f",
@@ -85,7 +85,7 @@ const CareerTalksPage = () => {
   //     "Lawyer",
   //     "Advocate",
   //     "12",
-  //     "https://api.thesigurd.com/anzaapi/view_thumbnail/career/advocate.png"
+  //     "https://anzaacademy.co/anzaapi/view_thumbnail/career/advocate.png"
   //   ),
   //   new RLessonsModel(
   //     "44ae607c48214b80b3cd00fcd2b07439",
@@ -93,7 +93,7 @@ const CareerTalksPage = () => {
   //     "Prof",
   //     "Agricultural Economist",
   //     "18",
-  //     "https://api.thesigurd.com/anzaapi/view_thumbnail/career/prof.png",
+  //     "https://anzaacademy.co/anzaapi/view_thumbnail/career/prof.png",
   //   ),
   // ];
 
@@ -206,7 +206,7 @@ const CareerTalksPage = () => {
           <div>
             <div className="flex mb-10 -mt-2">
               <div id="scroll_me" className="w-full lg:w-3/3">
-                <div className='bg-[url("https://api.thesigurd.com/anzaapi/view_thumbnail/career/3.png")] object-cover h-full w-full bg-cover bg-left p-5'>
+                <div className='bg-[url("https://anzaacademy.co/anzaapi/view_thumbnail/career/3.png")] object-cover h-full w-full bg-cover bg-left p-5'>
                   <h2
                     className="text-4xl text-white mt-10 mb-2 pt-8 pb-5 justify-left text-left"
                     style={{ fontFamily: "Montserrat", fontWeight: 900 }}

@@ -225,7 +225,7 @@ const SubjectTopicsPage = () => {
                                         <img
                                           className="w-full"
                                           src={e.thumbnailUrl}
-                                          alt=""
+                                          alt={e.thumbnailUrl}
                                         />
                                       </div>
                                     </a>

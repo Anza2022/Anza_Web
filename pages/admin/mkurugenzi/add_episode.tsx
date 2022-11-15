@@ -44,7 +44,7 @@ const AdminAddMkurugenziEpisodePage = () => {
   //         //   formData
   //         // );
   //         let res = await axios.post(
-  //           "https://api.thesigurd.com/anzaapi/upload_video/lesson",
+  //           "https://anzaacademy.co/anzaapi/upload_video/lesson",
   //           formData
   //         );
   //         if (res.status === 206) {

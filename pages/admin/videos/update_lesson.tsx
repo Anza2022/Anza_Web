@@ -249,7 +249,7 @@ const AdminUpdateLessonPage = () => {
     //     let res = await VideoLessonRepo.checkIfLessonFileExist(videoUrl);
     //     if (res) {
     //       setVideoUrl(
-    //         `https://api.thesigurd.com/anzaapi/view_video/lesson/${videoUrl}`
+    //         `https://anzaacademy.co/anzaapi/view_video/lesson/${videoUrl}`
     //       );
     //     }
     //   } catch (e) {
@@ -267,7 +267,7 @@ const AdminUpdateLessonPage = () => {
     //     let res = await VideoLessonRepo.checkIfLessonFileExist(thumbnailUrl);
     //     if (res) {
     //       setThumbnailUrl(
-    //         `https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/${thumbnailUrl}`
+    //         `https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${thumbnailUrl}`
     //       );
     //     }
     //   } catch (e) {

@@ -87,7 +87,7 @@ We give you tools that optimize your learning ​experience embedded in a futuri
 
   <video autoPlay={true} loop muted className="absolute  z-10 w-auto brightness-50 contrast-100  backdrop-blur-xl bg-white/30 backdrop-brightness-200 bg-black/30 
 ">
-    <source src="https://api.thesigurd.com/anzaapi/view_thumbnail/career/About_us.m4v" type="video/mp4" />
+    <source src="https://anzaacademy.co/anzaapi/view_thumbnail/career/About_us.m4v" type="video/mp4" />
   </video>
 </header>
         <div     

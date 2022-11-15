@@ -32,7 +32,7 @@ const TopLesssonsComponent = () => {
       "Biology",
       30,
       "20160313versUSE323KmlwhMiYwvIgIRfIILbkCKvFodkpEHF01DNnjLulN1DoLX",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/bio.png",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/bio.png",
       "eyJ2aWRlb0lkIjoiN2RkNDhjYTgwYTllNDE1YmI0NDhlY2MwMTE3N2MwOWIifQ"
     ),
 
@@ -41,8 +41,8 @@ const TopLesssonsComponent = () => {
       "Form 3",
       "Physics",
       30,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/Physics Snippet.mp4",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/physics.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/Physics Snippet.mp4",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/physics.png",
       "Interesting"
     ),
     new MasterClass(
@@ -50,8 +50,8 @@ const TopLesssonsComponent = () => {
       "Form 3",
       "Mathematics",
       30,
-      "https://api.thesigurd.com/anzaapi/view_video/lesson/Mathematics  Snippet(1).m4v",
-      "https://api.thesigurd.com/anzaapi/view_thumbnail/lesson/math.png",
+      "https://anzaacademy.co/anzaapi/view_video/lesson/Mathematics  Snippet(1).m4v",
+      "https://anzaacademy.co/anzaapi/view_thumbnail/lesson/math.png",
       "Top Rated"
     ),
   ];

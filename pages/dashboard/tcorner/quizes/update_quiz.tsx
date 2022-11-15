@@ -89,7 +89,7 @@ const UpdateTest = () => {
         //   formData
         // );
         let res = await axios.post(
-          "https://api.thesigurd.com/anzaapi/upload_thumbnail/lesson",
+          "https://anzaacademy.co/anzaapi/upload_thumbnail/lesson",
           formData
         );
         setUploadingThumbnail(false);
