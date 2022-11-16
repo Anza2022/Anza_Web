@@ -75,6 +75,19 @@ const Stransform = () => {
   };
   return (
     <div className="  flex flex-col dark:bg-darksec">
+      <div className="md:hidden bg-indigo-800 text-white justify-center  items-center text-center pt-10">
+      <p>
+        Learn with ease, you'll love it!
+      </p>
+      <div
+               onClick={() => router.push("/signup")}
+                className="flex items-center mt-2 bg-main rounded-md text-white cursor-pointer px-10 py-1.5 ml-[20%] mr-[20%] over:dark:bg-indigo-700 hover:bg-indigo-800 focus:outline-none   ">
+              Sign up for free
+            </div>
+
+      </div>
+
+
       <div className="flex flex-wrap justify-around space-y-5 md:space-y-0 bg-indigo-800 dark:bg-darkmain text-white py-12 pl-4 md:pl-0">
         <div className="flex space-x-2  items-center">
           <div className="w-14 h-14 rounded-full bg-gray-300 text-black  flex items-center justify-center ">

@@ -10,20 +10,28 @@ import student_ from "../../../../assets/images/fam.png";
 const Flexa = () => {
   return (
 <div>
-<div className="bg-white  pt-20 pb-20 mt-0  dark:bg-darksec" >
+{/* <div className="bg-white  pt-20 pb-20 mt-0  dark:bg-darksec" >
       <p className=" pt-10 pb-10  mt-32 md:mt-10  text-center pl-10 pr-10 dark:text-main text-black"
       >
-<p  className="text-4xl md:text-5xl  md:leading-loose  mb-10 md:mb-5"    style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Study like a star! </p>
-<p className="   pl-10 pr-10 mb-10 text-2xl  md:text-4xl dark:text-white leading-loose md:leading-loose"   style={{ fontFamily: "Overpass", fontWeight: 900 }}>
-You are the star in the learning world of Anza.  Set your academic ​goals and let us help you achieve them. We are consistently making ​sure that you not only soar but you become exceptional as you soar ​higher.
+<p  className="text-4xl md:text-5xl  md:leading-loose  mb-10 md:mb-5"    style={{ fontFamily: "Montserrat", fontWeight: 500 }} > Study like a star! </p>
+<p className="   pl-10 pr-10 mb-10 text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 900 }}>
+ Set your academic ​goals and let us help you achieve them. We are consistently making ​sure that you not only soar but you become exceptional as you soar ​higher.
   </p>
   </p>
-</div>
+</div> */}
 
 
-<div className="bg-white  pt-20   -mb-10 dark:bg-darksec" >
-      <p className=" pt-10 pb-10  mt-32 md:mt-10  text-center md:pl-10 md:pr-10 dark:text-main "
+<div className="bg-white  pt-10   -mb-10 dark:bg-darksec" >
+      <p className=" pb-10  mt-10 md:mt-5  text-center md:pl-10 md:pr-10 dark:text-main "
       >
+              <p className="pb-10 text-center pl-10 pr-10 dark:text-main text-black"
+      >
+<p  className="text-3xl md:text-3xl  mb-2"    style={{ fontFamily: "Montserrat", fontWeight: 500 }} > Study like a star! </p>
+<p className="   pl-10 pr-10  text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+ Set your academic ​goals and let us help you achieve them. We are consistently making ​sure that you not only soar but you become exceptional as you soar ​higher.
+  </p>
+  </p>
+
 <p  className="text-3xl md:text-3xl mb-2 "   style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Classes and Personalized tuition </p>
 <p className="pl-10 pr-10 mb-5 text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
 Anza bridges the gap between private tuition centers and conventional centers of education. We have made home revision and tuition easily accessible affordably. Our lessons are very simplified and interesting while Our TSC certified tutors are always ready to walk your son/daughter through any tough lesson when they need personalized academic attention.
