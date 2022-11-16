@@ -11,12 +11,6 @@ const TeacherUpdatePastPaper = () => {
             Update Past Paper
           </div>
         </div>
-
-        <div className="flex flex-wrap justify-center h-96 items-center w-full mt-5 ">
-          <p>Hello there from teachers update papers</p>
-
-          <div className="flex flex-col  w-80 md:w-[430px] h-40  rounded-xl   text-white relative  justify-between m-3"></div>
-        </div>
       </div>
     </DashboardLayout>
   );

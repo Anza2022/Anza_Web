@@ -71,7 +71,7 @@ const ViewPastPapersPage = () => {
                     ? pdffile
                     : paper == undefined
                     ? ""
-                    : paper.paperUrl
+                    : `https://anzaacademy.co/anzaapi/view_past_paper${paper.paperUrl.split("/view_past_paper")[1]}`
                 }
                 theme={thememode == "light" ? "" : "dark"}
                 initialPage={paperPage}
@@ -94,7 +94,7 @@ const ViewPastPapersPage = () => {
                     ? msfile
                     : paper == undefined
                     ? ""
-                    : paper.markingSchemeUrl
+                    : `https://anzaacademy.co/anzaapi/view_past_paper${paper.markingSchemeUrl.split("/view_past_paper")[1]}`
                 }
                 theme={thememode == "light" ? "" : "dark"}
                 onDocumentLoad={async (e) => {
