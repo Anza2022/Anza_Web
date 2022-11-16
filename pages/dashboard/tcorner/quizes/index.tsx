@@ -88,10 +88,10 @@ const AddGamifiedQuestions = () => {
             {myQuizzes.map((e) => (
               <div
                 key={e.testId}
-                className="w-72  rounded-lg flex flex-col justify-center items-center bg-white dark:bg-darkmain cursor-pointer m-1"
+                className="w-72  rounded-lg flex flex-col justify-around items-center bg-white dark:bg-darkmain cursor-pointer m-1"
               >
                 <img
-                  className="w-full h-28"
+                  className="w-full h-48 rounded-md"
                   src={`${prodUrl}/view_thumbnail/quizes/${e.thumbnailUrl}`}
                   alt=""
                 />

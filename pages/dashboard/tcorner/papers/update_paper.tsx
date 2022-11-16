@@ -118,36 +118,6 @@ const TeacherUpdatePastPaper = () => {
     };
 
 
-
-    // const handleSavePaper = async () => {
-    //   setSavingPaper(true);
-    //   try {
-    //     let newpaper = new PastPaperModel(
-    //       "",
-    //       title,
-    //       paperUrl,
-    //       markingSchemeUrl,
-    //       classLevel,
-    //       subjectType,
-    //       paperNumber,
-    //       schoolName.toLowerCase(),
-    //       user === undefined ? "" : user[0].userName,
-    //       getCurrentDate(),
-    //       getCurrentDate(),
-    //       year,
-    //       user === undefined ? "" : user[0].userId,
-    //       term
-    //     );
-    //     let res = await PastPaperRepo.updatePastPaper(newpaper);
-    //     router.push("/dashboard/tcorner/papers");
-    //   } catch (e) {
-    //     showToast(`${e}`, "error");
-    //   } finally {
-    //     setSavingPaper(false);
-    //   }
-    // };
-
-
     const handleSavePaper2 = async () => {
       if (paper != undefined) {
         if (

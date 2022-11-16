@@ -1,7 +1,10 @@
+import axios from "axios";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import GamifiedQuizRepo from "../../../../../data/repos/gamified_quiz_repo";
+import { OneQuiz } from "../../../../../models/curriculum/gamified_quizes_model";
+import LoadingComponent from "../../../../../presentation/components/others/loading_component";
 import { NavigationContext } from "../../../../../presentation/contexts/navigation_state_controller";
 import { TeachersAccountContext } from "../../../../../presentation/contexts/teachers_account_context";
 import DashboardLayout from "../../../../../presentation/layouts/dashboard_layout";
@@ -22,9 +25,8 @@ const EditTestPage = () => {
 
   //state
   const [title, setTitle] = useState(test != undefined ? test.title : "");
-  const [passPercentage, setPasspercentage] = useState(
-    test != undefined ? test.passPercentage : ""
-  );
+
+  const [passPercentage, setPasspercentage] = useState(     test != undefined ? test.passPercentage : "" );
   const [ClassLevel, setClassLevel] = useState(
     test != undefined ? test.classLevel : ""
   );
@@ -37,8 +39,10 @@ const EditTestPage = () => {
   const [points, setPoints] = useState(
     test != undefined ? test.totalPoints : ""
   );
-
+  const [Tquestions, setTquestions] = useState( test != undefined ? test.questions : ""
+  );
   //other states
+  const [uploadingPaper, setUploadingPaper] = useState(false);
   const [showAvailableQuizes, setShowAvailableQuizes] = useState(true);
   const [deletingQuestion, setDeletingQuestion] = useState(false);
   const deleteOneQuestion = async (question: string) => {
@@ -58,7 +62,7 @@ const EditTestPage = () => {
           return e;
         });
         setMyQuizzes(newtests);
-        showToast("question deleted", "success");
+        showToast("Question deleted", "success");
       }
     } catch (e) {
       showToast(`${e}`, "error");
@@ -66,8 +70,72 @@ const EditTestPage = () => {
       setDeletingQuestion(false);
     }
   };
-  const [saving, setSaving] = useState(false);
-  const saveTest = async () => {};
+
+  const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
+  const handleThumbnailUpload = async (e: any) => {
+    if (e.target.files[0] != null) {
+      try {
+        setUploadingThumbnail(true);
+        const formData = new FormData();
+        // Update the formData object
+        formData.append("lesson", e.target.files[0], e.target.files[0].name);
+        formData.append("type", "fun_quizes");
+        formData.append("extension", e.target.files[0].name.split(".")[1]);
+        let res = await axios.post(
+          "https://anzaacademy.co/anzaapi/upload_video/lesson",
+          formData
+        );
+        if (res.status === 206) {
+          showToast(`${res.data.message}`, "error");
+        } else {
+          setThumbnailUrl(res.data.id);
+          setUploadingThumbnail(false);
+          showToast("Upload success!", "success");
+        }
+      } catch (e) {
+        showToast(`${e}`, "error");
+      }
+    }
+  };
+
+     const [saving, setSaving] = useState(false);
+
+  const handleUpdateQuiz = async () => {
+    if (test != undefined) {
+      if (
+        title !== test.title ||
+        SubjectType !== test.subjectType ||
+        ClassLevel !== test.classLevel ||
+          thumbnailUrl !== test.thumbnailUrl ||
+          points !== test.totalPoints     || 
+          passPercentage !== test.passPercentage 
+      ) {
+        setSaving(true);
+        let  updatedQuiz = test;
+        updatedQuiz.title = title;
+        updatedQuiz.subjectType = SubjectType;
+        updatedQuiz.classLevel = ClassLevel;
+        updatedQuiz.thumbnailUrl = thumbnailUrl;
+        try {
+          let res = await GamifiedQuizRepo.updateGamifiedQuiz(updatedQuiz);
+          if (res) {
+            showToast("Quize Updated", "success");
+            router.push("/dashboard/tcorner/quizes/");
+          }
+        } catch (e) {
+          showToast(`${e}`, "error");
+        } finally {
+          setSaving(false);
+        }
+      } else {
+        showToast("Up to date", "success");
+      }
+    }
+  };
+
+
+  
+
 
   return (
     <DashboardLayout>
@@ -103,6 +171,47 @@ const EditTestPage = () => {
               className="outline-none bg-white dark:bg-darkmain rounded-xl px-3 py-2 w-full"
             />
           </div>
+
+
+          <div className="flex flex-col m-2  w-80 md:w-[400px]">
+            <label
+              htmlFor="title"
+              className="font-semibold text-main leading-4"
+            >
+              Quiz Thumbnail 
+            </label>
+
+            <div className="w-96 text-3xl flex my-3">
+                {
+                  uploadingPaper ? (
+                    <button disabled type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
+                    <LoadingComponent loading={uploadingPaper} color="white" />
+                                      <p className="text-sm">Uploading Thumbnail... please wait</p>
+                </button>
+                  ) : (
+                    <div>
+                        
+               <img src={`${prodUrl}/view_thumbnail/quizes/${thumbnailUrl}`} alt="img missing" className="text-sm" />   
+                    <label
+                      htmlFor="paper"
+                      className="bg-main p-2.5 px-4 cursor-pointer text-white text-sm  rounded-md">
+                      Change Thumbnail
+                    </label>
+                    </div>
+                  )
+              }
+                <input
+                  type="file"
+                  id="paper"
+                  accept="image/*"
+                  className="hidden "
+                onChange={handleThumbnailUpload}
+                />
+              </div>
+
+          </div>
+
+
           <div className="flex flex-col m-2  w-80 md:w-[400px]">
             <label
               htmlFor="title"
@@ -120,13 +229,15 @@ const EditTestPage = () => {
             >
               {" "}
               <option value={SubjectType}>{SubjectType}</option>
-              {/* {subjectOptions.map((e) => (
+              {subjectOptions.map((e) => (
                 <option key={e} value={e}>
                   {e}
                 </option>
-              ))} */}
+              ))}
             </select>
           </div>
+
+
         </div>
         <div className="flex flex-col">
           <p className="text-center text-main flex self-center font-bold text-lg mt-5">
@@ -218,14 +329,14 @@ const EditTestPage = () => {
                         <img
                           src={`${prodUrl}/view_thumbnail/quizes/${e.questionImage}`}
                           className="w-full border-l rounded-md border-gray-400 h-28"
-                          alt="image not found"
+                          alt="image missing"
                         />
                       )}
                       {e.questionType == "text+image" && (
                         <img
                           src={`${prodUrl}/view_thumbnail/quizes/${e.questionImage}`}
                           className="w-full border-l rounded-md object-contain border-gray-400 h-28"
-                          alt="image not found"
+                          alt="image  missing"
                         />
                       )}
                     </div>
@@ -235,7 +346,7 @@ const EditTestPage = () => {
                       onClick={() => {
                         if (e.quizId == "") {
                           showToast(
-                            "cannot edit this question, delete and add it again",
+                            "Cannot edit this question, delete and add it again",
                             "error"
                           );
                           return;
@@ -266,7 +377,7 @@ const EditTestPage = () => {
                           <img
                             src={`${prodUrl}/view_thumbnail/quizes/${o}`}
                             className="w-full border-l rounded-md object-contain border-gray-400 h-20"
-                            alt="image not found"
+                            alt="image missing"
                           />
                         )}
                       </div>
@@ -281,7 +392,7 @@ const EditTestPage = () => {
                         <img
                           src={`${prodUrl}/view_thumbnail/quizes/${e.answerExplanation}`}
                           className="w-full border-l rounded-md object-contain border-gray-400 h-20"
-                          alt="image not found"
+                          alt="image missing"
                         />
                       </div>
                     )}
@@ -313,8 +424,8 @@ const EditTestPage = () => {
             Cancel Process
           </div>
           <div
-            // onClick={saveTest}p
-            onClick={() => router.push("/dashboard/tcorner/quizes")}
+             onClick={handleUpdateQuiz}
+            //onClick={() => router.push("/dashboard/tcorner/quizes")}
             className="flex w-40 rounded-md bg-main hover:bg-teal-700 transition-all  justify-center py-2 text-white cursor-pointer"
           >
             {saving ? "Saving ..." : "Save Test"}

@@ -42,14 +42,12 @@ const AddNewGamifiedQuestions = () => {
 
   const [thumbnailUrl, setThumbnailUrl] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false); //for all images in a question, to be changed to individual image upload state
-
   const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
   const handleThumbnailUpload = async (e: any) => {
     if (e.target.files[0] != null) {
       try {
         setUploadingThumbnail(true);
         const formData = new FormData();
-
         // Update the formData object
         formData.append("lesson", e.target.files[0], e.target.files[0].name);
         formData.append("type", "fun_quizes");
