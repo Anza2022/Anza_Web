@@ -276,7 +276,7 @@ const DashboardSidebar = () => {
               setCurrentDashboardLink("Teachers Corner");
               setShowTcornerSublinks(!showTcornerSublinks);
             }}
-            className={` px-2 py-1 my-1.5  w-full text-  hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
+            className={` px-2 py-1 my-1.5  w-full text-sm  hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
               currentDashboardLink == "Teachers Corner"
                 ? "bg-main font-bold"
                 : ""
@@ -328,11 +328,11 @@ const DashboardSidebar = () => {
         <Image
           src={assignementsicon.src}
           alt="icon not found"
-          className="h-5"
-          width={20}
-          height={20}
+          className="h-5 ml-2"
+          width={15}
+          height={15}
         />
-        <p className="pr-2   linktext font-normal">Resource Center</p>
+        <p className="pr-2   linktext font-normal text-sm">Resource Center</p>
       </div>
 
       
@@ -567,7 +567,7 @@ const MainLinkComponent = (
       }}
       className={`px-2 py-1 my-0.5  text-sm hover:bg-main  rounded-r-xl  ${
         currentDashboardLink == props.linkname ? "bg-main font-bold" : ""
-      } hover:text-white items-center cursor-pointer flex justify-start space-x-2 `}
+      } hover:text-white items-center cursor-pointer flex justify-start space-x-2`}
     >
       <Image src={props.iconSrc} alt="icon not found" width={20} height={20} />
 

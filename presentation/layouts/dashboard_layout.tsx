@@ -641,7 +641,7 @@ p-3 overflow-x-hidden dark:text-main mb-12"
               setCurrentDashboardLink("Student Corner");
               setShowScornerSublinks(!showScornerSublinks);
             }}
-            className={` px-2 py-1 my-0.5  w-full text-xl font-normal hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
+            className={` px-2 py-1 my-0.5  w-full text-lg font-normal hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
               currentDashboardLink == "Student Corner"
                 ? "bg-main font-normal"
                 : ""
@@ -725,7 +725,7 @@ p-3 overflow-x-hidden dark:text-main mb-12"
               setCurrentDashboardLink("Teachers Corner");
               setShowTcornerSublinks(!showTcornerSublinks);
             }}
-            className={` px-2 py-1 my-1.5  w-full text-xl  hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
+            className={` px-2 py-1 my-1.5  w-full text-lg  hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
               currentDashboardLink == "Teachers Corner"
                 ? "bg-main font-bold"
                 : ""
