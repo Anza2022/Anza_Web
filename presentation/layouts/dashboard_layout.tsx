@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import React, {
   PropsWithChildren,
   useContext,
@@ -45,6 +45,46 @@ import BackButton from "../components/others/back_button";
 import whitelogo from "../../assets/images/anzawhitelogo.png";
 import { IsDarkThemeContext } from "../contexts/app_theme_controller";
 import { AiOutlineClose } from "react-icons/ai";
+import assignment from "../../assets/icons/assignment.png";
+import { isBrowser } from "./../utils/helper_functions";
+import pastpaper from "../../assets/icons/pastpaper.png";
+import timetableicon from "../../assets/icons/timetable.png";
+import examgenicon from "../../assets/icons/exam-generator.png";
+import workscheme from "../../assets/icons/work-scheme.png";
+import studygroupicon from "../../assets/icons/study_group.png";
+
+const SubLinkComponent = (
+  props: PropsWithChildren<{
+    linkname: string;
+    dstUrl: string;
+    iconSrc: string;
+    isLocked: boolean;
+  }>
+) => {
+  const { currentDashboardLink, setCurrentDashboardLink, setShowPremiumModal } =
+    useContext(NavigationContext);
+  return (
+    <div
+      onClick={() => {
+        if (props.isLocked) {
+          setShowPremiumModal(true);
+          return;
+        }
+        setCurrentDashboardLink(props.linkname);
+        router.push(props.dstUrl);
+      }}
+      className={` px-0 py-0.5 my-0.5  w-full linktext font-normal hover:bg-main flex  rounded-r-xl  hover:text-white
+             items-start cursor-pointer  justify-start space-x-3  ${
+               currentDashboardLink == props.linkname ? "bg-main font-bold" : ""
+             }`}
+    >
+      <Image src={props.iconSrc} alt="icon not found" width={16} height={16} />
+      <p className="pr-2  linktext">{props.linkname}</p>
+    </div>
+  );
+};
+
+
 const DashboardLayout = (props: PropsWithChildren<{}>) => {
   const router = useRouter();
 
@@ -175,9 +215,23 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
   const {
     showClassSublinks,
     setShowClassSublinks,
+    showTcornerSublinks,
+    setShowTcornerSublinks,
+    showIcornerSublinks,
+    setShowIcornerSublinks,
+    showScornerSublinks,
+    setShowScornerSublinks,
     setShowPremiumModal,
     showPremiumModal,
   } = useContext(NavigationContext);
+
+  const closeSublinks = () => {
+    setShowClassSublinks(true);
+    setShowTcornerSublinks(false);
+    setShowIcornerSublinks(false);
+    setShowScornerSublinks(false);
+  };
+
   const { thememode } = useContext(IsDarkThemeContext);
   //todo prefetch routes for dashboard
   const prefetchRoutes = () => {
@@ -573,8 +627,246 @@ p-3 overflow-x-hidden dark:text-main mb-12"
               </p>
             </div>
           ))}
-          
 
+
+{user[0] !== undefined && user[0].accountType === "student" && (
+        <div
+          className={`text-sm   items-start cursor-pointer flex flex-col justify-start space-x-2   ${
+            showScornerSublinks ? "h-[85px]" : "h-7"
+          } `}
+        >
+          <div
+            onClick={() => {
+              closeSublinks();
+              setCurrentDashboardLink("Student Corner");
+              setShowScornerSublinks(!showScornerSublinks);
+            }}
+            className={` px-2 py-1 my-0.5  w-full text-xl font-normal hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
+              currentDashboardLink == "Student Corner"
+                ? "bg-main font-normal"
+                : ""
+            } `}
+          >
+            <Image
+              src={studenticon.src}
+              alt="icon not found"
+              className="h-5"
+              width={20}
+              height={20}
+            />
+            <p className="pr-2  linktext">Student Corner</p>
+          </div>
+
+          <div
+            className={`${
+              showScornerSublinks ? "flex " : "hidden"
+            } flex-col pl-4 `}
+          >
+
+<div
+        onClick={() => {
+          if (isBrowser()) {
+            const iframe =
+              '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="https://anzaacademy.tawk.help/?utm_source=canva&utm_medium=iframely" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+            const win = window.open(
+              "",
+              "",
+              `width=${screen.width},height=${
+                screen.height
+              },toolbar=no,menubar=no,resizable=yes top=${50} left=${70}`
+            );
+            win?.document.write(iframe);
+          }
+        }}
+        className={` py-1 my-1  text-sm hover:bg-main  hover:rounded-r-xl  ${
+          currentDashboardLink == "Resource Center"
+            ? "text-green-600 font-normal"
+            : ""
+        } hover:text-white items-center cursor-pointer flex justify-start space-x-3   `}
+      >
+        {" "}
+        <Image
+          src={assignment.src}
+          alt="icon not found"
+          className="h-5"
+          width={20}
+          height={20}
+        />
+        <p className="pr-2   linktext font-normal">Resource Center</p>
+      </div>
+
+
+            {/* <SubLinkComponent
+              dstUrl="/dashboard/scorner/assignments"
+              iconSrc={assignment.src}
+              linkname="My Assignments"
+              isLocked={false}
+            /> */}
+            {/* <SubLinkComponent
+              dstUrl="/dashboard/scorner/live_classes"
+              iconSrc={liveicon.src}
+              linkname="My Live Classes"
+              isLocked={true}
+            /> */}
+          </div>
+        </div>
+      )}
+
+
+{user[0] !== undefined && user[0].accountType === "teacher" && (
+        <div
+          className={`text-sm   items-start cursor-pointer flex flex-col justify-start space-x-2   ${
+            showTcornerSublinks ? "h-[225px]" : "h-7"
+          } ${true ? "" : "hidden"}`}
+        >
+          <div
+            onClick={() => {
+              closeSublinks();
+              setCurrentDashboardLink("Teachers Corner");
+              setShowTcornerSublinks(!showTcornerSublinks);
+            }}
+            className={` px-2 py-1 my-1.5  w-full text-xl  hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
+              currentDashboardLink == "Teachers Corner"
+                ? "bg-main font-bold"
+                : ""
+            } `}
+          >
+            <Image
+              src={teachericon.src}
+              alt="icon not found"
+              className="h-5"
+              width={20}
+              height={20}
+            />
+            <p
+              className="pr-2  linktext"
+              style={{ fontFamily: "Overpass", fontWeight: 500 }}
+            >
+              Teachers Corner
+            </p>
+          </div>
+
+          <div
+            className={`${
+              showTcornerSublinks ? "flex " : "hidden"
+            } flex-col pl-4 transition-all`}
+          >
+
+<div
+        onClick={() => {
+          if (isBrowser()) {
+            const iframe =
+              '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="https://anzaacademy.tawk.help/?utm_source=canva&utm_medium=iframely" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+            const win = window.open(
+              "",
+              "",
+              `width=${screen.width},height=${
+                screen.height
+              },toolbar=no,menubar=no,resizable=yes top=${50} left=${70}`
+            );
+            win?.document.write(iframe);
+          }
+        }}
+        className={` py-1 my-1  text-sm hover:bg-main  hover:rounded-r-xl  ${
+          currentDashboardLink == "Resource Center"
+            ? "text-green-600 font-normal"
+            : ""
+        } hover:text-white items-center cursor-pointer flex justify-start space-x-2   `}
+      >
+        {" "}
+        <Image
+          src={assignment.src}
+          alt="icon not found"
+          className="h-5"
+          width={20}
+          height={20}
+        />
+        <p className="pr-2   linktext font-normal">Resource Center</p>
+      </div>
+
+      
+            <SubLinkComponent
+              dstUrl="/dashboard/tcorner/papers"
+              iconSrc={pastpaper.src}
+              linkname="My Past Papers"
+              isLocked={false}
+            />
+            <SubLinkComponent
+              dstUrl="/dashboard/tcorner/work_schemes"
+              iconSrc={workscheme.src}
+              linkname="Schemes of work"
+              isLocked={false}
+            />
+            <SubLinkComponent
+              dstUrl="/dashboard/tcorner/quizes"
+              iconSrc={quizicon.src}
+              linkname="My Quizzes"
+              isLocked={false}
+            />
+            {/* <SubLinkComponent
+              dstUrl="/dashboard/tcorner/live_classes"
+              iconSrc={liveicon.src}
+              linkname="My Live Classes"
+              isLocked={true}
+            /> */}
+            {/* <SubLinkComponent
+              dstUrl="/dashboard/tcorner/assignments"
+              iconSrc={assignment.src}
+              linkname="Assignments"
+              isLocked={true}
+            />
+            <SubLinkComponent
+              dstUrl="/dashboard/tcorner/exam_generator"
+              iconSrc={examgenicon.src}
+              linkname="Exam Generator"
+              isLocked={true}
+            /> */}
+
+            {/* <div
+              onClick={() => {
+                setShowPremiumModal(true);
+                // setCurrentDashboardLink("Exam Generator");
+                // if (isBrowser()) {
+                //   const iframe =
+                //     '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="https://questionbank.wjec.co.uk/" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+
+                //   const win = window.open(
+                //     "",
+                //     "",
+                //     `width=${screen.width - 100},height=${
+                //       screen.height - 100
+                //     },toolbar=no,menubar=no,resizable=yes top=${50} left=${70}`
+                //   );
+                //   win?.document.write(iframe);
+
+                //   // window.open(
+                //   //   "https://www.labster.com/try/?utm_source=canva&utm_medium=iframely",
+                //   //   "_blank",
+                //   //   "resizable",
+
+                //   // );
+                // }
+              }}
+              className=" px-2 py-1 my-0  w-full text-xs hover:bg-main  hover:rounded-r-xl  flex  hover:text-white items-start cursor-pointer  justify-start space-x-2  "
+            >
+              <img src={examgenicon.src} alt="icon not found" className="h-4" />
+              <p className="pr-2  linktext">Exam Generator</p>
+            </div> */}
+            {/* <SubLinkComponent
+              dstUrl="/dashboard/tcorner/timetable"
+              iconSrc={timetableicon.src}
+              linkname="Timetable"
+              isLocked={true}
+            />
+            <SubLinkComponent
+              dstUrl="/dashboard/tcorner/study_groups"
+              iconSrc={studygroupicon.src}
+              linkname="Study Groups"
+              isLocked={true}
+            /> */}
+          </div>
+        </div>
+      )}
 
 
           {/* <div

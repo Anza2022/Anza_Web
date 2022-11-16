@@ -246,41 +246,7 @@ const DashboardSidebar = () => {
               showScornerSublinks ? "flex " : "hidden"
             } flex-col pl-4 `}
           >
-
-                  <div
-        onClick={() => {
-          if (isBrowser()) {
-            const iframe =
-              '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="https://anzaacademy.tawk.help/?utm_source=canva&utm_medium=iframely" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
-            const win = window.open(
-              "",
-              "",
-              `width=${screen.width},height=${
-                screen.height
-              },toolbar=no,menubar=no,resizable=yes top=${50} left=${70}`
-            );
-            win?.document.write(iframe);
-          }
-        }}
-        className={` py-1 my-1  text-sm hover:bg-main  hover:rounded-r-xl  ${
-          currentDashboardLink == "Resource Center"
-            ? "text-green-600 font-bold"
-            : ""
-        } hover:text-white items-center cursor-pointer flex justify-start space-x-2   `}
-      >
-        {" "}
-        <Image
-          src={assignementsicon.src}
-          alt="icon not found"
-          className="h-5"
-          width={20}
-          height={20}
-        />
-        <p className="pr-2  linktext">Resource Center</p>
-      </div>
-
-
-            {/* <SubLinkComponent
+            <SubLinkComponent
               dstUrl="/dashboard/scorner/assignments"
               iconSrc={assignementsicon.src}
               linkname="My Assignments"
@@ -291,7 +257,7 @@ const DashboardSidebar = () => {
               iconSrc={liveicon.src}
               linkname="My Live Classes"
               isLocked={true}
-            /> */}
+            />
           </div>
         </div>
       )}
@@ -310,7 +276,7 @@ const DashboardSidebar = () => {
               setCurrentDashboardLink("Teachers Corner");
               setShowTcornerSublinks(!showTcornerSublinks);
             }}
-            className={` px-2 py-1 my-1.5  w-full text-sm  hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
+            className={` px-2 py-1 my-1.5  w-full text-  hover:bg-main  rounded-r-xl  flex hover:text-white items-start cursor-pointer  justify-start space-x-2  ${
               currentDashboardLink == "Teachers Corner"
                 ? "bg-main font-bold"
                 : ""
@@ -366,8 +332,10 @@ const DashboardSidebar = () => {
           width={20}
           height={20}
         />
-        <p className="pr-2   linktext font-normal font-sm">Resource Center</p>
+        <p className="pr-2   linktext font-normal">Resource Center</p>
       </div>
+
+      
             <SubLinkComponent
               dstUrl="/dashboard/tcorner/papers"
               iconSrc={pastpaper.src}
@@ -386,24 +354,24 @@ const DashboardSidebar = () => {
               linkname="My Quizzes"
               isLocked={false}
             />
-            <SubLinkComponent
+            {/* <SubLinkComponent
               dstUrl="/dashboard/tcorner/live_classes"
               iconSrc={liveicon.src}
               linkname="My Live Classes"
               isLocked={true}
-            />
-            <SubLinkComponent
+            /> */}
+            {/* <SubLinkComponent
               dstUrl="/dashboard/tcorner/assignments"
               iconSrc={assignment.src}
               linkname="Assignments"
               isLocked={true}
-            />
-            <SubLinkComponent
+            /> */}
+            {/* <SubLinkComponent
               dstUrl="/dashboard/tcorner/exam_generator"
               iconSrc={examgenicon.src}
               linkname="Exam Generator"
               isLocked={true}
-            />
+            /> */}
 
             {/* <div
               onClick={() => {
@@ -435,7 +403,7 @@ const DashboardSidebar = () => {
               <img src={examgenicon.src} alt="icon not found" className="h-4" />
               <p className="pr-2  linktext">Exam Generator</p>
             </div> */}
-            <SubLinkComponent
+            {/* <SubLinkComponent
               dstUrl="/dashboard/tcorner/timetable"
               iconSrc={timetableicon.src}
               linkname="Timetable"
@@ -446,7 +414,7 @@ const DashboardSidebar = () => {
               iconSrc={studygroupicon.src}
               linkname="Study Groups"
               isLocked={true}
-            />
+            /> */}
           </div>
         </div>
       )}
