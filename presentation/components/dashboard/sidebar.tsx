@@ -246,18 +246,52 @@ const DashboardSidebar = () => {
               showScornerSublinks ? "flex " : "hidden"
             } flex-col pl-4 `}
           >
+
+                  <div
+        onClick={() => {
+          if (isBrowser()) {
+            const iframe =
+              '<html><head><style>body, html {width: 100%; height: 100%; margin: 0; padding: 0}</style></head><body><iframe src="https://anzaacademy.tawk.help/?utm_source=canva&utm_medium=iframely" style="height:calc(100% - 4px);width:calc(100% - 4px)"></iframe></html></body>';
+            const win = window.open(
+              "",
+              "",
+              `width=${screen.width},height=${
+                screen.height
+              },toolbar=no,menubar=no,resizable=yes top=${50} left=${70}`
+            );
+            win?.document.write(iframe);
+          }
+        }}
+        className={` py-1 my-1  text-sm hover:bg-main  hover:rounded-r-xl  ${
+          currentDashboardLink == "Resource Center"
+            ? "text-green-600 font-bold"
+            : ""
+        } hover:text-white items-center cursor-pointer flex justify-start space-x-2   `}
+      >
+        {" "}
+        <Image
+          src={assignementsicon.src}
+          alt="icon not found"
+          className="h-5"
+          width={20}
+          height={20}
+        />
+        <p className="pr-2  linktext">Resource Center</p>
+      </div>
+
+
             {/* <SubLinkComponent
               dstUrl="/dashboard/scorner/assignments"
               iconSrc={assignementsicon.src}
               linkname="My Assignments"
-              isLocked={true}
-            /> */}
+              isLocked={false}
+            />
             <SubLinkComponent
               dstUrl="/dashboard/scorner/live_classes"
               iconSrc={liveicon.src}
               linkname="My Live Classes"
               isLocked={true}
-            />
+            /> */}
           </div>
         </div>
       )}
