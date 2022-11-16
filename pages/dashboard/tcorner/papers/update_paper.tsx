@@ -165,6 +165,13 @@ const TeacherUpdatePastPaper = () => {
           let updatedPaper = paper;
           updatedPaper.paperUrl = paperUrl;
           updatedPaper.markingSchemeUrl = markingSchemeUrl;
+          updatedPaper.title = title;
+          updatedPaper.classLevel = classLevel;
+          updatedPaper.subjectType = subjectType;
+          updatedPaper.paperNumber = paperNumber;
+          updatedPaper.year = year;
+          updatedPaper.term = term;
+          updatedPaper.schoolName = schoolName.toLowerCase();
           try {
             let res = await PastPaperRepo.updatePastPaper(updatedPaper);
             if (res) {
