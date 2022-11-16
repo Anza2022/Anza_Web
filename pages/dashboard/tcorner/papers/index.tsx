@@ -140,10 +140,21 @@ const TeacherPastPapers = () => {
                       setSelectedVideoId(e.paperId);
                       router.push("/dashboard/tcorner/papers/preview");
                     }}
-                    className="px-3 py-1 bg-main cursor-pointer rounded-md text-xs"
+                    className="px-3 py-1 bg-indigo-700 cursor-pointer rounded-md text-xs"
                   >
                     Preview
                   </div>
+
+                  <div
+                    onClick={() => {
+                      setSelectedVideoId(e.paperId);
+                      router.push("/dashboard/tcorner/papers/update_paper");
+                    }}
+                    className="px-3 py-1 bg-main cursor-pointer rounded-md text-xs"
+                  >
+                    Edit
+                  </div>
+
                   <div
                     onClick={() => {
                       setDeleteId(e.paperId);
