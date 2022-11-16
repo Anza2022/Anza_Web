@@ -52,7 +52,6 @@ const ViewPastPapersPage = () => {
           </div>
         </div> */}
 
-        {`https://anzaacademy.co/anzaapi/view_past_paper${paper.paperUrl.split("/view_past_paper")[1]}`}
           {!showMarkingScheme ? (
             <div
               className="  w-full z-0"
