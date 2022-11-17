@@ -351,24 +351,28 @@ const RealtimePaymentComponent = () => {
           )}
         </div>
       )}
+
       {!processingPayment && paymentSuccess && (
         <div className="flex flex-col w-full h-52 items-center">
           <div className="flex flex-col h-32 justify-center items-center bg-green-600 w-full p-2">
-            <p>STK PUSH INITIATED. Enter M-PESA PIN to complete transactions.</p>
+      <p className="text-black">MerchantRequestID: {stkData.MerchantRequestID} </p> 
+       <p className="text-black">CheckoutRequestID: {stkData.CheckoutRequestID} </p> 
+       <p className="text-black">ResponseDescription: {stkData.ResponseDescription} </p> 
+       <p className="text-white">STK PUSH INITIATED. Enter M-PESA PIN to complete transactions....</p>
           </div>
 
           <div className="h-5"></div>
           <div
-            onClick={() => {
-              setProcessingPayment(false);
-              setPaymentFailed(false);
-              setPaymentSuccess(false);
-              router.push("/login");
-              setTimeout(() => {
-                router.push("/dashboard/billing");
-              }, 100);
-              // closeWebsocket();
-            }}
+                    onClick={() => {
+                      setProcessingPayment(false);
+                      setPaymentFailed(false);
+                      setPaymentSuccess(false);
+                      router.push("/dashboard/videos");
+                      setTimeout(() => {
+                        router.push("/dashboard/billing");
+                      }, 1000);
+                      // closeWebsocket();
+                    }}
             className="flex w-36 justify-center text-sm rounded-md bg-main cursor-pointer py-2 text-white"
           >
             Close Process
@@ -385,16 +389,16 @@ const RealtimePaymentComponent = () => {
           </div>
           <div className="h-5"></div>
           <div
-            onClick={() => {
-              setProcessingPayment(false);
-              setPaymentFailed(false);
-              setPaymentSuccess(false);
-              router.push("/login")
-              setTimeout(() => {
-                router.push("/dashboard/billing");
-              }, 100);
-              // closeWebsocket();
-            }}
+               onClick={() => {
+                setProcessingPayment(false);
+                setPaymentFailed(false);
+                setPaymentSuccess(false);
+                router.push("/dashboard/videos");
+                setTimeout(() => {
+                  router.push("/dashboard/billing");
+                }, 1000);
+                // closeWebsocket();
+              }}
             className="flex w-36 text-sm justify-center rounded-md bg-main cursor-pointer py-2 text-white"
           >
             Close Process
@@ -443,7 +447,7 @@ const RealtimePaymentComponent = () => {
               type={"text"}
               value={phoneNumber}
               min={1}
-              autoFocus={true}
+              autoFocus={false}
               onChange={(e) => {
                 setPhoneNumber(e.target.value);
               }}
