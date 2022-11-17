@@ -1,5 +1,5 @@
 import moment from "moment";
-import { useRouter } from "next/router";
+import router, { useRouter } from "next/router";
 import React, {
   PropsWithChildren,
   useContext,
@@ -213,11 +213,14 @@ const RealtimePaymentComponent = () => {
 
   const getTotalPay = () => {
     if (selectedPlan == "Termly") {
-      return 2000;
+      return 1;
+      // return 2000;
     } else if (selectedPlan == "Termly Plus") {
-      return 2500;
+      return 2;
+      // return 2500;
     } else {
-      return 6800;
+      return 3;
+      // return 6800;
     }
   };
   const getNextPaymentDate = () => {
@@ -226,43 +229,45 @@ const RealtimePaymentComponent = () => {
       .format("LL");
   };
 
-  const [stkData, STKResponse] = useState([]);
-  const [details, setDetails] = useState<any[""]>([]);
+  // const [details, setDetails] = useState<any[""]>([]);
+  // const [feedbackData, setFeedbackData] = useState<string[]>(["Loading .."]);
+  // const [datarecieved, setDatarecieved] = useState(false);
+  // const isMounted = useRef(false);
+  // let timer = setInterval(() => {}, 500);
+
   const [loading, setLoading] = useState(false);
-  const [feedbackData, setFeedbackData] = useState<string[]>(["Loading .."]);
   const [processingPayment, setProcessingPayment] = useState<boolean>(false);
-  const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false);
+ const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false);
   const [paymentFailed, setPaymentFailed] = useState<boolean>(false);
-  const [datarecieved, setDatarecieved] = useState(false);
-  const isMounted = useRef(false);
+  const [stkData, STKResponse] = useState([]);
 
-  let timer = setInterval(() => {}, 500);
+  
+  // function handleIncomingmMessage(msg: MessageEvent) {
+  //   feedbackData.push(msg.data);
+  //   setFeedbackData((c) => feedbackData);
+  //   console.log(msg.data);
+  //   if (msg.data == "payment success") {
+  //     setPaymentSuccess(true);
+  //     setProcessingPayment(false);
+  //     accountSubscription[0].subscriptionStartDate = getCurrentDate();
+  //     accountSubscription[0].subscriptionEndDate = addMonthsToDate(3);
+  //     accountSubscription[0].accountLockDate = addMonthsToDate(3);
+  //     accountSubscription[0].currentSubscriptionPlan = selectedPlan;
+  //     accountSubscription[0].resubscriptions =
+  //       accountSubscription[0].resubscriptions += 1;
+  //     setAccountSubscription(accountSubscription);
 
-  function handleIncomingmMessage(msg: MessageEvent) {
-    feedbackData.push(msg.data);
-    setFeedbackData((c) => feedbackData);
+  //     return;
+  //   }
+  //   if (msg.data == "payment failed") {
+  //     setPaymentFailed(true);
+  //     setProcessingPayment(false);
+  //     return;
+  //   }
+  //   setDatarecieved((v) => !v);
+  // }
 
-    if (msg.data == "payment success") {
-      setPaymentSuccess(true);
-      setProcessingPayment(false);
-      accountSubscription[0].subscriptionStartDate = getCurrentDate();
-      accountSubscription[0].subscriptionEndDate = addMonthsToDate(3);
-      accountSubscription[0].accountLockDate = addMonthsToDate(3);
-      accountSubscription[0].currentSubscriptionPlan = selectedPlan;
-      accountSubscription[0].resubscriptions =
-        accountSubscription[0].resubscriptions += 1;
-      setAccountSubscription(accountSubscription);
-
-      return;
-    }
-    if (msg.data == "payment failed") {
-      setPaymentFailed(true);
-      setProcessingPayment(false);
-      return;
-    }
-    setDatarecieved((v) => !v);
-  }
-  let wsInstance: any;
+  // let wsInstance: any;
   const startProcessingPayment = () => {
     if (!phoneNumber.startsWith("+254")) {
       showToast("Phone number should start with +254", "error");
@@ -272,31 +277,59 @@ const RealtimePaymentComponent = () => {
       showToast("Invalid phone number", "error");
       return;
     }
-    setProcessingPayment(true);
-    wsInstance = isBrowser()
-      ? new WebSocket(
-          `${websProdUrl}/payments/mpesa/pay?amount=${getTotalPay()}&phoneNumber=${phoneNumber
-            .split("")
-            .splice(1)
-            .join(
-              ""
-            )}&time=${Date.now()}&months=${3}&plan=${selectedPlan}&userId=${
-            user[0].userId
-          }`
-        )
-      : null;
-    if (wsInstance !== null) {
-      wsInstance.onmessage = handleIncomingmMessage;
-    }
+    let url =`${websProdUrl}?amount=${getTotalPay()}&phoneNumber=${phoneNumber
+              .split("")
+              .splice(1)
+              .join(
+                ""
+              )}&time=${Date.now()}&months=${3}&plan=${selectedPlan}&userId=${
+              user[0].userId
+            }`;
+
+      setProcessingPayment(true);
+
+      fetch(url, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json', },
+      })
+      .then((res) => {
+        res.json().then((response) => {
+          STKResponse(response)
+          console.log(response);
+          setPaymentSuccess(true);
+        })
+        setProcessingPayment(false);
+      })
+      .catch((err) => {
+        console.log(err);
+       setProcessingPayment(false);
+       setPaymentFailed(true)
+      });
+
+
+    // wsInstance = isBrowser()
+    //   ? new WebSocket(
+    //       `${websProdUrl}?amount=${getTotalPay()}&phoneNumber=${phoneNumber
+    //         .split("")
+    //         .splice(1)
+    //         .join(
+    //           ""
+    //         )}&time=${Date.now()}&months=${3}&plan=${selectedPlan}&userId=${
+    //         user[0].userId
+    //       }`
+    //     )
+    //   : null;
+    // if (wsInstance !== null) {
+    //   wsInstance.onmessage = handleIncomingmMessage;
+    // }
   };
 
-  const closeWebsocket = () => {
-    setFeedbackData(() => []);
-    isMounted.current = false;
-    wsInstance?.send("close");
-    wsInstance?.close();
-  };
-
+  // const closeWebsocket = () => {
+  //   setFeedbackData(() => []);
+  //   isMounted.current = false;
+  //   wsInstance?.send("close");
+  //   wsInstance?.close();
+  // };
   return (
     <div className="flex flex-col w-96 md:w-[550px] bg-white dark:bg-darkmain  rounded-lg  md:mt-0">
       <p
@@ -305,15 +338,10 @@ const RealtimePaymentComponent = () => {
       >
         PAY USING M-PESA
       </p>
-      {processingPayment && !paymentFailed && !paymentSuccess && (
+      {processingPayment && (
         <div className="flex flex-col w-full h-52 items-center">
           <div className="flex flex-col h-32 bg-black bg-opacity-70 w-full p-2">
-            {feedbackData.map((e) => (
-              <p className="text-sm text-white" key={e}>
-                {" "}
-                {e}
-              </p>
-            ))}
+        {stkData}
           </div>
           <div className="h-5"></div>
           {processingPayment && (
@@ -321,10 +349,10 @@ const RealtimePaymentComponent = () => {
           )}
         </div>
       )}
-      {!processingPayment && !paymentFailed && paymentSuccess && (
+      {!processingPayment && paymentSuccess && (
         <div className="flex flex-col w-full h-52 items-center">
           <div className="flex flex-col h-32 justify-center items-center bg-green-600 w-full p-2">
-            <p>Payment Success</p>
+            <p>STK PUSH INITIATED</p>
           </div>
 
           <div className="h-5"></div>
@@ -333,19 +361,20 @@ const RealtimePaymentComponent = () => {
               setProcessingPayment(false);
               setPaymentFailed(false);
               setPaymentSuccess(false);
-              closeWebsocket();
+              router.push("/login")
+              // closeWebsocket();
             }}
-            className="flex w-36 justify-center text-sm rounded-md bg-main cursor-pointer py-2"
+            className="flex w-36 justify-center text-sm rounded-md bg-main cursor-pointer py-2 text-white"
           >
             Close Process
           </div>
         </div>
       )}
-      {!processingPayment && paymentFailed && !paymentSuccess && (
+      {!processingPayment && paymentFailed &&(
         <div className="flex flex-col w-full h-52 items-center">
           <div className="flex flex-col h-32 justify-center items-center text-white bg-red-600 w-full p-2">
-            <p className="text-xl">Payment Failed</p>
-            <p className="text-xs">{feedbackData[feedbackData.length - 2]}</p>
+            <p className="text-xl">STK FAILED. TRY AGAIN</p>
+            {/* <p className="text-xs">{feedbackData[feedbackData.length - 2]}</p> */}
           </div>
           <div className="h-5"></div>
           <div
@@ -353,16 +382,17 @@ const RealtimePaymentComponent = () => {
               setProcessingPayment(false);
               setPaymentFailed(false);
               setPaymentSuccess(false);
-              closeWebsocket();
+              router.push("/login")
+              // closeWebsocket();
             }}
-            className="flex w-36 text-sm justify-center rounded-md bg-main cursor-pointer py-2"
+            className="flex w-36 text-sm justify-center rounded-md bg-main cursor-pointer py-2 text-white"
           >
             Close Process
           </div>
         </div>
       )}
 
-      {!processingPayment && !paymentFailed && !paymentSuccess && (
+      {!processingPayment && (
         <div className="flex flex-col pb-4 px-5">
           <p className="font-normal mt-2 mb-2">Choose Your Preferred Plan</p>
           <div className="flex justify-between font-normal  mb-3">
@@ -376,10 +406,6 @@ const RealtimePaymentComponent = () => {
                     ? "bg-main text-white"
                     : "bg-gray-200 dark:bg-darksec"
                 }
-
-
-
-
                 `}
               >
                 <p className="">{e}</p>

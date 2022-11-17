@@ -32,7 +32,8 @@ export const pastpaperCategories = [
 ];
 
 export const prodUrl = "https://anzaacademy.co/anzaapi";
-export const websProdUrl = "wss://anzaacademy.co/anzaapi";
+// export const websProdUrl = "wss://anzaacademy.co/anzaapi";
+export const websProdUrl = "https://anzaacademy.co/payment/stk";
 
 export const defaultSetbooks = [
   "Doll's House",

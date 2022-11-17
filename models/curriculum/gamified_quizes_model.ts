@@ -124,6 +124,7 @@ export class OneQuiz {
 
   static fromJson(json: QuizJson): OneQuiz {
     return new OneQuiz(
+     // json.quizId,
       json.quizId == undefined ? "" : json.quizId,
       json.category,
       json.question,

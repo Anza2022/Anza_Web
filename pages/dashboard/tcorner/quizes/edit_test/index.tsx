@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import GamifiedQuizRepo from "../../../../../data/repos/gamified_quiz_repo";
-import { OneQuiz } from "../../../../../models/curriculum/gamified_quizes_model";
+import GamifiedQuizTest, { OneQuiz } from "../../../../../models/curriculum/gamified_quizes_model";
 import LoadingComponent from "../../../../../presentation/components/others/loading_component";
 import { NavigationContext } from "../../../../../presentation/contexts/navigation_state_controller";
 import { TeachersAccountContext } from "../../../../../presentation/contexts/teachers_account_context";
@@ -19,13 +19,13 @@ const EditTestPage = () => {
     useContext(NavigationContext);
   const [updating, setUpdating] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [saving, setSaving] = useState(false);
   const router = useRouter();
   const { myQuizzes, setMyQuizzes } = useContext(TeachersAccountContext);
   let test = myQuizzes.filter((e) => e.testId == selectedVideoId)[0];
 
   //state
   const [title, setTitle] = useState(test != undefined ? test.title : "");
-
   const [passPercentage, setPasspercentage] = useState(     test != undefined ? test.passPercentage : "" );
   const [ClassLevel, setClassLevel] = useState(
     test != undefined ? test.classLevel : ""
@@ -39,8 +39,10 @@ const EditTestPage = () => {
   const [points, setPoints] = useState(
     test != undefined ? test.totalPoints : ""
   );
-  const [Tquestions, setTquestions] = useState( test != undefined ? test.questions : ""
+  const [subQuizes, setTesst] = useState<OneQuiz[]>(
+    test != undefined ? test.questions : []
   );
+
   //other states
   const [uploadingPaper, setUploadingPaper] = useState(false);
   const [showAvailableQuizes, setShowAvailableQuizes] = useState(true);
@@ -98,7 +100,7 @@ const EditTestPage = () => {
     }
   };
 
-     const [saving, setSaving] = useState(false);
+
 
   const handleUpdateQuiz = async () => {
     if (test != undefined) {
@@ -108,18 +110,22 @@ const EditTestPage = () => {
         ClassLevel !== test.classLevel ||
           thumbnailUrl !== test.thumbnailUrl ||
           points !== test.totalPoints     || 
-          passPercentage !== test.passPercentage 
+          passPercentage !== test.passPercentage ||
+          subQuizes !== test.questions
       ) {
         setSaving(true);
-        let  updatedQuiz = test;
-        updatedQuiz.title = title;
-        updatedQuiz.subjectType = SubjectType;
-        updatedQuiz.classLevel = ClassLevel;
-        updatedQuiz.thumbnailUrl = thumbnailUrl;
         try {
-          let res = await GamifiedQuizRepo.updateGamifiedQuiz(updatedQuiz);
+          let  updatedQuiz = test;
+          updatedQuiz.title = title;
+          updatedQuiz.subjectType = SubjectType;
+          updatedQuiz.classLevel = ClassLevel;
+          updatedQuiz.thumbnailUrl = thumbnailUrl;
+          updatedQuiz.questions = subQuizes;
+          
+          let res = await GamifiedQuizRepo.updateGamifiedQuiz(
+            updatedQuiz);
           if (res) {
-            showToast("Quize Updated", "success");
+            showToast("Quiz Updated", "success");
             router.push("/dashboard/tcorner/quizes/");
           }
         } catch (e) {

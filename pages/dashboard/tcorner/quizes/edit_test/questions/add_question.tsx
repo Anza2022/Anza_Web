@@ -39,6 +39,8 @@ const AddQuestionPage = () => {
       ? generateUniqueId()
       : editQuiz.quizId
   );
+
+
   const [question, setQuestion] = useState(
     selectedSubject == "addnew"
       ? ""
@@ -148,12 +150,12 @@ const AddQuestionPage = () => {
       }
     }
   };
+
   const addImageAnswerOptionUpload = async (e: any) => {
     if (e.target.files[0] != null) {
       try {
         setUploadingAnswerphoto(true);
         const formData = new FormData();
-
         // Update the formData object
         formData.append("lesson", e.target.files[0], e.target.files[0].name);
         formData.append("type", "fun_quizes");
@@ -183,7 +185,6 @@ const AddQuestionPage = () => {
       try {
         setUploadingExplanationPhoto(true);
         const formData = new FormData();
-
         // Update the formData object
         formData.append("lesson", e.target.files[0], e.target.files[0].name);
         formData.append("type", "fun_quizes");
@@ -284,7 +285,7 @@ const AddQuestionPage = () => {
       }
       router.back();
       showToast(
-        selectedSubject == "addnew" ? "question saved" : "question updated",
+        selectedSubject == "addnew" ? "Question saved" : "Question updated",
         "success"
       );
     } catch (e) {
@@ -407,7 +408,7 @@ const AddQuestionPage = () => {
                     <img
                       src={`${prodUrl}/view_thumbnail/quizes/${questionImage}`}
                       className="w-full border-l rounded-md border-gray-400 h-28"
-                      alt="image not found"
+                      alt="image missing"
                     />
                   </div>
                 )}
@@ -485,7 +486,7 @@ const AddQuestionPage = () => {
                   <img
                     src={`${prodUrl}/view_thumbnail/quizes/${e}`}
                     className="w-full border-l rounded-md border-gray-400 h-28 w-44"
-                    alt="image not found"
+                    alt="image missing"
                   />
                   <div
                     onClick={() => setCorrectAnswer(e)}
@@ -651,7 +652,7 @@ const AddQuestionPage = () => {
                   <img
                     src={`${prodUrl}/view_thumbnail/quizes/${answerExplanation}`}
                     className="w-full border-l rounded-md border-gray-400 h-28"
-                    alt="image not found"
+                    alt="image missing"
                   />
                 </div>
               )}

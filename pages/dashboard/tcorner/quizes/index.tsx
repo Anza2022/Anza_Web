@@ -93,7 +93,7 @@ const AddGamifiedQuestions = () => {
                 <img
                   className="w-full h-48 rounded-md"
                   src={`${prodUrl}/view_thumbnail/quizes/${e.thumbnailUrl}`}
-                  alt=""
+                  alt="img missing"
                 />
                 <p className="text-center">{e.title}</p>
                 <div className="flex justify-between w-full px-4">
