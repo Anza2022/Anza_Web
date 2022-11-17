@@ -287,7 +287,7 @@ const RealtimePaymentComponent = () => {
             }`;
 
       setProcessingPayment(true);
-
+      setLoading(true);
       fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', },
@@ -299,11 +299,13 @@ const RealtimePaymentComponent = () => {
           setPaymentSuccess(true);
         })
         setProcessingPayment(false);
+        setLoading(false)
       })
       .catch((err) => {
         console.log(err);
-       setProcessingPayment(false);
        setPaymentFailed(true)
+       setProcessingPayment(false);
+       setLoading(false)
       });
 
 
@@ -338,30 +340,29 @@ const RealtimePaymentComponent = () => {
       >
         PAY USING M-PESA
       </p>
+
+
       {processingPayment && (
-        <div className="flex flex-col w-full h-52 items-center">
-          <div className="flex flex-col h-32 bg-black bg-opacity-70 w-full p-2">
-       <p className="text-indigo-600">{stkData.MerchantRequestID} </p> 
-       <p className="text-main">{stkData.CheckoutRequestID} </p> 
-       <p className="text-green-600">{stkData.ResponseDescription} </p> 
-          </div>
-          <div className="h-5"></div>
-          {processingPayment && (
-            <LoadingComponent color="main" loading={processingPayment} />
-          )}
-        </div>
+      <div className="flex flex-col w-full h-52 items-center">
+      <div className="flex flex-col h-20 bg-black bg-opacity-70 w-full p-2">
+   <p className="text-white">Initiating....</p> 
+      </div>
+      <div className="h-5"></div>
+        <LoadingComponent color="main" loading={processingPayment} />
+    </div>
       )}
 
+      
       {!processingPayment && paymentSuccess && (
         <div className="flex flex-col w-full h-52 items-center">
-          <div className="flex flex-col h-32 justify-center items-center bg-green-600 w-full p-2">
-      <p className="text-black">MerchantRequestID: {stkData.MerchantRequestID} </p> 
-       <p className="text-black">CheckoutRequestID: {stkData.CheckoutRequestID} </p> 
-       <p className="text-black">ResponseDescription: {stkData.ResponseDescription} </p> 
-       <p className="text-white">STK PUSH INITIATED. Enter M-PESA PIN to complete transactions....</p>
+          <div className="flex flex-col h-32 justify-center items-left bg-green-600 w-full p-2">
+    
+       <p className="text-white font-normal text-sm">1: ResponseDesc: {stkData.ResponseDescription} </p> 
+       <p className="text-white font-normal text-sm ">2: CheckoutRequestID : {stkData.CheckoutRequestID} </p> 
+              <p className="text-black mt-2">STK PUSH INITIATED. Enter M-PESA PIN to complete transactions.</p>
           </div>
-
-          <div className="h-5"></div>
+          <div className="h-5">   <LoadingComponent color="main" loading={processingPayment} /></div>
+       
           <div
                     onClick={() => {
                       setProcessingPayment(false);
@@ -373,7 +374,7 @@ const RealtimePaymentComponent = () => {
                       }, 1000);
                       // closeWebsocket();
                     }}
-            className="flex w-36 justify-center text-sm rounded-md bg-main cursor-pointer py-2 text-white"
+            className="flex w-36 justify-center text-sm rounded-md bg-indigo-600 cursor-pointer py-2 text-white"
           >
             Close Process
           </div>
@@ -388,6 +389,7 @@ const RealtimePaymentComponent = () => {
             {/* <p className="text-xs">{feedbackData[feedbackData.length - 2]}</p> */}
           </div>
           <div className="h-5"></div>
+          <LoadingComponent color="main" loading={processingPayment} />
           <div
                onClick={() => {
                 setProcessingPayment(false);
@@ -399,7 +401,7 @@ const RealtimePaymentComponent = () => {
                 }, 1000);
                 // closeWebsocket();
               }}
-            className="flex w-36 text-sm justify-center rounded-md bg-main cursor-pointer py-2 text-white"
+            className="flex w-36 text-sm justify-center rounded-md bg-indigo-600 cursor-pointer py-2 text-white"
           >
             Close Process
           </div>
