@@ -239,7 +239,7 @@ const RealtimePaymentComponent = () => {
   const [processingPayment, setProcessingPayment] = useState<boolean>(false);
  const [paymentSuccess, setPaymentSuccess] = useState<boolean>(false);
   const [paymentFailed, setPaymentFailed] = useState<boolean>(false);
-  const [stkData, STKResponse] = useState([]);
+  const [stkData, STKResponse] =  useState<any[""]>([]);
 
   
   // function handleIncomingmMessage(msg: MessageEvent) {
@@ -341,7 +341,9 @@ const RealtimePaymentComponent = () => {
       {processingPayment && (
         <div className="flex flex-col w-full h-52 items-center">
           <div className="flex flex-col h-32 bg-black bg-opacity-70 w-full p-2">
-        {stkData}
+       <p className="text-indigo-600">{stkData.MerchantRequestID} </p> 
+       <p className="text-main">{stkData.CheckoutRequestID} </p> 
+       <p className="text-green-600">{stkData.ResponseDescription} </p> 
           </div>
           <div className="h-5"></div>
           {processingPayment && (
@@ -352,7 +354,7 @@ const RealtimePaymentComponent = () => {
       {!processingPayment && paymentSuccess && (
         <div className="flex flex-col w-full h-52 items-center">
           <div className="flex flex-col h-32 justify-center items-center bg-green-600 w-full p-2">
-            <p>STK PUSH INITIATED</p>
+            <p>STK PUSH INITIATED. Enter M-PESA PIN to complete transactions.</p>
           </div>
 
           <div className="h-5"></div>
@@ -361,7 +363,10 @@ const RealtimePaymentComponent = () => {
               setProcessingPayment(false);
               setPaymentFailed(false);
               setPaymentSuccess(false);
-              router.push("/login")
+              router.push("/login");
+              setTimeout(() => {
+                router.push("/dashboard/billing");
+              }, 100);
               // closeWebsocket();
             }}
             className="flex w-36 justify-center text-sm rounded-md bg-main cursor-pointer py-2 text-white"
@@ -370,6 +375,8 @@ const RealtimePaymentComponent = () => {
           </div>
         </div>
       )}
+
+      
       {!processingPayment && paymentFailed &&(
         <div className="flex flex-col w-full h-52 items-center">
           <div className="flex flex-col h-32 justify-center items-center text-white bg-red-600 w-full p-2">
@@ -383,6 +390,9 @@ const RealtimePaymentComponent = () => {
               setPaymentFailed(false);
               setPaymentSuccess(false);
               router.push("/login")
+              setTimeout(() => {
+                router.push("/dashboard/billing");
+              }, 100);
               // closeWebsocket();
             }}
             className="flex w-36 text-sm justify-center rounded-md bg-main cursor-pointer py-2 text-white"
