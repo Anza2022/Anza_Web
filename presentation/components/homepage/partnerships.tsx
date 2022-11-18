@@ -12,7 +12,7 @@ import patner2 from "../../../assets/images/patner2.png";
 import patner3 from "../../../assets/images/patner3.png";
 import patner4 from "../../../assets/images/patner4.png";
 const PartnerShipsComponent = () => {
-  let pimages = [alliance.src, sigurd.src, patner1.src, patner2.src, patner3.src, patner4.src];
+  let pimages = [alliance.src, patner1.src, patner2.src, patner3.src, patner4.src];
   return (
     <div className="w-full flex screen-h flex-col pt-10 bg-gray-200 dark:bg-darksec ">
       <p

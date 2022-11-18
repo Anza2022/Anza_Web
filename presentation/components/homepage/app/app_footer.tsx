@@ -1,7 +1,7 @@
 import React from "react";
 import anzalogo from "../../../../assets/images/anzab.png";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
-import { AiOutlineTwitter, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineTwitter, AiOutlinePhone, AiFillYoutube } from "react-icons/ai";
 import { HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 
 import googleplay from "../../../../assets/images/google_play.png";
@@ -45,10 +45,9 @@ const AppFooter = () => {
         <div className="flex space-x-3 items-center mt-5">
           <p>Follow us</p>
           <div className="flex space-x-3">
-            <AiOutlineTwitter
-              size={28}
-              className="text-white transform hover:scale-125 duration-200 cursor-pointer"
-            />
+            <AiFillYoutube      size={28}
+              className="text-white transform hover:scale-125 duration-200 cursor-pointer">
+            </AiFillYoutube>
             <BsFacebook
               size={28}
               className="text-white transform hover:scale-125 duration-200 cursor-pointer"
@@ -62,19 +61,19 @@ const AppFooter = () => {
         <div className="flex space-x-2 items-center cursor-pointer py-1">
           <AiOutlinePhone size={21} className="" />
           <a
-            href="tel:+254702010101"
+            href="tel:+254701020202"
             className="cursor-pointer hover:text-violet-700 transform hover:scale-105 duration-200 hover:underline"
           >
-            +254702010101
+            +254701020202
           </a>
         </div>
         <div className="flex space-x-2 items-center cursor-pointer py-0">
           <HiOutlineMail size={21} />
           <a
-            href="mailto:contact@anzaacademy.com?subject=Hello Anza Academy"
+            href="mailto:wecare@anzaacademy.com?subject=Hello Anza Academy"
             className="cursor-pointer hover:text-violet-700 transform hover:scale-105 duration-200 hover:underline"
           >
-            info@anzaacademy.com
+            wecare@anzaacademy.com
           </a>
         </div>
       </div>

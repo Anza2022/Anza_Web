@@ -24,26 +24,27 @@ const Flexa = () => {
 <div className="bg-white  pt-10   -mb-10 dark:bg-darksec" >
       <p className=" pb-10  mt-10 md:mt-5  text-center md:pl-10 md:pr-10 dark:text-main "
       >
-              <p className="pb-10 text-center pl-10 pr-10 dark:text-main text-black"
+              <p className="pb-3 text-center pl-10 pr-10 dark:text-main text-black"
       >
-<p  className="text-3xl md:text-3xl  mb-2"    style={{ fontFamily: "Montserrat", fontWeight: 500 }} > Study like a star! </p>
+<p  className="text-3xl md:text-3xl"    style={{ fontFamily: "Montserrat", fontWeight: 500 }} > Study like a star! </p>
 <p className="   pl-10 pr-10  text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
  Set your academic ​goals and let us help you achieve them. We are consistently making ​sure that you not only soar but you become exceptional as you soar ​higher.
   </p>
   </p>
 
-<p  className="text-3xl md:text-3xl mb-2 "   style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Classes and Personalized tuition </p>
-<p className="pl-10 pr-10 mb-5 text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+<p  className="text-3xl md:text-3xl mb-1"   style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Classes and Personalized tuition </p>
+<p className="pl-10 pr-10  text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
 Anza bridges the gap between private tuition centers and conventional centers of education. We have made home revision and tuition easily accessible affordably. Our lessons are very simplified and interesting while Our TSC certified tutors are always ready to walk your son/daughter through any tough lesson when they need personalized academic attention.
 </p> 
 
-<p  className="text-3xl md:text-3xl mb-2 "       style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Past papers</p>
-<p className="pl-10 pr-10 mb-5 text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+
+<p  className="text-3xl md:text-3xl mb-1 mt-8 "       style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Past papers</p>
+<p className="pl-10 pr-10 mb-3 text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
 Past papers are a key element in your revision experience. Anza Academy offers form 1, Form 2, form 3 all the way to form 4 notes and free KCSE revision papers with verified answers. Anza furnishes students with past papers in any subject of your choice.
 </p>
 
-<p  className="text-3xl md:text-3xl mb-2"       style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Career Guidance</p>
-<p className="pl-10 pr-10 mb-5 text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
+<p  className="text-3xl md:text-3xl "       style={{ fontFamily: "Montserrat", fontWeight: 900 }} > Career Guidance</p>
+<p className="pl-10 pr-10 mb-3 text-2xl  md:text-2xl dark:text-white"   style={{ fontFamily: "Overpass", fontWeight: 500 }}>
 We offer free career guidance and counselling to your student by exposing them to professional with experience and expertise in their career fields. We stand out as a sole provider of post high school guidance on choosing your son’s or daughter’s careers based on insights by trusted professionals in their fields. 
   </p>
   </p>

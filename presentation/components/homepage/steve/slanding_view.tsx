@@ -15,7 +15,7 @@ const SlandingView = () => {
   const { setUserName, userName } = useContext(NavigationContext);
   return (
     <div className="flex flex-col w-full  bg-indigo-900 dark:bg-darksec justify-center  text-white mt-12 pt-10 md:mt-16">
-      <div className="flex w-full justify-center md:justify-around  px-4 ">
+      <div className="flex w-full justify-center md:justify-around  px-0 -mb-10 md:mb-0">
         <motion.div
           initial={{ opacity: 0.2 }}
           animate={{ opacity: 1 }}
@@ -104,7 +104,7 @@ const SlandingView = () => {
 
       <div className="flex md:-mt-0 flex-wrap justify-around space-y-0 md:space-y-0 bg-indigo-800 dark:bg-darkmain text-white 
       py-5 pl-4 md:pl-0 mt-40 md:mt-0 " >
-        <div className="flex space-x-0 mt-1 items-center flow-root">
+        <div className="flex space-x-0 mt-1 items-center flow-root mb-2">
         <div className=" rounded-full   text-black flex items-center justify-center ">
           <img src={engage.src} alt={approved.src} className="rounded-full  w-16 h-16 p-2 bg-white" />
           </div>
@@ -114,7 +114,8 @@ const SlandingView = () => {
             </p>
           </div>
         </div>
-        <div className="flex space-x-0  mt-1 items-center flow-root">
+
+        <div className="flex space-x-0  mt-1 items-center flow-root mb-2">
         <div className=" rounded-full   text-black flex items-center justify-center ">
           <img src={approved.src} alt={tsc.src} className="rounded-full  w-16 h-16" />
           </div>
@@ -124,7 +125,8 @@ const SlandingView = () => {
             </p>
           </div>
         </div>
-        <div className="flex space-x-0  mt-1 items-center flow-root ">
+
+        <div className="flex space-x-0  mt-1 items-center flow-root mb-2 ">
           <div className="rounded-full   text-black flex items-center justify-center" >
           <img src={tsc.src} alt={engage.src} className="rounded-full   w-16 h-16" />
           </div>

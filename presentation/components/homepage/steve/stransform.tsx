@@ -79,17 +79,22 @@ const Stransform = () => {
       <p>
         Learn with ease, you'll love it!
       </p>
-      <div
+    <div className="flex justify-around mt-3">
+      <div></div>
+    <div
                onClick={() => router.push("/signup")}
-                className="flex items-center mt-2 bg-main rounded-md text-white cursor-pointer px-10 py-1.5 ml-[20%] mr-[20%] over:dark:bg-indigo-700 hover:bg-indigo-800 focus:outline-none   ">
+                className="mx-1 font-bold px-2 border-2 text-center rounded-xl border-gray-300 py-1 cursor-pointer">
               Sign up for free
             </div>
+            <div></div>
+    </div>
+    <div></div>
 
       </div>
 
 
       <div className="flex flex-wrap justify-around space-y-5 md:space-y-0 bg-indigo-800 dark:bg-darkmain text-white py-12 pl-4 md:pl-0">
-        <div className="flex space-x-2  items-center">
+        <div className="flex space-x-3  items-center">
           <div className="w-14 h-14 rounded-full bg-gray-300 text-black  flex items-center justify-center ">
             <AiFillPlayCircle size={23} />
           </div>
@@ -100,7 +105,8 @@ const Stransform = () => {
             </p>
           </div>
         </div>
-        <div className="flex space-x-2  items-center">
+
+        <div className="flex space-x-3  items-center">
           <div className="w-14 h-14 rounded-full bg-gray-300 text-black  flex items-center justify-center ">
             <AiFillStar size={23} />
           </div>
@@ -111,7 +117,8 @@ const Stransform = () => {
             </p>
           </div>
         </div>
-        <div  className="flex space-x-2  items-center">
+
+        <div  className="flex space-x-3  items-center">
           <div className="w-14 h-14 rounded-full bg-gray-300  text-black flex items-center justify-center ">
             <BiInfinite size={23} />
           </div>
