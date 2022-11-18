@@ -415,13 +415,28 @@ const RealtimePaymentComponent = () => {
             {["Termly", "Termly Plus", "Savings"].map((e, i) => (
               <div
                 key={e}
-                onClick={() => setSelectedPlan(e)}
+                onClick={() => {
+                  console.log(e);
+                  console.log(accountSubscription[0] != undefined
+                    ? accountSubscription[0].currentSubscriptionPlan
+                    : "");
+                  if(e == (accountSubscription[0] != undefined
+                    ? accountSubscription[0].currentSubscriptionPlan
+                    : "" ) ) {
+                      showToast("You are already subscribed to this package!", "error")
+                    }else{
+                      showToast(`You are about to subscribe to ${e}`, "success")
+                              setSelectedPlan(e);     
+                    }
+                       
+                }}
                 className={`w-32 h-10 mr-2 flex items-center justify-center cursor-pointer rounded-md transition-all
                 ${
                   selectedPlan == e
                     ? "bg-main text-white"
                     : "bg-gray-200 dark:bg-darksec"
-                }
+                }                
+
                 `}
               >
                 <p className="">{e}</p>
