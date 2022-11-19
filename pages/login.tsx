@@ -278,12 +278,12 @@ const LoginComponent = () => {
             remember me
           </p>
         </div> */}
-        {/* <p
+        <p
             onClick={() => router.push("/forgot")}
           className="text-main cursor-pointer underline"
         >
           Forgot password
-        </p> */}
+        </p>
       </div>
       <div className="h-5"></div>
       <div

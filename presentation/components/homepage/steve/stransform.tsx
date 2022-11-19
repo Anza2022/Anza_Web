@@ -83,7 +83,7 @@ const Stransform = () => {
       <div></div>
     <div
                onClick={() => router.push("/signup")}
-                className="mx-1 font-bold px-2 border-2 text-center rounded-xl border-gray-300 py-1 cursor-pointer">
+                className="mx-1 font-bold px-2 text-center rounded-md  py-2 cursor-pointer bg-main">
               Sign up for free
             </div>
             <div></div>
