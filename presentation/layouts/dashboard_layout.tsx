@@ -958,7 +958,7 @@ p-3 overflow-x-hidden dark:text-main mb-12"
           {user[0] !== undefined && user[0].isAdmin && (
             <div
               onClick={() => router.push("/admin")}
-              className="bg-main px-2 py-2 cursor-pointer text-white text-lg mx-6 rounded-md flex justify-center  mt-4"
+              className="bg-main px-2 py-2 cursor-pointer text-white text-lg mx-6 rounded-xl flex justify-center  mt-4"
             >
               Admin
             </div>
@@ -968,7 +968,7 @@ p-3 overflow-x-hidden dark:text-main mb-12"
               deleteFromLocalStorage("id");
               router.push("/");
             }}
-            className="bg-red-600 px-2 py-2 cursor-pointer text-white text-lg mx-6 rounded-md flex justify-center  mt-4"
+            className="bg-red-600 px-2 py-2 cursor-pointer text-white text-lg mx-6 rounded-xl flex justify-center  mt-4"
           >
             Logout
           </div>
@@ -1003,7 +1003,7 @@ p-3 overflow-x-hidden dark:text-main mb-12"
               deleteFromLocalStorage("id");
               router.push("/");
             }}
-            className="w-full p-2 hover:bg-main flex  pl-5 items-center cursor-pointer  hover:text-white hover:rounded-r-lg"
+            className="w-full p-2 hover:bg-main flex  pl-5 items-center cursor-pointer   hover:text-white hover:rounded-r-lg"
           >
             Logout
           </div>
