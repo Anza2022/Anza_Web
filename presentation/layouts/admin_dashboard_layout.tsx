@@ -218,7 +218,7 @@ const AdminDashboardLayout = (props: PropsWithChildren<{}>) => {
           <div
             onClick={() => {
               setCurrentDashboardLink("Overview");
-              router.push("/dashboard");
+              router.push("/dashboard/videos");
             }}
             className="bg-red-600 px-5 py-2 cursor-pointer text-white text-lg mx-6 rounded-xl flex justify-center  mt-10"
           >
