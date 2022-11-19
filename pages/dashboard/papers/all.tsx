@@ -50,7 +50,7 @@ const SubStatus = accountSubscription[0] != undefined
                   MySwal.clickConfirm();
                   setSelectedVideoId(e.paperId);
                   router.push("/dashboard/papers/view_paper");
-                  router.push("/dashboard/videos/view_lesson");
+                  router.push("/dashboard/videos/view_paper");
                   } else {
                   MySwal.clickConfirm();
                   setShowPremiumModal(true);
