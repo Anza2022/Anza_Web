@@ -290,7 +290,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
 
 
     let plans: PricingPlan[] = [
-      new PricingPlan("Termly", "2,000.00", "/term", "Popular", [
+      new PricingPlan("Basic", "2,000.00", "/term", "Popular", [
         "Ad-free watching.",
         "Current class revision material.",
         "Revise at anywhere at your own pace.",
@@ -299,7 +299,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
         "Access to career talks.",
         "Premium support.",
       ]),
-      new PricingPlan("Termly Plus", "2,500.00", "/term", "Recommended", [
+      new PricingPlan("Standard", "2,500.00", "/term", "Recommended", [
         "Ad-free watching.",
         "Unlimited revision materials.",
         "Revise at anywhere at your own pace.",
@@ -309,7 +309,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
         "Live consultation from anza teachers.",
       ]),
       new PricingPlan("Savings", "6,800.00", "/year", "New", [
-        "Save 500 on termly package.",
+        "Save 500 on Basic package.",
         "Ad-free watching.",
         "Unlimited revision materials.",
         "Revise at anywhere at your own pace.",

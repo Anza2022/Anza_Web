@@ -77,17 +77,29 @@ const ResetPasswordComponent = () => {
       return;
     }
     setLoading(true);
-
-    try {
-
-showToast("Feature Coming soon", "success")
-
-    } catch (e) {
-      showError(`${e}`);
-    } finally {
-      setLoading(false);
-    }
-  };
+try {
+let url =`https://anzaacademy.co/anzaapi/auth/email_password_reset/code?email=${email}`;
+setLoading(true);
+fetch(url, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json', },
+})
+.then((res) => {
+res.json().then((response) => {
+console.log(response);
+})
+setLoading(false)
+})
+.catch((err) => {
+console.log(err);
+setLoading(false)
+});
+} catch (e) {
+showError(`${e}`);
+} finally {
+setLoading(false);
+}
+};
 
   //backend error handling
   const [error, setError] = useState("");

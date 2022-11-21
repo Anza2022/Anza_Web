@@ -1,9 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import UserCrudRepo from "../data/repos/user_crud_repo";
 import LoadingComponent from "../presentation/components/others/loading_component";
-import { LoggedInUserContext } from "../presentation/contexts/loggedin_user_controller";
 import { NavigationContext } from "../presentation/contexts/navigation_state_controller";
 import AppLayout from "../presentation/layouts/app_layout";
 import {
@@ -13,37 +11,31 @@ import {
 import loginpic from "../assets/images/login2pi.png";
 import { AnimatePresence, motion } from "framer-motion";
 
-const LoginPage = () => {
+const ForgotPasswordPage = () => {
   const { selectedVideoId, setSelectedVideoId } = useContext(NavigationContext);
 
   let pageComponents = [
-    <LoginComponent key="login" />,
-    // <ResetPasswordComponent key="resetpassword" />,
+    <ResetPasswordComponent key="resetpassword" />,
   ];
   const [currentPage, setCurrentPage] = useState(0);
   const router = useRouter();
 
   useEffect(() => {
     router.prefetch("/");
-    router.prefetch("/signup");
+    router.prefetch("/login");
     router.prefetch("/forgot");
-    router.prefetch("/dashboard/videos");
   }, []);
 
   return (
     <AppLayout>
       <Head>
-        <title>Anza -Login</title>
+        <title>Anza -Reset Password</title>
         <meta
           name="description"
-          content="login to you account and continue expriencing anza academy"
+          content="Reset password to you account and continue expriencing anza academy"
         />
 
-        <meta
-          name="keywords"
-          content="sign in, anza  academy, anza academy kenya, anza academy"
-        />
-                <meta
+<meta
           name="keywords"
           content="Past papers, KCSE, revision papers, form 1, form 2 form 4, free revision past papers, revision papers with answers, kcse past papers with answers pdf, free revision papers with answers. Tuition, private tuition centers in Nairobi, tuition centers near me, tuition centers in south c, tutors in nairobi, kcse, tuition centers in nairobi,online tutors in kenya, physics and maths tutor, physics and maths tutor, chemistry, physics past papers. Career guidance and counselling, career guidance for highschool students, career guidance in kenya,list of career chioces for highschool students, how do I choose a career path for students KCSE revision materials, Form 1,2,3,4 revision papers, free past papers and marking schemes,"
         />
@@ -67,69 +59,46 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default ForgotPasswordPage;
 
-const LoginComponent = () => {
+const ResetPasswordComponent = () => {
   const router = useRouter();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [repeatpassword, setRepeatedPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [showPlainPassword, setShowPlainPassword] = useState(false);
+  const [showPlainPassword2, setShowPlainPassword2] = useState(false);
 
-  //user context
-  const {
-    setUser,
-    setAccountSubscription,
-    setBonusData,
-    setUserStats,
-    setIsLoggedIn,
-  } = useContext(LoggedInUserContext);
-  function isNumeric(val: string) {
-    return /^-?\d+$/.test(val);
-  }
-  const loginUser = async () => {
+  const resetPwd = async () => {
     if (loading) {
       return;
     }
-    // if (phoneNumber == "" || phoneNumber.length < 9 || phoneNumber.length > 9) {
-    //   showError("Invalid phonenumber");
-    //   return;
-    // }
-    // if (!isNumeric(phoneNumber)) {
-    //   showError("phone number should contain only numbers");
-    //   return;
-    // }
-    if (phoneNumber === "") {
-      showError("Kindly enter your phone number!");
+    if (email === "") {
+      showError("Your email is required");
       return;
     }
-
     if (password === "") {
-      showError("Kindly input your password!");
-      return;
-    }
+        showError("Your password is required");
+        return;
+      }
+      if (repeatpassword === "") {
+        showError("Repeat password is required");
+        return;
+      }
     setLoading(true);
 
     try {
-      let res = await UserCrudRepo.loginUser({
-        phoneNumber: `254${phoneNumber}`,
-        password,
-      });
-      setUser([res[0]]);
-      setBonusData([res[1]]);
-      setAccountSubscription([res[2]]);
-      setUserStats([res[3]]);
-
-      setIsLoggedIn(true);
-
-      router.push("/dashboard/videos");
+showToast("Password reset coming soon", "success")
     } catch (e) {
       showError(`${e}`);
     } finally {
       setLoading(false);
     }
   };
-  const [showPlainPassword, setShowPlainPassword] = useState(false);
+
+
 
   //backend error handling
   const [error, setError] = useState("");
@@ -146,23 +115,8 @@ const LoginComponent = () => {
           className="text-xl md:text-2xl  mt-2  font-black"
           style={{ fontFamily: "Montserrat" }}
         >
-          Welcome Back, Login.
+          RESET PASSWORD
         </p>
-        {/* <div className="flex flex-col  items-center ">
-          <p className="text-sm ">
-            Don't have an account ? <br />
-          </p>
-          <p className="text-sm">
-            Click{" "}
-            <span
-              onClick={() => router.push("/signup")}
-              className="text-main px-1 cursor-pointer text-md  font-black hover:text-indigo-900 "
-            >
-              here
-            </span>{" "}
-            to SignUp
-          </p>
-        </div> */}
       </div>
       <AnimatePresence>
         {error !== "" && (
@@ -177,49 +131,44 @@ const LoginComponent = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <div className="flex flex-col my-2 relative text-sm">
-        <label htmlFor="phonenumber" className="mb-1">
-          Phone Number
-        </label>
-        <input
-          type="text"
-          name="phonenumber"
-          id="phonenumber"
-          className="outline-none top-5 p-3 px-3 rounded-lg focus:ring-2 ring-main ring-1  w-[300px] md:w-[420px]  pl-20 dark:bg-darksec "
-          placeholder="Enter phone number"
-          value={phoneNumber}
-          maxLength={9}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          autoComplete="off"
-          autoCorrect="off"
-        />
-        <div className="flex absolute top-5 ring-1   text-white rounded-l-lg left-0  px-3 py-3  bg-main mt-1">
-          +254
-        </div>
+
+
+      <div className="flex flex-col text-sm my-2">
+        <p>Ensure the email address displayed below  is linked <br/> to your account.</p>
       </div>
-      <div className="flex flex-col mt-5 relative text-sm">
-        <label htmlFor="password " className="mb-1">
-          Password
-        </label>
-        
+      <div className="flex flex-col my-2">
+                <label htmlFor="email" className="mb-1">Your Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  disabled={true}
+                  id="email"
+                  className="outline-none p-2 rounded-lg focus:ring-2 ring-main ring-1  w-[300px] md:w-[420px]"
+                  placeholder=" Your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="off"
+                  autoCorrect="off"
+                />
+              </div>
+
+              <div className="flex flex-col mt-5 relative text-sm">
+              <label htmlFor="password" className="mb-1">Your Password</label>
         <input
           type={`${showPlainPassword ? "text" : "password"}`}
           // type={`password`}
           id="password"
           className=" w-[300px] md:w-[420px]  outline-none ring-1 ring-main  rounded-md h-10 p-2 bg-gray-50 dark:bg-darksec focus:ring-2 "
           value={password}
-          placeholder="Enter password "
+          placeholder="Enter New Password "
           autoCorrect="off"
           autoCapitalize="off"
           autoComplete="off"
           onChange={(e) => setPassword(e.target.value)}
           onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              loginUser();
-            }
           }}
         />
-        <div
+<div
           onClick={() => setShowPlainPassword(!showPlainPassword)}
           className="absolute top-7 right-3 cursor-pointer"
         >
@@ -261,57 +210,99 @@ const LoginComponent = () => {
             </svg>
           )}
         </div>
-      </div>
+</div>
 
-      
-      <div className="mt-3 flex w-full justify-end px-7">
-        {/* <div className="flex space-x-2 items-center">
-          <input
-            checked={rememberMe}
-            onChange={(e) => setRememberMe(e.target.checked)}
-            type="checkbox"
-            className="h-5 w-5 rounded-md "
-          />
-          <p
-            onClick={() => setRememberMe(!rememberMe)}
-            className="cursor-pointer"
-          >
-            remember me
-          </p>
-        </div> */}
-        <p
-            onClick={() => router.push("/forgot")}
-          className="text-main cursor-pointer underline"
+
+<div className="flex flex-col mt-5 relative text-sm">
+<label htmlFor="repeat_password" className="mb-1">Repeat Your Password</label>
+        <input
+          type={`${showPlainPassword2 ? "text" : "password"}`}
+          // type={`password`}
+          id="repeat_password"
+          className=" w-[300px] md:w-[420px]  outline-none ring-1 ring-main  rounded-md h-10 p-2 bg-gray-50 dark:bg-darksec focus:ring-2 "
+          value={repeatpassword}
+          placeholder="Repeat New password "
+          autoCorrect="off"
+          autoCapitalize="off"
+          autoComplete="off"
+          onChange={(e) => setRepeatedPassword(e.target.value)}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              resetPwd();
+            }
+          }}
+        />
+<div
+          onClick={() => setShowPlainPassword2(!showPlainPassword2)}
+          className="absolute top-7 right-3 cursor-pointer"
         >
-          Forgot password
-        </p>
-      </div>
-      <div className="h-5"></div>
-      <div
-        onClick={loginUser}
-        className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-main hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer mt-0"
-      >
-        {loading && <LoadingComponent loading={loading} color="white" />}
-        <p className="font-bold"> {loading ? "Logging in ..." : "Login"}</p>
-      </div>{" "}
-      <div className="mt-2">
+          {showPlainPassword2 ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mt-1 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mt-1 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          )}
+        </div>
+</div>
+
+
+        <div className="">
         <div className="flex">
+
           <p
           >
-        Don&apos;t have an account?{" "}         <span
-            onClick={() => router.push("/signup")}
-          className="text-main cursor-pointer underline"
-        >{" "}
-        Register Now.
-        </span>
+          Remember Your password?{" "}
           </p>
         </div>
+        <p
+            onClick={() => router.push("/login")}
+          className="text-main cursor-pointer underline"
+        >
+         {" "}Login Now
+        </p>
       </div>
+
+
+      <div className="h-5"></div>
+      <div
+        onClick={resetPwd}
+        className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-main hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer "
+      >
+        {loading && <LoadingComponent loading={loading} color="white" />}
+        <p className="font-bold"> {loading ? "Loading...." : "CHANGE PASSWORD"}</p>
+      </div>{" "}
       <div className="h-5"></div>
     </div>
   );
 };
-
-// const ResetPasswordComponent = () => {
-//   return <div className="w-96 h-96">this is the password reset component</div>;
-// };

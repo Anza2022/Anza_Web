@@ -205,17 +205,17 @@ const BillingDetailsComponent = () => {
 const RealtimePaymentComponent = () => {
   const { accountSubscription, setAccountSubscription, user, setUser } =
     useContext(LoggedInUserContext);
-  const [selectedPlan, setSelectedPlan] = useState("Termly Plus");
+  const [selectedPlan, setSelectedPlan] = useState("Standard");
   const [terms, setTerms] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState(
     `+${user[0] == undefined ? "+254" : user[0].phoneNumber}`
   );
 
   const getTotalPay = () => {
-    if (selectedPlan == "Termly") {
+    if (selectedPlan == "Basic") {
       return 1;
       // return 2000;
-    } else if (selectedPlan == "Termly Plus") {
+    } else if (selectedPlan == "Standard") {
       return 2;
       // return 2500;
     } else {
@@ -412,7 +412,7 @@ const RealtimePaymentComponent = () => {
         <div className="flex flex-col pb-4 px-5">
           <p className="font-normal mt-2 mb-2">Choose Your Preferred Plan</p>
           <div className="flex justify-between font-normal  mb-3">
-            {["Termly", "Termly Plus", "Savings"].map((e, i) => (
+            {["Basic", "Standard", "Savings"].map((e, i) => (
               <div
                 key={e}
                 onClick={() => {
@@ -516,7 +516,7 @@ const RealtimePaymentComponent = () => {
 
 const StudentPricingComponent = () => {
   let plans: PricingPlan[] = [
-    new PricingPlan("Termly", "2,000.00", "/term", "", [
+    new PricingPlan("Basic", "2,000.00", "/term", "", [
       "Ad-free watching.",
       "Current class revision material.",
       "Revise at anywhere at your own pace.",
@@ -525,7 +525,7 @@ const StudentPricingComponent = () => {
       "Access to career talks.",
       "Premium support.",
     ]),
-    new PricingPlan("Termly Plus", "2,500.00", "/term", "Recommended", [
+    new PricingPlan("Standard", "2,500.00", "/term", "Recommended", [
       "Ad-free watching.",
       "Unlimited revision materials.",
       "Revise at anywhere at your own pace.",
@@ -535,7 +535,7 @@ const StudentPricingComponent = () => {
       "Live consultation from anza teachers.",
     ]),
     new PricingPlan("Savings", "5,500.00", "/year", "", [
-      "Save 500 on termly package.",
+      "Save 500 on Basic package.",
       "Ad-free watching.",
       "Unlimited revision materials.",
       "Revise at anywhere at your own pace.",
