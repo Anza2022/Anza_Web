@@ -368,7 +368,7 @@ const RealtimePaymentComponent = () => {
                       setProcessingPayment(false);
                       setPaymentFailed(false);
                       setPaymentSuccess(false);
-                      router.push("/dashboard/videos");
+                      router.push("/login");
                       setTimeout(() => {
                         router.push("/dashboard/billing");
                       }, 1000);
@@ -395,7 +395,7 @@ const RealtimePaymentComponent = () => {
                 setProcessingPayment(false);
                 setPaymentFailed(false);
                 setPaymentSuccess(false);
-                router.push("/dashboard/videos");
+                router.push("/login");
                 setTimeout(() => {
                   router.push("/dashboard/billing");
                 }, 1000);
