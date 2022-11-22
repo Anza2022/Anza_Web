@@ -92,7 +92,7 @@ const { accountSubscription } = useContext(LoggedInUserContext);
   <div className="flex mb-10 -mt-2">
     <div  id="scroll_me" className="w-full lg:w-3/3">
           <div className='bg-[url("https://anzaacademy.co/anzaapi/view_thumbnail/career/dolls_house.png")] object-cover h-full w-full bg-cover bg-right p-8'>
-              <h2 className="text-3xl text-black mt-10 mb-2 pt-8 pb-0 justify-left text-left"          style={{ fontFamily: "Montserrat", fontWeight: 900 }}>A Doll&lsquo;s House</h2>
+              <h2 className="text-3xl text-black mt-5 mb-5 pt-5 pb-0 justify-left text-left"          style={{ fontFamily: "Montserrat", fontWeight: 900 }}>A Doll&lsquo;s House</h2>
             <div className="flex justify-around w-[100%]"> 
               <div className="mb-8 w-[77%]  text-black mt-2 text-2xl justify-left text-left"    >
               Nora Helmer once secretly borrowed a large sum of money so that her husband could recuperate from a serious illness. She never told him of this loan and has been secretly paying it back in small installments by saving from her household allowance. Her husband, Torvald, thinks her careless and childlike, and often calls her his doll. When he is appointed bank director, his first act is to relieve a man who was once disgraced for having forged his signature on a document. This man, Nils Krogstad, is the person from whom Nora has borrowed her money. It is then revealed that she forged her father&lsquo;s signature in order to get the money. 
@@ -105,11 +105,11 @@ const { accountSubscription } = useContext(LoggedInUserContext);
 
              </div>
                       </div>                      
-              <p className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
+              {/* <p className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
               <button     className="px-4 py-2 bg-main text-white  rounded-md">
                 Watch Now
               </button>
-              </p>
+              </p> */}
           </div>
       </div>
   
@@ -117,7 +117,7 @@ const { accountSubscription } = useContext(LoggedInUserContext);
 </div>
 
 
-<div className="ml-[8%] text-2xl mt-10 -mb-4 text-main dark:text-white">
+<div className="ml-[8%] text-2xl mt-5 -mb-4 text-main dark:text-white">
               More Setbooks
           </div>
 
@@ -220,7 +220,7 @@ router.push("/dashboard/videos/setbooks/view_book");
         {/* <img className="w-full"  src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${e.thumbnailUrl}`} alt="" /> */}
         <img className="w-full"  src=
         {
-        e.title == "blossoms" ? blossom.src
+        e.title == "Blossoms of the Savannah" ? blossom.src
          :
          e.title == "Father of Nations" ?  dolls_thumbnail.src
          :

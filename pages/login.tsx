@@ -91,19 +91,19 @@ const LoginComponent = () => {
     if (loading) {
       return;
     }
-    // if (phoneNumber == "" || phoneNumber.length < 9 || phoneNumber.length > 9) {
-    //   showError("Invalid phonenumber");
-    //   return;
-    // }
     // if (!isNumeric(phoneNumber)) {
     //   showError("phone number should contain only numbers");
     //   return;
     // }
+    
     if (phoneNumber === "") {
       showError("Kindly enter your phone number!");
       return;
     }
-
+    if ( phoneNumber.length < 9 ) {
+      showError("Invalid phone number. Kindly confirm");
+      return;
+    }
     if (password === "") {
       showError("Kindly input your password!");
       return;
@@ -119,7 +119,8 @@ const LoginComponent = () => {
       setBonusData([res[1]]);
       setAccountSubscription([res[2]]);
       setUserStats([res[3]]);
-
+      showError("Login successful. Now redirecting!");
+      showToast("Login successful. Now redirecting", "success");
       setIsLoggedIn(true);
 
       router.push("/dashboard/videos");

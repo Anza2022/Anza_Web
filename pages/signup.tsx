@@ -39,7 +39,7 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [terms, setTerms] = useState("");
+  const [terms, setTerms] = useState("");
 
   const [tscid, setTscid] = useState("");
   const [idNumber, setIdNumber] = useState("");
@@ -131,8 +131,11 @@ const SignUpPage = () => {
       setBonusData([res[1]]);
       setAccountSubscription([res[2]]);
       setUserStats([res[3]]);
-      setIsLoggedIn(true);
+      showError("Registration successful. Now redirecting!");
+      showToast("Registration successful. Now redirecting", "success");
       router.push("/dashboard/videos");
+      setIsLoggedIn(true);
+      console.log(res);
     } catch (e) {
       showToast(`${e}`, "error");
     } finally {
@@ -153,10 +156,10 @@ const SignUpPage = () => {
         showToast("Kindly select your class level", "error");
         return false;
       }
-      // if (terms == "") {
-      //   showToast("Kindly Read and Acccept ANZA ACADEMY terms and policies", "error");
-      //   return false;
-      // }
+      if (terms == "") {
+        showToast("Kindly Read and Acccept ANZA ACADEMY terms and policies", "error");
+        return false;
+      }
     }
     if (accountType == "teacher") {
       // if (tscid == "") {
@@ -519,8 +522,8 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
 <a href="https://www.dropbox.com/s/aqlc5hx7pxk3wc3/ANZA%20ACADEMY%20PRIVACY%20POLICY_TERMS%20OF%20USE%20%282%29.docx?dl=0" rel="noopener noreferrer" target={"_blank"}  className="text-blue-400 underline">  Terms of Use And Privacy Policy </a>
 </label>
     <input id="default-checkbox" type="checkbox"  required={true} className="w-6 h-6 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 mb-2"
-    //  value={"terms"}
-    //  onChange={(e) => setTerms(e.target.value)}
+     value={"terms"}
+     onChange={(e) => setTerms(e.target.value)}
      />
 </div>
 
@@ -652,7 +655,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
                 </div>
                 <div
                   onClick={() => {
-                    if (false) {
+                    if (true) {
                       handleSignup();
                     } else {
                       showToast("Registration locked: Contact admin:", "info");
@@ -675,3 +678,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
 };
 
 export default SignUpPage;
+function showError(arg0: string) {
+  throw new Error("Function not implemented.");
+}
+

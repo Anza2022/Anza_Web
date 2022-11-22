@@ -15,8 +15,8 @@ const AboutLanding = () => {
   return (
     <div className="flex flex-col w-full   bg-indigo-900 dark:bg-darksec justify-center  text-white mt-12 scroll-behavior: smooth md:h-screen">
 
-<div className="flex  md-hidden py-1 text-base   text-white" >
-    <p className="text-s mt-2 font-normal pointer-cursor"> 33.3% (KSH 1,000) OFF!  Limited offer till Dec. 5th, 2022 was<span className="line-through text-red-500 font-bold"> KSH 3,000</span> now <span className="text-green-500 font-bold" >KSH 2,000 </span>   
+<div className="flex   md-hidden py-1    text-white" >
+    <p className="text-s mt-2 ml-3 font-normal pointer-cursor "> 33.3% (KSH 1,000) OFF!  Limited offer till Dec. 5th, 2022 was<span className="line-through text-red-500 font-bold"> KSH 3,000</span> now <span className="text-green-500 font-bold" >KSH 2,000 </span>   
     <div className="flex justify-around mt-2">
       <div></div>
     <div

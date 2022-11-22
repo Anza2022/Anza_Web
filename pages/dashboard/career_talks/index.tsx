@@ -208,41 +208,31 @@ const CareerTalksPage = () => {
               <div id="scroll_me" className="w-full lg:w-3/3">
                 <div className='bg-[url("https://anzaacademy.co/anzaapi/view_thumbnail/career/3.png")] object-cover h-full w-full bg-cover bg-left p-5'>
                   <h2
-                    className="text-3xl text-black mt-10 mb-2 pt-8 pb-5 justify-left text-left"
+                    className="text-3xl text-black mt-5 mb-2 pt-5 pb-5 justify-left text-left"
                     style={{ fontFamily: "Montserrat", fontWeight: 900 }}
                   >
-                    BUILDING A FULLY CONNECTED, INTELLIGENT WORLD
+                    BUILDING A CONNECTED AND INFORMED SOCIETY
                   </h2>
                   <div className="flex  justify-around w-[100%]">
-                    <div className="mb-8 text-black mt-2 w-[77%]  text-2xl justify-left text-left">
-                      Huawei&lsquo;s Mission Is To Bring Digital To Every
-                      Person, Home And Organization For A Fully Connected,
-                      Intelligent World. To This End, We Will Drive Ubiquitous
-                      Connectivity And Promote Equal Access To Networks To Lay
-                      The Foundation For The Intelligent World; Provide
-                      Diversified Computing Power To Deliver Ubiquitous Cloud
-                      And Intelligence; Build Powerful Digital Platforms To Help
-                      All Industries And Organizations Become More Agile,
-                      Efficient, And Dynamic; Redefine User Experience With AI,
-                      Offering Consumers A More Personalized And Intelligent
-                      Experience Across All Scenarios, Including Home, Travel,
-                      Office, Entertainment, And Fitness and Health.
+                    <div className="mb-5 text-black mt-0 w-[77%]  text-2xl justify-left text-left">   
+Anza Academy&lsquo;s mission is to  empower young people with life changing and  impactful encounters with professionals and mentors excelling in their Professions. 
+Mentorship and guidance is key to shaping a more sustainable future.
                     </div>
 
-                    <div className="bg-  text-white cursor-pointer rounded-lg  p-0 font-black  text-base   px-6  flex  items-center ">
+                    <div className="bg-  text-white cursor-pointer rounded-lg  p-0 font-black  text-base   px-0  flex  items-center ">
                       {" "}
                     </div>
                   </div>
-                  <p className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
+                  {/* <p className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
                     <button className="px-4 py-2 bg-main text-white  rounded-md">
                       Watch Now
                     </button>
-                  </p>
+                  </p> */}
                 </div>
               </div>
             </div>
 
-            <div className="ml-[9%] text-2xl mt-10 mb-2 text-main">
+            <div className="ml-[9%] text-2xl mt-5 mb-2 text-main">
               More Careers
             </div>
 
