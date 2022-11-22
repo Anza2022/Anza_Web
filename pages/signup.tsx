@@ -652,10 +652,10 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
                 </div>
                 <div
                   onClick={() => {
-                    if (true) {
+                    if (false) {
                       handleSignup();
                     } else {
-                      showToast("site locked", "success");
+                      showToast("Registration locked: Contact admin:", "info");
                     }
                   }}
                   className=" mx-4 cursor-pointer p-2 px-8 rounded-md bg-main flex items-center justify-center text-white font-bold hover:dark:bg-indigo-700 hover:bg-indigo-700 focus:outline-none "

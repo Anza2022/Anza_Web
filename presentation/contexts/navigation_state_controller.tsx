@@ -7,7 +7,7 @@ export const NavigationContext =
     setSelectedVdocipher: () => {},
     currentDashboardLink: "",
     setCurrentDashboardLink: () => {},
-    lock: true,
+    lock: false,
     setLock: () => {},
     inviteCode: "",
     setInviteCode: () => {},
@@ -32,7 +32,7 @@ export const NavigationContext =
   });
 const NavigationStateController = (props: PropsWithChildren<{}>) => {
   const [currentDashboardLink, setCurrentDashboardLink] = useState("Classes");
-  const [lock, setLock] = useState(true);
+  const [lock, setLock] = useState(false);
   const [inviteCode, setInviteCode] = useState("");
   const [userName, setUserName] = useState("");
 
