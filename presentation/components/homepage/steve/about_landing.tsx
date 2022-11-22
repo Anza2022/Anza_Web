@@ -20,7 +20,7 @@ const AboutLanding = () => {
     <div className="flex justify-around mt-2">
       <div></div>
     <div
-               onClick={() => router.push("/signup")}
+               onClick={() => router.push("/login")}
                 className="mx-1 font-bold px-2 text-center rounded-md  py-2 cursor-pointer bg-indigo-700">
           Subscribe Now
             </div>
