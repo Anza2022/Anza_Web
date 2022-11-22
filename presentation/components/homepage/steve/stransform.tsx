@@ -93,7 +93,7 @@ const Stransform = () => {
       </div>
 
 
-      <div className="flex flex-wrap mt-10 justify-around space-y-5 md:space-y-0 bg-indigo-800 dark:bg-darkmain text-white py-12 pl-4 md:pl-0">
+      <div className="flex flex-wrap md:mt-10 justify-around space-y-5 md:space-y-0 bg-indigo-800 dark:bg-darkmain text-white py-12 pl-4 md:pl-0">
         <div className="flex space-x-3  items-center">
           <div className="w-14 h-14 rounded-full bg-gray-300 text-black  flex items-center justify-center ">
             <AiFillPlayCircle size={23} />
