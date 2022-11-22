@@ -201,19 +201,25 @@ class UserCrudRepo {
   static async registerUser(
     user: UserModel,
     invitecode: string
-  ): Promise<[UserModel, ReferalBonusModel, AccountSubscription, UserStats]> {
+  ): Promise<[UserModel, ReferalBonusModel, AccountSubscription]> {
     try {
       let res = await axiosInstance.post(
         `/auth/register?invitecode=${invitecode}`,
         user.toMap()
       );
+      console.log(res);
       if (res.status == 201) {
         let data = res.data;
         let user = UserModel.fromJson(data.userData);
         let bonus = ReferalBonusModel.fromJson(data.bonusData);
-        let subscription = AccountSubscription.fromJson(data.subscriptionData);
-        let stats = UserStats.fromJson(data.userStats);
-
+         let subscription = AccountSubscription.fromJson(data.subscriptionData);
+        //  console.log(subscription);
+        //  console.log("heyyyyy subscription");
+        //  console.log(data.userStats);
+        //  console.log("userStats");
+        //  let stats = UserStats.fromJson(data.userStats);
+        //  console.log(stats);
+        //  console.log("heyyyyy stats");
         saveInLocalStorage(
           "access_token",
           encryptString(res.data["access_token"])
@@ -223,9 +229,10 @@ class UserCrudRepo {
           encryptString(res.data["refresh_token"])
         );
         saveInLocalStorage("id", encryptString(user.userId));
+        return [user, bonus, subscription];
 
-        return [user, bonus, subscription, stats];
-      } else if (res.status == apiErrorCode) {
+      }
+       else if (res.status == apiErrorCode) {
         throw res.data["message"];
       } else {
         throw "unable to register user try again later";

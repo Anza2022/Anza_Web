@@ -125,17 +125,14 @@ const SignUpPage = () => {
         primarySubject,
         secondarySubject
       );
-
       let res = await UserCrudRepo.registerUser(newuser, inviteCode);
       setUser([res[0]]);
       setBonusData([res[1]]);
       setAccountSubscription([res[2]]);
-      setUserStats([res[3]]);
-      showError("Registration successful. Now redirecting!");
-      showToast("Registration successful. Now redirecting", "success");
+      // setUserStats([res[3]]);
+      showToast("Registration successful, Welcome on board. Now redirecting...", "success");
       router.push("/dashboard/videos");
       setIsLoggedIn(true);
-      console.log(res);
     } catch (e) {
       showToast(`${e}`, "error");
     } finally {
@@ -678,7 +675,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
 };
 
 export default SignUpPage;
-function showError(arg0: string) {
-  throw new Error("Function not implemented.");
-}
+// function showError(arg0: string) {
+//   throw new Error("Function not implemented.");
+// }
 
