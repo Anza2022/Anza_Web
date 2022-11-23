@@ -206,14 +206,14 @@ const BillingDetailsComponent = () => {
 const RealtimePaymentComponent = () => {
   const { accountSubscription, setAccountSubscription, user, setUser } =
     useContext(LoggedInUserContext);
-  const [selectedPlan, setSelectedPlan] = useState("Standard");
+  const [selectedPlan, setSelectedPlan] = useState("");
   const [terms, setTerms] = useState(1);
   const [phoneNumber, setPhoneNumber] = useState(
     `+${user[0] == undefined ? "+254" : user[0].phoneNumber}`
   );
 
   const getTotalPay = () => {
-    if (selectedPlan == "Basic") {
+     if (selectedPlan == "Basic") {
       //return 1;
        return 2000;
     } else if (selectedPlan == "Standard") {
@@ -270,6 +270,10 @@ const RealtimePaymentComponent = () => {
 
   // let wsInstance: any;
   const startProcessingPayment = () => {
+    if (selectedPlan == "") {
+      showToast("Please confirm/select Your preferred plan before initiating payment", "success");
+      return;
+    } 
     if (!phoneNumber.startsWith("+254")) {
       showToast("Phone number should start with +254", "error");
       return;
