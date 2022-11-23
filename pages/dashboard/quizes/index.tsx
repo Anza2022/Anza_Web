@@ -110,14 +110,14 @@ const { accountSubscription } = useContext(LoggedInUserContext);
                   key={e.testId}
                   onClick={() => {
                     if(SubStatus == "Ended"){
-                    if (i == 0) {
-                    MySwal.clickConfirm();
-                    setSelectedVideoId(e.testId);
-                    router.push("/dashboard/quizes/take_test");
-                    } else {
+                    // if (i == 0) {
+                    // MySwal.clickConfirm();
+                    // setSelectedVideoId(e.testId);
+                    // router.push("/dashboard/quizes/take_test");
+                    // } else {
                     MySwal.clickConfirm();
                     setShowPremiumModal(true);
-                    }
+                    // }
                     }else if(SubStatus == "Active"){
                       setSelectedVideoId(e.testId);
                       router.push("/dashboard/quizes/take_test");
@@ -149,7 +149,7 @@ const { accountSubscription } = useContext(LoggedInUserContext);
                   <div className="badge  bg-gray-100 absolute top-0 right-0 dark:bg-darkmain m-1 p-1 px-2 text-xs font-bold rounded text-main">
                           {SubStatus == "Active" ? (
                             <ImUnlocked color="green" size={21} />
-                          ) : SubStatus == "Ended" &&   i > 0 ?  (
+                          ) : SubStatus == "Ended" &&   i >= 0 ?  (
                             <AiTwotoneLock color="red" size={21} />
                           ): "PLAY"}
                         </div>
@@ -245,7 +245,9 @@ const { accountSubscription } = useContext(LoggedInUserContext);
 
 
               <div className="flex flex-no-wrap overflow-x-scroll scroll-smooth scrolling-touch  ">
-                {getSubjectsAll(e).splice(0, 6).sort(() => 0.5 - Math.random()).map((l, i) => (
+                {getSubjectsAll(e).splice(0, 5)
+                // .sort(() => 0.5 - Math.random())
+                .map((l, i) => (
                   <div
                     className="each mb-10 m-2 relative cursor-pointer rounded-md group transform duration-500  md:hover:-translate-y-1 md:hover:scale-105  text-sm font-medium rounded-md "
                     key={l.testId}

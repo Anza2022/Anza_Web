@@ -16,6 +16,7 @@ import {
 import AccountSubscription from "../../../models/user_models/account_subscription";
 import LoadingComponent from "../../../presentation/components/others/loading_component";
 import { LoggedInUserContext } from "../../../presentation/contexts/loggedin_user_controller";
+import { NavigationContext } from "../../../presentation/contexts/navigation_state_controller";
 import DashboardLayout from "../../../presentation/layouts/dashboard_layout";
 import { websProdUrl } from "../../../presentation/utils/constants";
 import {
@@ -368,7 +369,7 @@ const RealtimePaymentComponent = () => {
                       setProcessingPayment(false);
                       setPaymentFailed(false);
                       setPaymentSuccess(false);
-                      router.push("/login");
+                      router.push("/dashboard/videos");
                       setTimeout(() => {
                         router.push("/dashboard/billing");
                       }, 1000);
@@ -395,7 +396,7 @@ const RealtimePaymentComponent = () => {
                 setProcessingPayment(false);
                 setPaymentFailed(false);
                 setPaymentSuccess(false);
-                router.push("/login");
+                router.push("/dashboard/videos");
                 setTimeout(() => {
                   router.push("/dashboard/billing");
                 }, 1000);
@@ -516,7 +517,7 @@ const RealtimePaymentComponent = () => {
 
 const StudentPricingComponent = () => {
   let plans: PricingPlan[] = [
-    new PricingPlan("Basic", "2,000.00", "/term", "", [
+    new PricingPlan("Basic", "2,000.00", "/3 months", "", [
       "Ad-free watching.",
       "Current class revision material.",
       "Revise at anywhere at your own pace.",
@@ -525,7 +526,7 @@ const StudentPricingComponent = () => {
       "Access to career talks.",
       "Premium support.",
     ]),
-    new PricingPlan("Standard", "2,500.00", "/term", "Recommended", [
+    new PricingPlan("Standard", "2,500.00", "/3 months", "Recommended", [
       "Ad-free watching.",
       "Unlimited revision materials.",
       "Revise at anywhere at your own pace.",

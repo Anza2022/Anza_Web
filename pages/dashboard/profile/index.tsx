@@ -486,7 +486,7 @@ const ChangePasswordComponent = () => {
 
     setLoading(true);
     try {
-      let res = await UserCrudRepo.changePassword(user[0].userId, {
+      let res = await UserCrudRepo.changePasswordViaProfile(user[0].userId, {
         newPassword: newpassword,
         oldPassword: oldPassword,
       });

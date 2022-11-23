@@ -286,7 +286,30 @@ class UserCrudRepo {
     }
   }
 
-
+// via profile
+  static async changePasswordViaProfile(
+    id: string,
+    creditials: {
+      oldPassword: string;
+      newPassword: string;
+    }  ): Promise<boolean> {
+      try {
+        let res = await axiosInstance.post(
+          `/auth/change_password/${id}`,
+          creditials
+        );
+        if (res.status == 200) {
+          console.log(res.data);
+          return true;
+        } else if (res.status == apiErrorCode) {
+          throw res.data["message"];
+        } else {
+          throw "Unable to reset this users password";
+        }
+      } catch (e) {
+        throw e;
+      }
+    }
 
 }
 

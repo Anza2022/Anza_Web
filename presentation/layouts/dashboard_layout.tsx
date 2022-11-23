@@ -290,7 +290,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
 
 
     let plans: PricingPlan[] = [
-      new PricingPlan("Basic", "2,000.00", "/term", "Popular", [
+      new PricingPlan("Basic", "2,000.00", "/3 months", "Popular", [
         "Ad-free watching.",
         "Current class revision material.",
         "Revise at anywhere at your own pace.",
@@ -299,7 +299,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
         "Access to career talks.",
         "Premium support.",
       ]),
-      new PricingPlan("Standard", "2,500.00", "/term", "Recommended", [
+      new PricingPlan("Standard", "2,500.00", "/3 months", "Recommended", [
         "Ad-free watching.",
         "Unlimited revision materials.",
         "Revise at anywhere at your own pace.",
@@ -391,12 +391,12 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
         Student Pricing Plans      </p>
 
       <div
-className="w-full h-96  text-left mt-0  flex flex-col overflow-y-scroll scroll-touch
+className="w-full h-96 bg-indigo-800  text-left mt-0  flex flex-col overflow-y-scroll scroll-touch
 p-3 overflow-x-hidden dark:text-main mb-12"
 >
 <div className="py-3  pt-1 flex flex-wrap w-full  justify-around" style={{ fontFamily: "Overpass", fontWeight: 900 }}>
 {plans.map((plan) => (
-<div className="w-84 rounded-lg mb-4   flex flex-col  bg-white dark:bg-darkmain  pb-8 ">
+<div className="w-96 -mt-3 rounded-lg mb-5   flex flex-col  bg-white dark:bg-darkmain  pb-8 ">
       <p className="text-center text-white font-bold text-1xl  rounded-t-lg bg-main dark:text-white"           style={{ fontFamily: "Montserrat" }}>
         {plan.title.toUpperCase()}
       </p>
@@ -424,7 +424,7 @@ p-3 overflow-x-hidden dark:text-main mb-12"
                   router.push("/dashboard/billing/");
                 }
                 }
-                className=" px-5  bg-main text-white cursor-pointer text-center self-center mt-5 py-1.5 rounded-md"
+                className=" px-5   -mb-3  bg-main text-white cursor-pointer text-center self-center mt-5 py-1.5 rounded-md"
               >
                Join  {plan.title}
               </div>

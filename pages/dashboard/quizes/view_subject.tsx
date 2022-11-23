@@ -126,14 +126,14 @@ const ViewSubjects = () => {
                   key={e.testId}
                   onClick={() => {
                     if(SubStatus == "Ended"){
-                    if (i == 0) {
-                    MySwal.clickConfirm();
-                    setSelectedVideoId(e.testId);
-                    router.push("/dashboard/quizes/take_test");
-                    } else {
+                    // if (i == 0) {
+                    // MySwal.clickConfirm();
+                    // setSelectedVideoId(e.testId);
+                    // router.push("/dashboard/quizes/take_test");
+                    // } else {
                     MySwal.clickConfirm();
                     setShowPremiumModal(true);
-                    }
+                    // }
                     }else if(SubStatus == "Active"){
                       setSelectedVideoId(e.testId);
                       router.push("/dashboard/quizes/take_test");
@@ -165,7 +165,7 @@ const ViewSubjects = () => {
                   <div className="badge  bg-gray-100 absolute top-0 right-0 dark:bg-darkmain m-1 p-1 px-2 text-xs font-bold rounded text-main">
                           {SubStatus == "Active" ? (
                             <ImUnlocked color="green" size={21} />
-                          ) : SubStatus == "Ended" &&   i > 0 ?  (
+                          ) : SubStatus == "Ended" &&   i >= 0 ?  (
                             <AiTwotoneLock color="red" size={21} />
                           ): "PLAY"}
                         </div>

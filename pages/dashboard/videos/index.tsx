@@ -338,17 +338,17 @@ const SubStatus = accountSubscription[0] != undefined
                     className="each mb-10 m-2 relative group transform duration-500  md:hover:-translate-y-1 md:hover:scale-105"
                     onClick={() => {
                       if(SubStatus == "Ended"){
-                      if (i == 0) {
-                      MySwal.clickConfirm();
-                      setSelectedForm(e.classLevel);
-                      setSelectedSubject(e.subjectType);
-                      setSelectedVideoId(e.videoId);
-                      setSelectedVdocipher(e.vidCipherId);
-                      router.push("/dashboard/videos/view_lesson");
-                      } else {
+                      // if (i == 0) {
+                      // MySwal.clickConfirm();
+                      // setSelectedForm(e.classLevel);
+                      // setSelectedSubject(e.subjectType);
+                      // setSelectedVideoId(e.videoId);
+                      // setSelectedVdocipher(e.vidCipherId);
+                      // router.push("/dashboard/videos/view_lesson");
+                      // } else {
                       MySwal.clickConfirm();
                       setShowPremiumModal(true);
-                      }
+                      // }
                       }else if(SubStatus == "Active"){
                         setSelectedForm(e.classLevel);
                         setSelectedSubject(e.subjectType);
@@ -371,6 +371,15 @@ const SubStatus = accountSubscription[0] != undefined
                       <a className="relative group-hover:opacity-100 group-hover:blur-sm">
                         <img className="w-full" src={`https://anzaacademy.co/anzaapi/view_thumbnail/lesson/${e.thumbnailUrl.split("view_thumbnail/lesson/")[1]}`}  />
                       </a>
+
+                      <div className="badge  bg-gray-100 absolute top-0 right-0 dark:bg-darkmain m-1 p-1 px-2 text-xs font-bold rounded text-main">
+                          {SubStatus == "Active" ? (
+                            <ImUnlocked color="green" size={21} />
+                          ) : SubStatus == "Ended" &&   i >= 0 ?  (
+                            <AiTwotoneLock color="red" size={21} />
+                          ): "PLAY"}
+                        </div>
+                        
                     </div>
 
                     <div className="info-box text-xs flex justify-around p-1 font-semibold text-gray-500 bg-gray-300">
@@ -685,7 +694,7 @@ const SubStatus = accountSubscription[0] != undefined
                 */}
               {lessons
                 .slice(0, 5)
-                .sort(() => 0.5 - Math.random())
+                // .sort(() => 0.5 - Math.random())
                 .map((e,i) => (
                   <div
                     className="flex-none w-2/3 md:w-1/4 mr-4 md:pb-4  mb-2 group transform duration-500  md:hover:-translate-y-1 md:hover:scale-105"
@@ -737,10 +746,6 @@ const SubStatus = accountSubscription[0] != undefined
                             <AiTwotoneLock color="red" size={21} />
                           ): "PLAY"}
                         </div>
-
-                    {/* <div className="badge absolute top-0 right-0 bg-main m-1  text-gray-200 p-1 px-2 text-xs font-bold rounded">
-                      {e.videoLength} {" Min"}
-                    </div> */}
 
                     <div className="info-box text-xs flex mt-2 p-1 font-semibold justify-between text-gray-500 bg-gray-200 dark:bg-darksec">
                       <span className="mr-1 p-1 px-2 font-bolder">
@@ -819,8 +824,8 @@ const SubStatus = accountSubscription[0] != undefined
               {!loading &&
                 testQuizes.length >= 1 &&
                 testQuizes
-                .slice(0, 6)
-                .sort(() => 0.5 - Math.random())
+                .slice(0, 5)
+                // .sort(() => 0.5 - Math.random())
                 .map((e, i) => (
                   <div
                     className="flex-none w-2/3 md:w-1/4 mr-4 md:pb-4 mb-2 group transform duration-500  md:hover:-translate-y-1 md:hover:scale-105"

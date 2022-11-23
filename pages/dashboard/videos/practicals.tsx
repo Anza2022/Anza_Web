@@ -99,17 +99,17 @@ const SubStatus = accountSubscription[0] != undefined
     className="each mb-10 m-2  relative group transform duration-500  md:hover:-translate-y-1 md:hover:scale-105"  
       onClick={() => {
         if(SubStatus == "Ended"){
-        if (i == 0) {
-        MySwal.clickConfirm();
-        setSelectedForm(e.classLevel);
-        setSelectedSubject(e.subjectType);
-        setSelectedVideoId(e.videoId);
-        setSelectedVdocipher(e.vidCipherId)
-        router.push("/dashboard/videos/view_lesson");
-        } else {
+        // if (i == 0) {
+        // MySwal.clickConfirm();
+        // setSelectedForm(e.classLevel);
+        // setSelectedSubject(e.subjectType);
+        // setSelectedVideoId(e.videoId);
+        // setSelectedVdocipher(e.vidCipherId)
+        // router.push("/dashboard/videos/view_lesson");
+        // } else {
         MySwal.clickConfirm();
         setShowPremiumModal(true);
-        }
+        // }
         }else if(SubStatus == "Active"){
           setSelectedForm(e.classLevel);
           setSelectedSubject(e.subjectType);
@@ -134,7 +134,7 @@ const SubStatus = accountSubscription[0] != undefined
     <div className="badge  bg-gray-100 absolute top-0 right-0 dark:bg-darkmain m-1 p-1 px-2 text-xs font-bold rounded text-main">
                           {SubStatus == "Active" ? (
                             <ImUnlocked color="green" size={21} />
-                          ) : SubStatus == "Ended" &&   i > 0 ?  (
+                          ) : SubStatus == "Ended" &&   i >= 0 ?  (
                             <AiTwotoneLock color="red" size={21} />
                           ): "PLAY"}
                         </div>
@@ -179,13 +179,13 @@ const SubStatus = accountSubscription[0] != undefined
                         .filter(
                           (p) => p.classLevel === e && p.subjectType === s
                         )
-                        .map((l) => (
+                        .map((l,z) => (
                           
 <div className="each mb-10 m-2  relative dark:text-white group transform duration-500  md:hover:-translate-y-1 md:hover:scale-105"  
  key={l.videoId}       
 onClick={() => {
   if(SubStatus == "Ended"){
-  if (i == 0 && k == 0) {
+  if (z == 0 && k == 0) {
   MySwal.clickConfirm();
   setSelectedForm(l.classLevel);
   setSelectedSubject(l.subjectType);
@@ -221,7 +221,7 @@ onClick={() => {
   <div className="badge  bg-gray-100 absolute top-0 right-0 dark:bg-darkmain m-1 p-1 px-2 text-xs font-bold rounded text-main">
                           {SubStatus == "Active" ? (
                             <ImUnlocked color="green" size={21} />
-                          ) : SubStatus == "Ended" && i >  0 || k > 0 ?  (
+                          ) : SubStatus == "Ended" && k >  0 || z > 0 ?  (
                             <AiTwotoneLock color="red" size={21} />
                           ): "PLAY"}
                         </div>
@@ -235,6 +235,7 @@ onClick={() => {
                     <div className="desc p-2 text-gray-800">
                       <a className="title font-bold block cursor-pointer dark:text-white">
                       {l.chapter.toLowerCase().replace(/(?:^|\s)\S/g,(res)=>{ return res.toUpperCase();})}
+                     
                       </a>
                       <span className="description text-sm block  border-gray-400 mb-0 font-normal dark:text-white">
                       {l.title.toLowerCase().replace(/(?:^|\s)\S/g,(res)=>{ return res.toUpperCase();})}
