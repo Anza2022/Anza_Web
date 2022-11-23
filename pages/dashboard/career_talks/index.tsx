@@ -224,11 +224,18 @@ Mentorship and guidance is key to shaping a more sustainable future.
                       {" "}
                     </div>
                   </div>
-                  {/* <p className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
+                  <p
+                       onClick={() => {
+                        setSelectedVideoId("5a005ba3e9f544ce9188101be438dd58");
+                        router.push(
+                          "/dashboard/career_talks/view_talk"
+                        );
+                        }}
+                         className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
                     <button className="px-4 py-2 bg-main text-white  rounded-md">
                       Watch Now
                     </button>
-                  </p> */}
+                  </p>
                 </div>
               </div>
             </div>
@@ -352,23 +359,22 @@ Mentorship and guidance is key to shaping a more sustainable future.
                         </div>
                     </div>
 
-                    <div className="info-box text-xs justify-between flex p-1 font-semibold text-gray-500 bg-gray-300">
+                    {/* <div className="info-box text-xs justify-between flex p-1 font-semibold text-gray-500 bg-gray-300">
                       <span className="mr-1 p-1 px-2  font-bold">
                         {e.totalViews} VIEWS
                       </span>
                       <span className="mr-1 p-1 px-2 font-bold">
-                        {/* {e.likes} */}
                         LIKES
                       </span>
-                    </div>
+                    </div> */}
 
-                    <div className="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex dark:text-white">
+                    {/* <div className="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex dark:text-white">
                       <div className="w-3 h-3 -mt-0 rotate-45 bg-gray-600"></div>
                       <span className="relative z-10 p-2 text-xs  text-white leading-4 whitespace-no-wrap bg-gray-600 shadow-lg rounded-md dark:text-white">
                         {" "}
                         {e.title}{" "}
                       </span>
-                    </div>
+                    </div> */}
                     <div className="desc p-2 mt-1 text-gray-800">
                       <a className="title   font-bold block cursor-pointer dark:text-main">
                         {" "}

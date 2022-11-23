@@ -105,11 +105,18 @@ const { accountSubscription } = useContext(LoggedInUserContext);
 
              </div>
                       </div>                      
-              {/* <p className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
+              <p
+                        onClick={() => {
+                          setSelectedVideoId("94e4793979354b1f8f086face011ffcc");
+                          router.push("/dashboard/videos/setbooks/view_book");
+                          }}
+                          className="animate-pulse mb-0 mt-2 pt-0 text-gray-800 mt-0 text-xl justify-left text-left">
               <button     className="px-4 py-2 bg-main text-white  rounded-md">
                 Watch Now
               </button>
-              </p> */}
+              </p>
+
+
           </div>
       </div>
   
@@ -237,10 +244,29 @@ router.push("/dashboard/videos/setbooks/view_book");
     </a>
   </div>
 
-  <div className="info-box text-xs flex p-1 font-semibold text-gray-500 justify-between bg-gray-300">
+  {/* <div className="info-box text-xs flex p-1 font-semibold text-gray-500 justify-between bg-gray-300">
     <span className="mr-1 p-1 px-2 text-main font-bold">{e.views} Views</span>
     <span className="mr-1 p-1 px-2 font-bold  ">{e.likes} Likes</span>
-  </div>
+  </div> */}
+
+{/* <div className="absolute bottom-0 flex flex-col items-center hidden mb-6 group-hover:flex dark:text-white">
+                      <div className="w-3 h-3 -mt-0 rotate-45 bg-gray-600"></div>
+                      <span className="relative z-10 p-2 text-xs  text-white leading-4 whitespace-no-wrap bg-gray-600 shadow-lg rounded-md dark:text-white">
+                        {" "}
+                        {e.book}{" "}
+                      </span>
+                    </div> */}
+
+<div className="desc p-2 mt-1 text-gray-800">
+      
+                      <a className="title  block cursor-pointer dark:text-white">
+                        {e.title.replace(/(?:^|\s)\S/g, (res) => {
+                          return res.toUpperCase();
+                        })}
+                      </a>
+                    </div>
+
+
 </div>
 </div>
 ))}
