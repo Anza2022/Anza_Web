@@ -84,11 +84,12 @@ const ResetPasswordComponent = () => {
    let mee = sendMe();
 
   
-  
+
 
   const router = useRouter();
   const [newpassword, setPassword] = useState("");
    const [resettoken, setResetToken] = useState(getMessage(mee!));
+  console.log(resettoken);
   const [repeatpassword, setRepeatedPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -97,22 +98,30 @@ const ResetPasswordComponent = () => {
 
   const resetPassword = async () => {
     if (newpassword === "") {
-        showError("Your password is required");
+        showError("Your password is required!");
+        showToast("Your new password is required!", "error");
+        return;
+      }
+      if (resettoken === "" || resettoken == null ) {
+        showError("You need a valid token to proceed!");
+        showToast("You need a valid token to proceed! Kindly request for a new password reset link.", "error");
         return;
       }
       if (repeatpassword === "") {
-        showError("Repeat password is required");
+        showError("Repeat password is required!");
+        showToast("Repeat password is required!", "error");
         return;
       }
       if (newpassword != repeatpassword) {
-        showError("The two passwords does not match");
+        showError("The two passwords does not match!");
+        showToast("The two passwords does not match!", "error");
         return;
       }
 
     setLoading(true);
     try {
      let res = await UserCrudRepo.changePassword(newpassword, resettoken);
-      showToast(`Success`, "success");
+      showToast(`Password changed successfully!`, "success");
       setLoading(false);
     } catch (e) {
       showError(`${e}`);

@@ -64,7 +64,7 @@ class UserCrudRepo {
 
   static async getAllUsers(): Promise<UserModel[]> {
     let res = await axiosInstance.get(
-      `/users`,
+      `/user`,
       {
         headers: {
           Authorization: `Bearer ${decryptString(
@@ -73,6 +73,7 @@ class UserCrudRepo {
         },
       }
     );
+   console.log(res);
     if (res.status == 200) {
       if (res.data == null) {
         return [];
@@ -251,7 +252,6 @@ class UserCrudRepo {
         `https://d56d-102-217-158-14.in.ngrok.io/forgotpassword?email=${email}`,
       );
       if (res.status == 200) {
-        console.log(res.data);
         return true;
       } else if (res.status == apiErrorCode) {
         throw res.data["message"];

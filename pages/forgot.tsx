@@ -74,13 +74,14 @@ const ResetPasswordComponent = () => {
 
 const SendInstructions = async () => {
 if (email === "") {
-showError("Your email is required");
+  showToast(`Your email is required!`, "error");
+showError("Your email is required!");
 return;
 }
 setLoading(true);
 try {
 let res = await UserCrudRepo.resetPassword(email);
-showToast(`Success`, "success");
+showToast(`Reset instructions has been sent to your email address! Check SPAM/MAIL box.`, "success");
 setLoading(false);
 } catch (e) {
 showError(`${e}`);
