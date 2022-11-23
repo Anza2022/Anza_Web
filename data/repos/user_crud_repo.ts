@@ -242,29 +242,52 @@ class UserCrudRepo {
     }
   }
 
-  static async changePassword(
-    id: string,
-    creditials: {
-      oldPassword: string;
-      newPassword: string;
-    }
+// forgot
+  static async resetPassword(
+    email: string,
   ): Promise<boolean> {
     try {
       let res = await axiosInstance.post(
-        `/auth/change_password/${id}`,
-        creditials
+        `https://6714-102-217-158-14.in.ngrok.io/forgotpassword?email=${email}`,
       );
       if (res.status == 200) {
+        console.log(res.data);
         return true;
       } else if (res.status == apiErrorCode) {
         throw res.data["message"];
       } else {
-        throw "unable to login user try again later";
+        throw "unable to send email reset for this user";
       }
     } catch (e) {
       throw e;
     }
   }
+
+
+// resetpwd
+  static async changePassword(
+    newpassword: string,
+    resettoken?: string,
+  ): Promise<boolean> {
+    try {
+      let url =`https://6714-102-217-158-14.in.ngrok.io/resetpassword/${resettoken}?newpassword=${newpassword}`;
+      console.log(url);
+      let res = await axiosInstance.post(url);
+      if (res.status == 200) {
+        console.log(res.data);
+        return true;
+      } else if (res.status == apiErrorCode) {
+        throw res.data["message"];
+      } else {
+        throw "unable to reset this users password";
+      }
+    } catch (e) {
+      throw e;
+    }
+  }
+
+
+
 }
 
 export default UserCrudRepo;

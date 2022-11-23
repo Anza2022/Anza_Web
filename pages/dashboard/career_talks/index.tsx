@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiTwotoneLock } from "react-icons/ai";
 import CareerTalksRepo from "../../../data/repos/career_talk_repo";
 import CareerTalk from "../../../models/curriculum/career_talk_model";
 import LoadingComponent from "../../../presentation/components/others/loading_component";
@@ -13,6 +13,7 @@ import playbutton from "../../../assets/icons/play.png";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { LoggedInUserContext } from "../../../presentation/contexts/loggedin_user_controller";
+import { ImUnlocked } from "react-icons/im";
 const MySwal = withReactContent(Swal);
 
 const CareerTalksPage = () => {
@@ -342,6 +343,13 @@ Mentorship and guidance is key to shaping a more sustainable future.
                           alt="img missing"
                         />
                       </a>
+                      <div className="badge  bg-gray-100 absolute top-0 right-0 dark:bg-darkmain m-1 p-1 px-2 text-xs font-bold rounded text-main">
+                          {SubStatus == "Active" ? (
+                            <ImUnlocked color="green" size={21} />
+                          ) : SubStatus == "Ended" && i >  0 ?  (
+                            <AiTwotoneLock color="red" size={21} />
+                          ): "PLAY"}
+                        </div>
                     </div>
 
                     <div className="info-box text-xs justify-between flex p-1 font-semibold text-gray-500 bg-gray-300">

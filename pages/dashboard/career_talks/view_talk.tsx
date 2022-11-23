@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import React, { PropsWithChildren, useContext, useEffect, useRef, useState } from "react";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiTwotoneLock } from "react-icons/ai";
 import { BiLike, BiDislike } from "react-icons/bi";
 import LoadingComponent from "../../../presentation/components/others/loading_component";
 import { CareerTalksContext } from "../../../presentation/contexts/career_talks_controller";
@@ -10,8 +10,22 @@ import DashboardLayout from "../../../presentation/layouts/dashboard_layout";
 import { prodUrl } from "../../../presentation/utils/constants";
 import { getTimeAgo, showToast } from "../../../presentation/utils/helper_functions";
 import CareerTalksRepo from "../../../data/repos/career_talk_repo";
+import { ImUnlocked } from "react-icons/im";
+import { LoggedInUserContext } from "../../../presentation/contexts/loggedin_user_controller";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 
 const ViewCareerTalkPage = () => {
+
+  const { accountSubscription } = useContext(LoggedInUserContext);
+  const SubStatus = accountSubscription[0] != undefined
+   ? accountSubscription[0].isSubscriptionActive
+     ? "Active"
+     : "Ended"
+   : "";
+
+   
   const router = useRouter();
   const { talks } = useContext(CareerTalksContext);
   const { selectedVideoId, setShowPremiumModal } =
@@ -158,6 +172,23 @@ const ViewCareerTalkPage = () => {
             {talks.map((k: any, i: any) => (
                    <div
               onClick={() => {
+              if (SubStatus == "Ended") {
+                if (i == 0) {
+                  MySwal.clickConfirm();
+                  if (k.talkId == selectedVideoId) {
+                    showToast(
+                      "You are currently watching this career talk.",
+                      "success"
+                    );
+                  }
+                } else {
+                  MySwal.clickConfirm();
+                  setShowPremiumModal(true);
+                }
+              
+              
+              } else if (SubStatus == "Active") {
+                MySwal.clickConfirm();
                 if (k.talkId == selectedVideoId) {
                   showToast(
                     "You are currently watching this career talk.",
@@ -170,7 +201,11 @@ const ViewCareerTalkPage = () => {
                     setSelectedVideoId(k.videoUrl);
                   }, 10);
                 }
-              }}
+              }
+
+              }
+            }
+            
               key={k.talkId}
               className="w-52      dark:bg-darkmain cursor-pointer "
             >
@@ -179,6 +214,8 @@ const ViewCareerTalkPage = () => {
                 alt="img missing"
                 className="rounded-md p-2"
               />
+         
+                        
               <p className="title pl-2 pr-2 text-sm font-normal ">{k.title}</p>            </div>
             ))}
           </div>

@@ -110,7 +110,7 @@ const LoginComponent = () => {
     }
     setLoading(true);
 
-    try {
+    try {      
       let res = await UserCrudRepo.loginUser({
         phoneNumber: `254${phoneNumber}`,
         password,

@@ -10,7 +10,7 @@ import {
 } from "../presentation/utils/helper_functions";
 import loginpic from "../assets/images/login2pi.png";
 import { AnimatePresence, motion } from "framer-motion";
-
+import UserCrudRepo from "../data/repos/user_crud_repo";
 const ForgotPasswordPage = () => {
   const { selectedVideoId, setSelectedVideoId } = useContext(NavigationContext);
 
@@ -25,6 +25,7 @@ const ForgotPasswordPage = () => {
     router.prefetch("/login");
     router.prefetch("/forgot");
   }, []);
+
 
   return (
     <AppLayout>
@@ -63,23 +64,16 @@ export default ForgotPasswordPage;
 
 const ResetPasswordComponent = () => {
   const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [newpassword, setPassword] = useState("");
+  const [resettoken, setResetToken] = useState("bf818b1bde4d3cd2cdb50f98ba270fa20ee4883b");
   const [repeatpassword, setRepeatedPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPlainPassword, setShowPlainPassword] = useState(false);
   const [showPlainPassword2, setShowPlainPassword2] = useState(false);
 
-  const resetPwd = async () => {
-    if (loading) {
-      return;
-    }
-    if (email === "") {
-      showError("Your email is required");
-      return;
-    }
-    if (password === "") {
+  const resetPassword = async () => {
+    if (newpassword === "") {
         showError("Your password is required");
         return;
       }
@@ -87,15 +81,22 @@ const ResetPasswordComponent = () => {
         showError("Repeat password is required");
         return;
       }
-    setLoading(true);
+      if (newpassword != repeatpassword) {
+        showError("The two passwords does not match");
+        return;
+      }
 
+    setLoading(true);
     try {
-showToast("Password reset coming soon", "success")
+      let res = await UserCrudRepo.changePassword(newpassword, resettoken);
+      showToast(`Success`, "success");
+      setLoading(false);
     } catch (e) {
       showError(`${e}`);
     } finally {
-      setLoading(false);
+     
     }
+    
   };
 
 
@@ -132,34 +133,14 @@ showToast("Password reset coming soon", "success")
         )}
       </AnimatePresence>
 
-
-      <div className="flex flex-col text-sm my-2">
-        <p>Ensure the email address displayed below  is linked <br/> to your account.</p>
-      </div>
-      <div className="flex flex-col my-2">
-                <label htmlFor="email" className="mb-1">Your Email Address</label>
-                <input
-                  type="email"
-                  name="email"
-                  disabled={true}
-                  id="email"
-                  className="outline-none p-2 rounded-lg focus:ring-2 ring-main ring-1  w-[300px] md:w-[420px]"
-                  placeholder=" Your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  autoComplete="off"
-                  autoCorrect="off"
-                />
-              </div>
-
               <div className="flex flex-col mt-5 relative text-sm">
-              <label htmlFor="password" className="mb-1">Your Password</label>
+              <label htmlFor="password" className="mb-1">New Password</label>
         <input
           type={`${showPlainPassword ? "text" : "password"}`}
           // type={`password`}
           id="password"
           className=" w-[300px] md:w-[420px]  outline-none ring-1 ring-main  rounded-md h-10 p-2 bg-gray-50 dark:bg-darksec focus:ring-2 "
-          value={password}
+          value={newpassword}
           placeholder="Enter New Password "
           autoCorrect="off"
           autoCapitalize="off"
@@ -214,7 +195,7 @@ showToast("Password reset coming soon", "success")
 
 
 <div className="flex flex-col mt-5 relative text-sm">
-<label htmlFor="repeat_password" className="mb-1">Repeat Your Password</label>
+<label htmlFor="repeat_password" className="mb-1">Repeat New Password</label>
         <input
           type={`${showPlainPassword2 ? "text" : "password"}`}
           // type={`password`}
@@ -228,7 +209,7 @@ showToast("Password reset coming soon", "success")
           onChange={(e) => setRepeatedPassword(e.target.value)}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
-              resetPwd();
+              resetPassword();
             }
           }}
         />
@@ -296,7 +277,7 @@ showToast("Password reset coming soon", "success")
 
       <div className="h-5"></div>
       <div
-        onClick={resetPwd}
+        onClick={resetPassword}
         className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-main hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer "
       >
         {loading && <LoadingComponent loading={loading} color="white" />}

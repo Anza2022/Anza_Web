@@ -10,6 +10,7 @@ import {
 } from "../presentation/utils/helper_functions";
 import loginpic from "../assets/images/login2pi.png";
 import { AnimatePresence, motion } from "framer-motion";
+import UserCrudRepo from "../data/repos/user_crud_repo";
 
 const ForgotPasswordPage = () => {
   const { selectedVideoId, setSelectedVideoId } = useContext(NavigationContext);
@@ -61,45 +62,38 @@ const ForgotPasswordPage = () => {
 
 export default ForgotPasswordPage;
 
+
+
 const ResetPasswordComponent = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const SendInstructions = async () => {
-    if (loading) {
-      return;
-    }
 
+
+  const SendInstructions = async () => {
     if (email === "") {
       showError("Your email is required");
       return;
     }
-    setLoading(true);
-try {
-let url =`https://anzaacademy.co/anzaapi/auth/email_password_reset/code?email=${email}`;
 setLoading(true);
-fetch(url, {
-method: 'POST',
-headers: { 'Content-Type': 'application/json', },
-})
-.then((res) => {
-res.json().then((response) => {
-console.log(response);
-})
-setLoading(false)
-})
-.catch((err) => {
-console.log(err);
-setLoading(false)
-});
+try {
+  let res = await UserCrudRepo.resetPassword(email);
+   showToast(`Success`, "success");
+  setLoading(false);
 } catch (e) {
-showError(`${e}`);
+  showError(`${e}`);
 } finally {
-setLoading(false);
+  setLoading(false);
 }
 };
+
+
+
+
+
+
 
   //backend error handling
   const [error, setError] = useState("");
@@ -151,9 +145,6 @@ setLoading(false);
                   autoCorrect="off"
                 />
               </div>
-
-
-
         <div className="">
         <div className="flex">
 
@@ -176,7 +167,7 @@ setLoading(false);
         onClick={SendInstructions}
         className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-main hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer "
       >
-        {loading && <LoadingComponent loading={loading} color="white" />}
+            <LoadingComponent loading={loading} color="white" />
         <p className="font-bold"> {loading ? "Sending...." : "EMAIL INSTRUCTIONS"}</p>
       </div>{" "}
       <div className="h-5"></div>
