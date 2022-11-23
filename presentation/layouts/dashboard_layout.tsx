@@ -396,8 +396,8 @@ p-3 overflow-x-hidden dark:text-main mb-12"
 >
 <div className="py-3  pt-1 flex flex-wrap w-full  justify-around" style={{ fontFamily: "Overpass", fontWeight: 900 }}>
 {plans.map((plan) => (
-<div className="w-96 -mt-3 rounded-lg mb-5   flex flex-col  bg-white dark:bg-darkmain  pb-8 ">
-      <p className="text-center text-white font-bold text-1xl  rounded-t-lg bg-main dark:text-white"           style={{ fontFamily: "Montserrat" }}>
+<div className="w-84 -mt-3 rounded-lg mb-5   flex flex-col  bg-white dark:bg-darkmain  pb-6 ">
+      <p className="text-center text-white font-bold text-1xl  rounded-t-lg bg-main dark:text-white p-2"           style={{ fontFamily: "Montserrat" }}>
         {plan.title.toUpperCase()}
       </p>
       <div className="flex w-full justify-center my-2 mb-3">
