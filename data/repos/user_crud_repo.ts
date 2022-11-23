@@ -248,7 +248,7 @@ class UserCrudRepo {
   ): Promise<boolean> {
     try {
       let res = await axiosInstance.post(
-        `https://6714-102-217-158-14.in.ngrok.io/forgotpassword?email=${email}`,
+        `https://d56d-102-217-158-14.in.ngrok.io/forgotpassword?email=${email}`,
       );
       if (res.status == 200) {
         console.log(res.data);
@@ -270,7 +270,7 @@ class UserCrudRepo {
     resettoken?: string,
   ): Promise<boolean> {
     try {
-      let url =`https://6714-102-217-158-14.in.ngrok.io/resetpassword/${resettoken}?newpassword=${newpassword}`;
+      let url =`https://d56d-102-217-158-14.in.ngrok.io/resetpassword/${resettoken}?newpassword=${newpassword}`;
       console.log(url);
       let res = await axiosInstance.post(url);
       if (res.status == 200) {

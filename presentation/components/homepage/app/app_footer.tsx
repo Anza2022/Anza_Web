@@ -6,14 +6,16 @@ import { HiOutlineMail, HiOutlineLocationMarker } from "react-icons/hi";
 
 import googleplay from "../../../../assets/images/google_play.png";
 import apple_appstore from "../../../../assets/images/apple_appstore.png";
+import { showToast } from "../../../utils/helper_functions";
+import router from "next/router";
 
 const AppFooter = () => {
   let contentLinks = [
     new FooterLink("Classes", () => {}),
-    new FooterLink("KCSE Revision Papers", () => {}),
+    new FooterLink("KCSE Revision Papers", () => {  }),
     new FooterLink("Topical Quizes ", () => {}),
-    new FooterLink(" Career Masterclass", () => {}),
-    new FooterLink(" Set Books", () => {}),
+    new FooterLink(" Career Masterclass", () => { }),
+    new FooterLink(" Set Books", () => { }),
   ];
   let companyLinks = [
     new FooterLink("About Us", () => {}),
@@ -97,16 +99,23 @@ const AppFooter = () => {
           </div>
         ))}
       </div>
-      <div className="flex flex-col  md:w-64 space-y-3 my-7">
-        <p className="text-sm font-bold text-white">
+      <div className="flex flex-col  md:w-64 space-y-3 my-7" >
+        <p
+         className="text-sm font-bold text-white">
           Download Anza mobile apps
         </p>
         <img
+          onClick={ () => {
+            showToast("Anza Android App coming soon", "success");
+           }}
           src={googleplay.src}
           alt="google play icon not found"
           className="h-13 w-44 transform hover:scale-110 duration-200 cursor-pointer"
         />
         <img
+          onClick={ () => {
+            showToast("Anza IOS App coming soon", "success");
+           }}
           src={apple_appstore.src}
           alt="google play icon not found"
           className="h-13 w-44 transform hover:scale-110 duration-200 cursor-pointer"

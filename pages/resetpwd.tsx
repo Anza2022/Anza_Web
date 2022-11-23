@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useLocation, useParams } from 'react-router-dom'
 import React, { useContext, useEffect, useState } from "react";
 import LoadingComponent from "../presentation/components/others/loading_component";
 import { NavigationContext } from "../presentation/contexts/navigation_state_controller";
@@ -11,9 +12,9 @@ import {
 import loginpic from "../assets/images/login2pi.png";
 import { AnimatePresence, motion } from "framer-motion";
 import UserCrudRepo from "../data/repos/user_crud_repo";
+
 const ForgotPasswordPage = () => {
   const { selectedVideoId, setSelectedVideoId } = useContext(NavigationContext);
-
   let pageComponents = [
     <ResetPasswordComponent key="resetpassword" />,
   ];
@@ -63,9 +64,31 @@ const ForgotPasswordPage = () => {
 export default ForgotPasswordPage;
 
 const ResetPasswordComponent = () => {
+
+
+    
+  function getMessage(message: string) {
+    //console.log(mee);
+    return message;
+  }
+
+
+  function sendMe() {
+    if (typeof window !== "undefined") {
+      const search = window.location.search; 
+      const params = new URLSearchParams(search); 
+      const GetToken = params.get('resettoken');
+      return GetToken;
+      }
+   }
+   let mee = sendMe();
+
+  
+  
+
   const router = useRouter();
   const [newpassword, setPassword] = useState("");
-  const [resettoken, setResetToken] = useState("bf818b1bde4d3cd2cdb50f98ba270fa20ee4883b");
+   const [resettoken, setResetToken] = useState(getMessage(mee!));
   const [repeatpassword, setRepeatedPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -88,7 +111,7 @@ const ResetPasswordComponent = () => {
 
     setLoading(true);
     try {
-      let res = await UserCrudRepo.changePassword(newpassword, resettoken);
+     let res = await UserCrudRepo.changePassword(newpassword, resettoken);
       showToast(`Success`, "success");
       setLoading(false);
     } catch (e) {

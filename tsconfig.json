@@ -21,7 +21,8 @@
     "**/*.ts",
     "**/*.tsx",
     "decs.d.ts",
-    "presentation/layouts/timer.js"
+    "presentation/layouts/timer.js",
+    "pages/resetpwd.js"
   ],
   "exclude": ["node_modules"]
 }
