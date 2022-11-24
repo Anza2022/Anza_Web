@@ -228,8 +228,8 @@ onClick={() => {
 
   <div className="info-box text-xs flex p-1 mt-4 font-semibold text-gray-500 bg-gray-300 justify-around" >
   <span className="mr-1 p-1 px-2  font-bold">{l.classLevel.toUpperCase()}{" "} </span>
-      <span className="mr-1 p-1 px-2 font-bold border-l border-gray-400">{l.subjectType.toUpperCase()} </span>
-      <span className="mr-1 p-1 px-2 font-bold border-l border-gray-400">{l.totalViews} VIEWS</span>
+      <span className="mr-1 p-1 px-2 font-bold ">{l.subjectType.toUpperCase()} </span>
+      {/* <span className="mr-1 p-1 px-2 font-bold border-l border-gray-400">{l.totalViews} VIEWS</span> */}
                     </div>
 
                     <div className="desc p-2 text-gray-800">

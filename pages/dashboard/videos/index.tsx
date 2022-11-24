@@ -386,12 +386,12 @@ const SubStatus = accountSubscription[0] != undefined
                       <span className="mr-1 p-1 px-2 font-bold    ">
                         {e.classLevel.toUpperCase()}
                       </span>
-                      <span className="mr-1 p-1 px-2 border-l border-gray-400  font-bold  ">
+                      <span className="mr-1 p-1 px-2   font-bold  ">
                         {e.subjectType.toUpperCase()}
                       </span>
-                      <span className="mr-1 p-1 px-2 border-l border-gray-400 font-bold">
+                      {/* <span className="mr-1 p-1 px-2 border-l border-gray-400 font-bold">
                         {e.totalViews} VIEWS
-                      </span>
+                      </span> */}
                     </div>
                     <div className="desc p-2 text-gray-800">
                       <a className="title font-bold block cursor-pointer dark:text-white" >
@@ -747,16 +747,16 @@ const SubStatus = accountSubscription[0] != undefined
                           ): "PLAY"}
                         </div>
 
-                    <div className="info-box text-xs flex mt-2 p-1 font-semibold justify-between text-gray-500 bg-gray-200 dark:bg-darksec">
+                    <div className="info-box text-sm flex mt-2 p-1 font-semibold justify-between text-gray-500 bg-gray-200 dark:bg-darksec">
                       <span className="mr-1 p-1 px-2 font-bolder">
                         {e.classLevel.replace(/(?:^|\s)\S/g, (res) => {
                             return res.toUpperCase();
                           })}
                       </span>
                       <span className="mr-1 p-1 px-2 border-l dark:border-none border-gray-300  font-bold">
-                        {e.totalViews} Views
+             
                       </span>
-                      <span className="mr-1 p-1 px-2 font-bold border-l dark:border-none border-gray-300 ">
+                      <span className="mr-1 p-1 px-2 font-bold  dark:border-none ">
                         {e.subjectType.replace(/(?:^|\s)\S/g, (res) => {
                             return res.toUpperCase();
                           })}
