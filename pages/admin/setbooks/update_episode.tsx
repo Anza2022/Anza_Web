@@ -26,7 +26,6 @@ const AdminUpdateSetbookEpisodePage = () => {
   const { selectedVideoId } = useContext(NavigationContext);
 
   let episode = setbooksEpisodes.filter((e) => e.id == selectedVideoId)[0];
-
   //state
   const [title, setTitle] = useState(episode != undefined ? episode.title : "");
   const [book, setBook] = useState(episode != undefined ? episode.book : "");
@@ -52,7 +51,6 @@ const AdminUpdateSetbookEpisodePage = () => {
       ) {
         setUpdating(true);
         let newepisode = episode;
-
         newepisode.title = title;
         newepisode.book = book;
         newepisode.episodeNumber = episodeNumber;
@@ -98,22 +96,22 @@ const AdminUpdateSetbookEpisodePage = () => {
     }
   };
 
-  useEffect(() => {
-    getVideoLessonFiles();
-  }, []);
-  const [loadingFiles, setLoadingFiles] = useState(false);
-  const [episodeFiles, setepisodeFiles] = useState<string[]>([]);
-  const getVideoLessonFiles = async () => {
-    setLoadingFiles(true);
-    try {
-      const files = await SetBooksRepo.getEpisodeFilesOnTheServer();
-      setepisodeFiles(files);
-    } catch (e) {
-      showToast(`${e}`, "error");
-    } finally {
-      setLoadingFiles(false);
-    }
-  };
+  // useEffect(() => {
+  //   getVideoLessonFiles();
+  // }, []);
+  // const [loadingFiles, setLoadingFiles] = useState(false);
+  // const [episodeFiles, setepisodeFiles] = useState<string[]>([]);
+  // const getVideoLessonFiles = async () => {
+  //   setLoadingFiles(true);
+  //   try {
+  //     const files = await SetBooksRepo.getEpisodeFilesOnTheServer();
+  //     setepisodeFiles(files);
+  //   } catch (e) {
+  //     showToast(`${e}`, "error");
+  //   } finally {
+  //     setLoadingFiles(false);
+  //   }
+  // };
   return (
     <AdminDashboardLayout>
       <div className="flex-1 flex flex-col bg-gray-200 dark:bg-darksec min-h-screen py-16 md:ml-52 w-full ">
@@ -167,7 +165,7 @@ const AdminUpdateSetbookEpisodePage = () => {
                 className="outline-none  text-xs bg-white rounded-xl px-3 py-2 h-full   md:w-5/6 dark:bg-darkmain  focus:ring-1 focus:ring-main"
               />
             </div>
-            {!loadingFiles && (
+            {/* {!loadingFiles && ( */}
               <div className="flex flex-col m-2">
                 <label htmlFor="chapterName">Vdocipher ID</label>
                 <input
@@ -181,15 +179,15 @@ const AdminUpdateSetbookEpisodePage = () => {
                   autoComplete="off"
                 />
                 <datalist id="episodeFiles">
-                  {episodeFiles
+                  {/* {episodeFiles
                     .map((e) => e)
                     .sort()
                     .map((e) => (
                       <option key={e} value={e} />
-                    ))}
+                    ))} */}
                 </datalist>
               </div>
-            )}
+             {/* )} */}
           </div>
 
           <div className="flex flex-wrap justify-around mt-9 w-full">

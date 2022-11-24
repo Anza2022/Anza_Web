@@ -29,9 +29,6 @@ const UpdatePaper = () => {
   const [description, setDescription] = useState(
     talk != undefined ? talk.description : ""
   );
-  const [thumbnailUrl, setThumbnailUrl] = useState(
-    talk != undefined ? talk.thumbnailUrl : ""
-  );
   const [videoUrl, setVideoUrl] = useState(
     talk != undefined ? talk.videoUrl : ""
   );
@@ -41,14 +38,12 @@ const UpdatePaper = () => {
       if (
         title !== talk.title ||
         guestName !== talk.guestName ||
-        thumbnailUrl !== talk.thumbnailUrl ||
         videoUrl !== talk.videoUrl ||
         description !== talk.description
       ) {
         setUpdating(true);
         let updatedTalk = talk;
         updatedTalk.title = title;
-        updatedTalk.thumbnailUrl = thumbnailUrl;
         updatedTalk.videoUrl = videoUrl;
         updatedTalk.guestName = guestName;
         updatedTalk.description = description;
@@ -86,29 +81,6 @@ const UpdatePaper = () => {
       showToast(`${e}`, "error");
     } finally {
       setDeleting(false);
-    }
-  };
-  const [uploadingThumbnail, setUploadingThumbnail] = useState(false);
-  const handleThumbnailUpload = async (e: any) => {
-    if (e.target.files[0] != null) {
-      try {
-        setUploadingThumbnail(true);
-        const formData = new FormData();
-        // Update the formData object
-        formData.append("photo", e.target.files[0], e.target.files[0].name);
-        formData.append("type", "career");
-
-        let res = await axios.post(
-          "https://anzaacademy.co/anzaapi/upload_thumbnail/lesson",
-          formData
-        );
-        setUploadingThumbnail(false);
-
-        setThumbnailUrl(res.data.url);
-        showToast("upload success", "success");
-      } catch (e) {
-        showToast(`${e}`, "error");
-      }
     }
   };
 
@@ -160,48 +132,6 @@ const UpdatePaper = () => {
               value={videoUrl}
               onChange={(e) => setVideoUrl(e.target.value)}
               className="outline-none bg-white rounded-xl px-3 py-2 dark:bg-darkmain"
-            />
-          </div>
-          <div className="w-96 text-3xl flex justify-center my-3">
-            {thumbnailUrl == "" ? (
-              uploadingThumbnail ? (
-                <div className="bg-main p-2.5 px-4 cursor-pointer text-white text-lg font-bold rounded-xl flex justify-center items-center">
-                  {" "}
-                  <LoadingComponent
-                    loading={uploadingThumbnail}
-                    color="white"
-                  />
-                  <p className="text-sm">Uploading Thumbanil ...</p>
-                  <p className="ml-2 text-xs">please wait</p>
-                </div>
-              ) : (
-                <label
-                  htmlFor="paper"
-                  className="bg-main p-1.5 px-4 cursor-pointer text-white text-lg font-bold rounded-xl"
-                >
-                  Upload Thumbnail
-                </label>
-              )
-            ) : (
-              <div className="flex flex-col">
-                <p className="text-sm">Talk Thumbnail</p>
-            <img src={`https://anzaacademy.co/anzaapi/view_thumbnail/career/${thumbnailUrl}`} 
-            alt="missing img" className="w-[50%] h-[75%] text-sm" />
-                <label
-                  htmlFor="paper"
-                  className="bg-main p-1.5 px-4 mt-4 cursor-pointer text-white text-lg font-bold rounded-xl"
-                >
-                  Change Thumbnail
-                </label>
-              </div>
-            )}
-            <input
-              type="file"
-              id="paper"
-              name="paper"
-              accept="image/*"
-              className="hidden "
-              onChange={handleThumbnailUpload}
             />
           </div>
         </div>

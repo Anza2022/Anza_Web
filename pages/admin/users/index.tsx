@@ -14,12 +14,9 @@ const AdminAppUsersPage = () => {
   const [loading, setLoading] = useState(false);
   const [userphonenumber, setUserphonenumber] = useState("+254");
   const [users, setUsers] = useState<UserModel[]>([]);
+  const { setSelectedVideoId } = useContext(NavigationContext);
 
   const GetUsers = async () => {
-    if (userphonenumber.length < 10) {
-      showToast("invalid phonenumber", "error");
-      return;
-    }
     setLoading(true);
     try {
       let Allusers = await UserCrudRepo.getAllUsers();
@@ -75,26 +72,26 @@ const AdminAppUsersPage = () => {
                 <th className="w-80 ">Name</th>
                 <th className="w-28 ">School</th>
                 <th className="w-44">Account Type</th>
-                <th className="w-44">Subscribed</th>
+                <th className="w-44">Phone Number</th>
                 <th className="w-60">Joined On </th>
               </thead>
-              {/* {talks.map((e, i) => ( */}
+              {users.map((e, i) => (
                 <tr
-                  // key={e.title}
+                   key={e.userId}
                   className="flex p-2 hover:bg-main hover:text-white  text-xs cursor-pointer border-b-2 border-gray-50"
                   onDoubleClick={() => {
                     router.push("/admin/users/update_user");
                   }}
                 >
                   {" "}
-                  <td className="w-10 ">1</td>
-                  <td className="w-80 ">dummy data</td>
-                  <td className="w-28 ">dummy data</td>
-                  <td className="w-44 ">dummy data</td>
-                  <td className="w-44 ">dummy data</td>
-                  <td className="w-44 ">dummy data</td>
+                  <td className="w-10 ">{`${i+1} `}.</td>
+                  <td className="w-80 ">{e.userName}</td>
+                  <td className="w-28 ">{e.schoolName}</td>
+                  <td className="w-44 ">{e.accountType}</td>
+                  <td className="w-44 ">{e.phoneNumber}</td>
+                  <td className="w-44 ">{e.createdAt}</td>
                 </tr>
-               {/* ))} */}
+                ))}
             </table>
           </div>
         )}

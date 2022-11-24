@@ -16,7 +16,6 @@ const AdminAppUsersPage = () => {
   const [saving, setSaving] = useState(false);
   const [newSchool, setNewSchool] = useState("");
   const { setSelectedVideoId } = useContext(NavigationContext);
-
 const { schools, setSchools } = useContext(AppDataContext);
 console.log(schools)
 

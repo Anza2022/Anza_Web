@@ -20,7 +20,6 @@ const AdminSchemesOfWorkPage = () => {
   const [loading, setLoading] = useState(false);
   async function getSetbookEpisodes() {
     setLoading(true);
-
     try {
       let episodes = await SetBooksRepo.getSetbooksEpisodes();
       setSetbooksEpisodes(episodes);

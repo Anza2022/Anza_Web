@@ -48,7 +48,7 @@ class UserCrudRepo {
 
   static async updateUser(updatedUser: UserModel): Promise<boolean> {
     let res = await axiosInstance.patch(
-      `/user/${updatedUser.userId}`,
+      `https://8c70-102-217-158-14.in.ngrok.io/updateuser/${updatedUser.userId}`,
       updatedUser.toMap()
     );
     if (res.status == 200) {
@@ -64,7 +64,7 @@ class UserCrudRepo {
 
   static async getAllUsers(): Promise<UserModel[]> {
     let res = await axiosInstance.get(
-      `/users/`,
+      `https://8c70-102-217-158-14.in.ngrok.io/getusers`,
       {
         headers: {
           Authorization: `Bearer ${decryptString(
@@ -78,7 +78,7 @@ class UserCrudRepo {
       if (res.data == null) {
         return [];
       }
-      alert(res.data.length);
+      //alert(res.data.length);
       let allschools = res.data.map((e: any) => UserModel.fromJson(e));
       return allschools;
     } else if (res.status == apiErrorCode) {

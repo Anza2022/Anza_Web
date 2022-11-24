@@ -27,7 +27,6 @@ class SetBooksRepo {
 
       let episodes = res.data.map((e: any) => SetbookEpisode.fromJson(e));
       return episodes;
-
       //   return props.sort(
       //     (a: ExaminerTalk, b: ExaminerTalk) =>
       //       new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -40,6 +39,8 @@ class SetBooksRepo {
       throw "unable to get setbook episodes, try again later";
     }
   }
+
+
   static async addSetbookEpisode(
     episode: SetbookEpisode
   ): Promise<SetbookEpisode> {
@@ -110,6 +111,8 @@ class SetBooksRepo {
       throw "unable to delete , try again later";
     }
   }
+
+  
   static async getEpisodeFilesOnTheServer(): Promise<string[]> {
     let res = await axiosInstance.get(
       `/setbook_files/all`,
