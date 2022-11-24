@@ -246,14 +246,13 @@ class UserCrudRepo {
 // forgot
   static async resetPassword(
     email: string,
-  ): Promise<[""]> {
+  ): Promise<boolean> {
     try {
       let res = await axiosInstance.post(
         `https://anzaacademy.co/auth/forgotpassword?email=${email}`,
       );
       if (res.status == 200) {
-        let data = res.data;
-        return data;
+        return true;
       } else if (res.status == apiErrorCode) {
         throw res.data["message"];
       } else {
@@ -272,7 +271,6 @@ class UserCrudRepo {
   ): Promise<boolean> {
     try {
       let url =`https://anzaacademy.co/auth/resetpassword/${resettoken}?newpassword=${newpassword}`;
-      console.log(url);
       let res = await axiosInstance.post(url);
       if (res.status == 200) {
         console.log(res.data);
@@ -287,7 +285,7 @@ class UserCrudRepo {
     }
   }
 
-// via profile
+// reset pwd via profile
   static async changePasswordViaProfile(
     id: string,
     creditials: {
