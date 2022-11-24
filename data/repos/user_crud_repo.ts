@@ -64,7 +64,7 @@ class UserCrudRepo {
 
   static async getAllUsers(): Promise<UserModel[]> {
     let res = await axiosInstance.get(
-      `/user`,
+      `/users/`,
       {
         headers: {
           Authorization: `Bearer ${decryptString(

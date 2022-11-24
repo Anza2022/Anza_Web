@@ -1,7 +1,9 @@
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AllSchoolsRepo from "../../../data/repos/all_schools_repo";
 import SchoolModel from "../../../models/curriculum/school_model";
+import { AppDataContext } from "../../../presentation/contexts/app_data_context";
+import { NavigationContext } from "../../../presentation/contexts/navigation_state_controller";
 import AdminDashboardLayout from "../../../presentation/layouts/admin_dashboard_layout";
 import {
   formatDateString,
@@ -9,10 +11,14 @@ import {
 } from "../../../presentation/utils/helper_functions";
 
 const AdminAppUsersPage = () => {
-  const [schools, setSchools] = useState<SchoolModel[]>([]);
+  //const [MYschools, setMYSchools] = useState<SchoolModel[]>([]);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [newSchool, setNewSchool] = useState("");
+  const { setSelectedVideoId } = useContext(NavigationContext);
+
+const { schools, setSchools } = useContext(AppDataContext);
+console.log(schools)
 
   const router = useRouter();
   async function getSchools() {
@@ -78,6 +84,10 @@ const AdminAppUsersPage = () => {
             </tr>
             {schools.map((e, i) => (
               <tr
+              onDoubleClick={() => {
+                setSelectedVideoId(e.schoolId);
+                router.push("/admin/schools/update_school");
+              }}
                 key={i}
                 className=" bg-gray-50 dark:bg-darkmain text-left text-xs border-[1px] border-gray-300 dark:border-gray-500  hover:bg-main hover:text-white transition-all duration-75 cursor-pointer"
               >

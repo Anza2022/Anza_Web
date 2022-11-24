@@ -48,6 +48,8 @@ class AllSchoolsRepo {
     }
     return [];
   }
+
+  
 }
 
 export default AllSchoolsRepo;

@@ -11,23 +11,34 @@ import { NavigationContext } from "../../../presentation/contexts/navigation_sta
 import UserModel from "../../../models/user_models/user_model";
 
 const AdminAppUsersPage = () => {
-  const [ users, setUsers ] = useState(1);
   const [loading, setLoading] = useState(false);
   const [userphonenumber, setUserphonenumber] = useState("+254");
-  const searchUser = async () => {
+  const [users, setUsers] = useState<UserModel[]>([]);
+
+  const GetUsers = async () => {
     if (userphonenumber.length < 10) {
       showToast("invalid phonenumber", "error");
       return;
     }
     setLoading(true);
     try {
-      let dbschools = await UserCrudRepo.getAllUsers();
+      let Allusers = await UserCrudRepo.getAllUsers();
+      console.log(Allusers);
+      setUsers(Allusers);
     } catch (e) {
       showToast(`${e}`, "error");
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (users.length < 1) {
+      GetUsers();
+    }
+  }, []);
+
+
   return (
     <AdminDashboardLayout>
 
@@ -42,7 +53,7 @@ const AdminAppUsersPage = () => {
             <LoadingComponent loading={loading} color="white" />
             <p>Loading users</p>
           </div>
-        ) : users < 1 ? (
+        ) : users.length < 1 ? (
 <div className="flex w-full h-[75vh] justify-center items-center flex-col">
 <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
   <div className="flex">

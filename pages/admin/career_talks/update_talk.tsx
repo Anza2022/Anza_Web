@@ -94,15 +94,10 @@ const UpdatePaper = () => {
       try {
         setUploadingThumbnail(true);
         const formData = new FormData();
-
         // Update the formData object
         formData.append("photo", e.target.files[0], e.target.files[0].name);
         formData.append("type", "career");
 
-        // let res = await axios.post(
-        //   "http://localhost:8080/anzaapi/upload_thumbnail/lesson",
-        //   formData
-        // );
         let res = await axios.post(
           "https://anzaacademy.co/anzaapi/upload_thumbnail/lesson",
           formData
