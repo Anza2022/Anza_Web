@@ -16,8 +16,9 @@ const AdminAppUsersPage = () => {
   const [users, setUsers] = useState<UserModel[]>([]);
   const { setSelectedVideoId } = useContext(NavigationContext);
 
+
   const GetUsers = async () => {
-    setLoading(true);
+    setLoading(false);
     try {
       let Allusers = await UserCrudRepo.getAllUsers();
       console.log(Allusers);
@@ -80,18 +81,19 @@ const AdminAppUsersPage = () => {
                    key={e.userId}
                   className="flex p-2 hover:bg-main hover:text-white  text-xs cursor-pointer border-b-2 border-gray-50"
                   onDoubleClick={() => {
+                    setSelectedVideoId(e.userId);
                     router.push("/admin/users/update_user");
                   }}
                 >
                   {" "}
-                  <td className="w-10 ">{`${i+1} `}.</td>
+                 <td className="w-10 ">{`${i+1} `}.</td>
                   <td className="w-80 ">{e.userName}</td>
                   <td className="w-28 ">{e.schoolName}</td>
                   <td className="w-44 ">{e.accountType}</td>
                   <td className="w-44 ">{e.phoneNumber}</td>
-                  <td className="w-44 ">{e.createdAt}</td>
+                  <td className="w-44 ">{e.createdAt}</td>    
                 </tr>
-                ))}
+                 ))} 
             </table>
           </div>
         )}

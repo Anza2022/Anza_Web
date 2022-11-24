@@ -8,9 +8,10 @@ import {
 } from "../../../presentation/utils/constants";
 
 const AdminUpdateUserPage = () => {
-
-  const [updating, setUpdating] = useState(false);
+const [updating, setUpdating] = useState(false);
 const [deleting, setDeleting] = useState(false);
+
+
   return (
     <AdminDashboardLayout>
 <div className="flex-1 flex flex-col bg-gray-200 dark:bg-darksec min-h-screen py-16 md:ml-52 w-full ">

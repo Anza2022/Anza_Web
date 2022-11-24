@@ -119,7 +119,7 @@ const LoginComponent = () => {
       setBonusData([res[1]]);
       setAccountSubscription([res[2]]);
       setUserStats([res[3]]);
-      showError("Login successful. Now redirecting!");
+      showSuccess("Login successful. Now redirecting!");
       showToast("Login successful. Now redirecting", "success");
       setIsLoggedIn(true);
 
@@ -138,8 +138,17 @@ const LoginComponent = () => {
     setError(e);
     setTimeout(() => {
       setError("");
-    }, 3000);
+    }, 5000);
   };
+
+  const [success, setSuccess] = useState("");
+  const showSuccess = (e: string) => {
+    setSuccess(e);
+    setTimeout(() => {
+      setSuccess("");
+    }, 5000);
+  };
+
   return (
     <div className=" min-h-[320px]  bg-gray-50 dark:bg-darkmain z-10 shadow-sm shadow-gray-400 dark:shadow-gray-700 px-4 md:p-3  rounded-xl  hover:shadow-xl transition-all  ">
       <div className="flex flex-col  items-center    ">
@@ -178,6 +187,20 @@ const LoginComponent = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AnimatePresence>
+        {success !== "" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <p className="font-bold text-sm text-white rounded-md">{success}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="flex flex-col my-2 relative text-sm">
         <label htmlFor="phonenumber" className="mb-1">
           Phone Number

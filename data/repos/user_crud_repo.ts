@@ -73,12 +73,11 @@ class UserCrudRepo {
         },
       }
     );
-   console.log(res);
     if (res.status == 200) {
       if (res.data == null) {
         return [];
       }
-      //alert(res.data.length);
+      console.log(res.data.data)
       let allschools = res.data.map((e: any) => UserModel.fromJson(e));
       return allschools;
     } else if (res.status == apiErrorCode) {

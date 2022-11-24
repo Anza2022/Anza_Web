@@ -123,7 +123,7 @@ const ResetPasswordComponent = () => {
      let res = await UserCrudRepo.changePassword(newpassword, resettoken);
 // console.log(res);
 if(res.toString() === "password reset successfully"){
-  showError("Password changed successfully! Now login.");
+  showSuccess("Password changed successfully! Now login.");
   showToast(`Password changed successfully! Now login.`, "success");
   setTimeout(() => {
     router.push("/login");
@@ -152,8 +152,18 @@ if(res.toString() === "password reset successfully"){
     setError(e);
     setTimeout(() => {
       setError("");
-    }, 3000);
+    }, 5000);
   };
+
+  const [success, setSuccess] = useState("");
+  const showSuccess = (e: string) => {
+    setSuccess(e);
+    setTimeout(() => {
+      setSuccess("");
+    }, 5000);
+  };
+
+
   return (
     <div className=" min-h-[320px]  bg-gray-50 dark:bg-darkmain z-10 shadow-sm shadow-gray-400 dark:shadow-gray-700 px-4 md:p-3  rounded-xl  hover:shadow-xl transition-all  ">
       <div className="flex flex-col  items-center    ">
@@ -170,13 +180,27 @@ if(res.toString() === "password reset successfully"){
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             {/* <p className="font-bold text-sm">Oops Error</p> */}
             <p className="font-bold text-sm text-white rounded-md">{error}</p>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <AnimatePresence>
+        {success !== "" && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
+            <p className="font-bold text-sm text-white rounded-md">{success}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
 
               <div className="flex flex-col mt-5 relative text-sm">
               <label htmlFor="password" className="mb-1">New Password</label>
