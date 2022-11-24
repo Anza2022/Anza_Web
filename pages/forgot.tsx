@@ -81,7 +81,15 @@ return;
 setLoading(true);
 try {
 let res = await UserCrudRepo.resetPassword(email);
-showToast(`Reset instructions has been sent to your email address! Check SPAM/MAIL box.`, "success");
+//console.log(res)
+if(res.toString() === "User des not exist"){
+  showError("User with the email provided does not exist.");
+  showToast(`User with the email provided does not exist.`, "error");
+}else{
+  showError("Reset instructions has been sent to your email address!");
+  showToast(`Reset instructions has been sent to your email address! Check SPAM/MAIL box.`, "success");
+}
+
 setLoading(false);
 } catch (e) {
 showError(`${e}`);

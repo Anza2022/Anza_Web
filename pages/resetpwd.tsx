@@ -121,12 +121,25 @@ const ResetPasswordComponent = () => {
     setLoading(true);
     try {
      let res = await UserCrudRepo.changePassword(newpassword, resettoken);
-      showToast(`Password changed successfully!`, "success");
+// console.log(res);
+if(res.toString() === "password reset successfully"){
+  showError("Password changed successfully! Now login.");
+  showToast(`Password changed successfully! Now login.`, "success");
+  setTimeout(() => {
+    router.push("/login");
+  }, 1000);
+}else if(res.toString() === "user doesnot exist"){
+  showError("Invalid / Expired reset token! Kindly request another one")
+  showToast(`Invalid / Expired reset token! Kindly request another one.`, "error");
+  setTimeout(() => {
+    router.push("/forgot");
+  }, 1000);
+}
       setLoading(false);
     } catch (e) {
       showError(`${e}`);
     } finally {
-     
+      setLoading(false);
     }
     
   };
