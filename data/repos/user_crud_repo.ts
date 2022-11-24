@@ -249,7 +249,7 @@ class UserCrudRepo {
   ): Promise<[""]> {
     try {
       let res = await axiosInstance.post(
-        `https://anzaacademy.com/forgotpassword?email=${email}`,
+        `https://anzaacademy.co/auth/forgotpassword?email=${email}`,
       );
       if (res.status == 200) {
         let data = res.data;
@@ -271,7 +271,7 @@ class UserCrudRepo {
     resettoken?: string,
   ): Promise<boolean> {
     try {
-      let url =`https://anzaacademy.com/resetpassword/${resettoken}?newpassword=${newpassword}`;
+      let url =`https://anzaacademy.co/auth/resetpassword/${resettoken}?newpassword=${newpassword}`;
       console.log(url);
       let res = await axiosInstance.post(url);
       if (res.status == 200) {
