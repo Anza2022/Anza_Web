@@ -18,7 +18,7 @@ const [deleting, setDeleting] = useState(false);
 const router = useRouter();
 const { selectedVideoId } = useContext(NavigationContext);
 const { schools, setSchools } = useContext(AppDataContext);
-console.log(schools)
+// console.log(schools)
 let school = schools.filter((e) => e.schoolId == selectedVideoId)[0];
 
 //state
@@ -55,7 +55,7 @@ const updateSchool = async () => {
       updatedTalk.isAuthorisedByAdmin = schoolIsAuthorized;
       updatedTalk.createdAt = schoolCreatedAt;
       try {
-          showToast("Updating coming soon", "success");        
+          showToast("Coming soon", "success");        
       } catch (e) {
         showToast(`${e}`, "error");
       } finally {

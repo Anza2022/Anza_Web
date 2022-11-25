@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from "uuid";
 
 function showToast(text: string, type: string) {
   if (type == "success") {
-    toast.success(text, { className: "text-[14px]", duration: 3000 });
+    toast.success(text, { className: "text-[14px]", duration: 5000 });
   } else if ((type = "error")) {
-    toast.error(text, { className: "text-[14px]", duration: 3000 });
+    toast.error(text, { className: "text-[14px]", duration: 5000 });
   }
 }
 

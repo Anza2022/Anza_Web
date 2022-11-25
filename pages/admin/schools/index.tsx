@@ -17,7 +17,7 @@ const AdminAppUsersPage = () => {
   const [newSchool, setNewSchool] = useState("");
   const { setSelectedVideoId } = useContext(NavigationContext);
 const { schools, setSchools } = useContext(AppDataContext);
-console.log(schools)
+// console.log(schools)
 
   const router = useRouter();
   async function getSchools() {

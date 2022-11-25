@@ -122,8 +122,10 @@ const LoginComponent = () => {
       showSuccess("Login successful. Now redirecting!");
       showToast("Login successful. Now redirecting", "success");
       setIsLoggedIn(true);
-
+      setTimeout(() => {
       router.push("/dashboard/videos");
+      }, 3000);
+
     } catch (e) {
       showError(`${e}`);
     } finally {

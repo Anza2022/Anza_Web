@@ -127,13 +127,13 @@ if(res.toString() === "password reset successfully"){
   showToast(`Password changed successfully! Now login.`, "success");
   setTimeout(() => {
     router.push("/login");
-  }, 1000);
+  }, 3000);
 }else if(res.toString() === "user doesnot exist"){
   showError("Invalid / Expired reset token! Kindly request another one")
   showToast(`Invalid / Expired reset token! Kindly request another one.`, "error");
   setTimeout(() => {
     router.push("/forgot");
-  }, 1000);
+  }, 3000);
 }
       setLoading(false);
     } catch (e) {

@@ -1,15 +1,102 @@
 import router from "next/router";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import LoadingComponent from "../../../presentation/components/others/loading_component";
+import { NavigationContext } from "../../../presentation/contexts/navigation_state_controller";
+import { userModelContext } from "../../../presentation/contexts/userModelContext";
 import AdminDashboardLayout from "../../../presentation/layouts/admin_dashboard_layout";
 import {
   classOptions,
   subjectOptions,
 } from "../../../presentation/utils/constants";
+import { showToast } from "../../../presentation/utils/helper_functions";
 
 const AdminUpdateUserPage = () => {
 const [updating, setUpdating] = useState(false);
 const [deleting, setDeleting] = useState(false);
+const { selectedVideoId } = useContext(NavigationContext);
+const { userContext, SetUserContext } = useContext(userModelContext);
+let user = userContext.filter((e) => e.userId == selectedVideoId)[0];
+
+//state
+const [userName, setUsername] = useState(user != undefined ? user.schoolName : "");
+
+const [email, setEmail] = useState(
+  user != undefined ? user.email : ""
+);
+const [classLevel, setClassLevel] = useState(
+  user != undefined ? user.classLevel : ""
+);
+const [phoneNumber, setPhoneNumber] = useState(
+  user != undefined ? user.phoneNumber : ""
+);
+const [isAdmin, setIsAdmin] = useState(
+  user != undefined ? user.isAdmin : false
+);
+const [accountType, setAccountType] = useState(
+  user != undefined ? user.accountType : ""
+);
+const [createdAt, setCreatedAt] = useState(
+  user != undefined ? user.createdAt : ""
+);
+
+const [primarySubject, setPrimarySubjects] = useState(
+  user != undefined ? user.primarySubject : ""
+);
+const [schoolName, setSchool] = useState(
+  user != undefined ? user.schoolName : ""
+);
+const [secondarySubject, setsecondarySubject] = useState(
+  user != undefined ? user.secondarySubject : ""
+);
+
+const updateUser = async () => {
+  if (user != undefined) {
+    if (
+      userName !== user.userName ||
+      schoolName !== user.schoolName ||
+      phoneNumber !== user.phoneNumber ||
+      isAdmin !== user.isAdmin ||
+      createdAt !== user.createdAt ||
+      primarySubject !== user.primarySubject ||
+      email !== user.email 
+    ) {
+      setUpdating(true);
+      let updatedUser = user;
+      updatedUser.email = email;
+      updatedUser.primarySubject = primarySubject;
+      updatedUser.schoolName = schoolName;
+      updatedUser.email = email;
+      updatedUser.secondarySubject = secondarySubject;
+      updatedUser.accountType = accountType;
+      updatedUser.phoneNumber = phoneNumber;
+      updatedUser.isAdmin = isAdmin;
+      try {
+          showToast("Coming soon", "success");        
+      } catch (e) {
+        showToast(`${e}`, "error");
+      } finally {
+        setUpdating(false);
+      }
+    } else {
+      showToast("Data up to date", "success");
+    }
+  }
+};
+
+const deleteUser = async () => {
+  if (deleting) {
+    return;
+  }
+  setDeleting(true);
+  try {
+  showToast("Coming sooon", "success");
+  } catch (e) {
+    showToast(`${e}`, "error");
+  } finally {
+    setDeleting(false);
+  }
+};
 
 
   return (
@@ -25,8 +112,8 @@ const [deleting, setDeleting] = useState(false);
             <div className="flex flex-col m-2">
               <label htmlFor="title">Name</label>
               <input
-               // value={title}
-               // onChange={(e) => setTitle(e.target.value)}
+                value={userName}
+                onChange={(e) => setUsername(e.target.value)}
                 className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
               />
             </div>
@@ -35,8 +122,8 @@ const [deleting, setDeleting] = useState(false);
               <select
                 name="classlevel"
                 id="classlevel "
-              //  value={classLevel}
-                //onChange={(v) => setClassLevel(v.target.value.toLowerCase())}
+               value={classLevel}
+                onChange={(v) => setClassLevel(v.target.value.toLowerCase())}
                 className="px-3 py-1.5 w-72  outline-none bg-white rounded-xl dark:bg-darkmain "
               >
                 {classOptions.map((e) => (
@@ -47,128 +134,58 @@ const [deleting, setDeleting] = useState(false);
               </select>
             </div>
             <div className="flex flex-col m-2">
-              <label htmlFor="title">Subject Type Level</label>
-              <select
-                name="subject"
-                id="subject "
-              //  value={subjectType}
-              // onChange={(v) => setSubjectType(v.target.value)}
-                className="px-3 py-1.5 w-72  outline-none bg-white rounded-xl dark:bg-darkmain "
-              >
-                {subjectOptions.map((e) => (
-                  <option key={e} value={e.toLowerCase()}>
-                    {e}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="flex flex-col m-2">
-              <label htmlFor="topic"> Chapter Name</label>
+              <label htmlFor="topic"> Account Type</label>
               <input
-              //  value={chapter}
-                // onChange={(e) => setChapter(e.target.value)}
+                value={accountType}
+                onChange={(e) => setAccountType(e.target.value)}
                 className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
               />
             </div>
             <div className="flex flex-col m-2">
-              <label htmlFor="topic"> Topic Name</label>
+              <label htmlFor="topic"> Phone Number</label>
               <input
-               // value={topicName}
-                // onChange={(e) => setTopicName(e.target.value)}
+                value={phoneNumber}
+                 onChange={(e) => setPhoneNumber(e.target.value)}
                 className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
               />
             </div>
             <div className="flex flex-col m-2">
-              <label htmlFor="topic"> Teacher Name</label>
+              <label htmlFor="topic"> School</label>
               <input
-               // value={teacherName}
-                // onChange={(e) => setTeacherName(e.target.value)}
+               value={schoolName}
+                 onChange={(e) => setSchool(e.target.value)}
                 className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
-              />
-            </div>
-            <div className="flex flex-col m-2">
-              <label htmlFor="topic"> Lesson Brief</label>
-              <textarea
-               // value={brief}
-                 // onChange={(e) => setBrief(e.target.value)}
-                className="outline-none bg-white rounded-xl px-3 py-2  md:w-[600px] w-[350px]  dark:bg-darkmain"
               />
             </div>
             <div className="flex space-x-2 m-3 items-center w-72 cursor-pointer">
               <input
-              //  checked={isPractical}
+                checked={isAdmin}
                 className=" w-5 h-6 rounded-xl "
                 type="checkbox"
-              //  onChange={(e) => setIsPractical(e.target.checked)}
+               onChange={(e) => setIsAdmin(e.target.checked)}
               />
-              <p className="text-lg">Is Practical Lesson</p>
+              <p className="text-lg">Is Admin</p>
             </div>
+            <div className="flex flex-col m-2">
+            <label htmlFor="chapternumber"> Joined On</label>
+            <input
+              value={createdAt}
+               onChange={(e) => setCreatedAt(e.target.value)}
+              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              type="text"
+            />
           </div>
-        </div>
 
-        <div className="flex flex-wrap w-full mt-10 px-5 justify-start">
-          <div className="flex flex-col m-2">
-            <label htmlFor="chapternumber"> Chapter Number</label>
-            <input
-              //value={chapterNumber}
-              // onChange={(e) => setChapterNumber(parseInt(e.target.value))}
-              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
-              type="number"
-            />
-          </div>
-          <div className="flex flex-col m-2">
-            <label htmlFor="topicPriority"> Topic Number</label>
-            <input
-             // value={topicPriority}
-              // onChange={(e) => setTopicPriority(parseInt(e.target.value))}
-              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
-              type="number"
-            />
-          </div>
-          <div className="flex flex-col m-2">
-            <label htmlFor="topicPriority"> Video Number</label>
-            <input
-             // value={videoPriority}
-              // onChange={(e) => setVideoPriority(parseInt(e.target.value))}
-              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
-              type="number"
-            />
-          </div>
-          <div className="flex flex-col m-2">
-            <label htmlFor="topicPriority">Total Views</label>
-            <input
-             // value={totalViews}
-              // onChange={(e) => setTotalViews(parseInt(e.target.value))}
-              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
-              type="number"
-            />
-          </div>
-          <div className="flex space-x-2 m-3 items-center w-72 cursor-pointer">
-            <input
-           //   checked={commentsOff}
-              className=" w-5 h-6 rounded-xl "
-              type="checkbox"
-           //   onChange={(e) => setCommentsOff(e.target.checked)}
-            />
-            <p className="text-lg">Turn Comments Off</p>
-          </div>
-          <div className="flex space-x-2 m-3 items-center w-72 cursor-pointer">
-            <input
-            //  checked={isPublished}
-              //onChange={(e) => setIsPublished(e.target.checked)}
-              className=" w-5 h-6 rounded-xl "
-              type="checkbox"
-            />
-            <p className="text-lg">Is Published</p>
+          
           </div>
         </div>
 
         <div className="flex flex-wrap justify-around mt-9">
           <div
-           // onClick={updateLesson}
+            onClick={updateUser}
             className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-main p-2 text-white"
           >
-            {/* {updating && <LoadingComponent loading={updating} color="white" />} */}
+            {updating && <LoadingComponent loading={updating} color="white" />}
             <p className="font-bold">
               {" "}
               {updating ? "updating ..." : "Update User"}
@@ -181,10 +198,10 @@ const [deleting, setDeleting] = useState(false);
             Cancel Process
           </div>
           <div
-            //onClick={deleteVideoLesson}
+            onClick={deleteUser}
             className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-red-600 p-2 text-white"
           >
-            {/* {deleting && <LoadingComponent loading={deleting} color="white" />} */}
+            {deleting && <LoadingComponent loading={deleting} color="white" />}
             <p className="font-bold">
               {" "}
               {deleting ? "deleting ..." : " Delete User"}

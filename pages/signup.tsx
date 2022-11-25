@@ -131,7 +131,9 @@ const SignUpPage = () => {
       setAccountSubscription([res[2]]);
       // setUserStats([res[3]]);
       showToast("Registration successful, Welcome on board. Now redirecting...", "success");
-      router.push("/dashboard/videos");
+      setTimeout(() => {
+        router.push("/dashboard/videos");
+        }, 3000);
       setIsLoggedIn(true);
     } catch (e) {
       showToast(`${e}`, "error");
@@ -140,8 +142,9 @@ const SignUpPage = () => {
     }
   };
 
-  //get the invite code and add it
+  
 
+  //get the invite code and add it
   const [currentStep, setCurrentStep] = useState(0);
   const validateFirstStep = (): boolean => {
     if (accountType == "student") {

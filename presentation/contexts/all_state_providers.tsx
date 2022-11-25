@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { PropsWithChildren } from "react";
 import { Toaster } from "react-hot-toast";
 import AppDataController from "./app_data_context";
+import UserModelController from "./userModelContext";
 import { AppThemeProvider } from "./app_theme_controller";
 import CareerTalksController from "./career_talks_controller";
 import ExaminerTalksController from "./examiner_talks_controller";
@@ -28,6 +29,7 @@ const AllStateProviders = (props: PropsWithChildren<{}>) => {
       <NavigationStateController>
         <AppThemeProvider>
           <AppDataController>
+            <UserModelController>
             <GamifiedQuizesController>
               <VideoLessonsController>
                 <ExaminerTalksController>
@@ -37,6 +39,7 @@ const AllStateProviders = (props: PropsWithChildren<{}>) => {
                         {/* teachers account */}
                         <TeachersAccountController>
                           <NotificationsController>
+                            
                             <LiveClassesController>
                               <div>
                                 <Toaster position="bottom-center" />
@@ -51,6 +54,7 @@ const AllStateProviders = (props: PropsWithChildren<{}>) => {
                 </ExaminerTalksController>
               </VideoLessonsController>
             </GamifiedQuizesController>
+            </UserModelController>
           </AppDataController>
         </AppThemeProvider>
       </NavigationStateController>
