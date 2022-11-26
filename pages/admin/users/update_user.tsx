@@ -150,6 +150,14 @@ const deleteUser = async () => {
               />
             </div>
             <div className="flex flex-col m-2">
+              <label htmlFor="topic"> Email Address</label>
+              <input
+                value={email}
+                 onChange={(e) => setEmail(e.target.value)}
+                className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              />
+            </div>
+            <div className="flex flex-col m-2">
               <label htmlFor="topic"> School</label>
               <input
                value={schoolName}
