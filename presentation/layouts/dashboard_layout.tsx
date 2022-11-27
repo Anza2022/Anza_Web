@@ -448,6 +448,9 @@ p-3 overflow-x-hidden dark:text-main mb-12"
               className="hidden md:flex w-24 md:w-32   cursor-pointer"
               width={100}
               height={60}
+              onClick={() => {
+                router.push("/");
+              }}
             />
           ) : (
             <Image
@@ -456,6 +459,9 @@ p-3 overflow-x-hidden dark:text-main mb-12"
               className="hidden md:flex w-24 md:w-28  ml-2 cursor-pointer"
               width={100}
               height={30}
+              onClick={() => {
+                router.push("/");
+              }}
             />
           )}
           <BackButton />
