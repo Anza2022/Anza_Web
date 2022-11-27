@@ -81,6 +81,10 @@ const SignUpPage = () => {
       showToast("Kindly enter your name", "error");
       return;
     }
+    if (email == "") {
+      showToast("Kindly enter your email", "error");
+      return;
+    }
     if (phoneNumber == "" || phoneNumber.length < 9 || phoneNumber.length > 9) {
       showToast("Invalid phone number", "error");
       return;
