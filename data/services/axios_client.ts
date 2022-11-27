@@ -11,7 +11,7 @@ import {
 const axiosInstance = axios.create({
   baseURL: "https://anzaacademy.co/anzaapi/",
   //baseURL: "http://127.0.0.1:8080/anzaapi", //telkom router
-  timeout: 15000,
+  timeout: 30000,
   headers: {},
 });
 
