@@ -332,7 +332,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
         <div className="fixed top-0   left-0 w-full h-[100%]  flex justify-center items-center bg-black bg-opacity-80 dark:bg-opacity-60 z-[2000] ">
           <div
             style={{ fontFamily: "sans-serif" }}
-            className="w-100 w-[80%] md:mt-0 rounded-lg flex flex-col  bg-white bg-opacity-0 p-2"
+            className="w-100 w-[80%]  rounded-lg flex flex-col  bg-white bg-opacity-0 p-2"
           >
             <div className="flex justify-between  items-center">
               <Image
@@ -386,15 +386,15 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
       </p> */}
 
       <p
-        className="text-xl mb-2 font-black font-normal text-center text-white dark:text-white"
+        className="text-xl mb-2 font-black font-normal  text-center text-white dark:text-white"
       >
         Student Pricing Plans      </p>
 
       <div
 className="w-full bg-indigo-800  text-left -mt-2  flex flex-col overflow-y-scroll scroll-touch
-p-3 overflow-x-hidden dark:text-main mb-12" style={{"height":"500px"}}
+p-3 overflow-x-hidden dark:text-main mb-12 " style={{"height":"500px"}}
 >
-<div className="py-3  pt-1 flex flex-wrap w-full  justify-around" style={{ fontFamily: "Overpass", fontWeight: 900 }}>
+<div className="py-3  md:mt-20 pt-1 flex flex-wrap w-full  justify-around" style={{ fontFamily: "Overpass", fontWeight: 900 }}>
 {plans.map((plan) => (
 <div className="w-84 -mt-3 rounded-lg mb-5   flex flex-col  bg-white dark:bg-darkmain  pb-6 ">
       <p className="text-center text-white font-bold text-1xl  rounded-t-lg bg-main dark:text-white p-2"           style={{ fontFamily: "Montserrat" }}>
