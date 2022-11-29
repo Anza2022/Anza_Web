@@ -92,7 +92,7 @@ const ChangePasswordComponent = () => {
       return;
     }
     if (amount_w === "") {
-      showToast("Kindly amount to withdraw", "error");
+      showToast("Kindly Enter Amount to withdraw", "error");
       return;
     }
     setLoading(true);

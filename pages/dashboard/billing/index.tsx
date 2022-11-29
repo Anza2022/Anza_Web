@@ -214,14 +214,14 @@ const RealtimePaymentComponent = () => {
 
   const getTotalPay = () => {
      if (selectedPlan == "Basic") {
-    return 1;
-     //  return 2000;
+    //return 1;
+     return 2000;
     } else if (selectedPlan == "Standard") {
-      return 2;
-       //return 2500;
+      //return 2;
+      return 2500;
     } else {
-      return 3;
-      // return 6800;
+    //return 3;
+     return 6800;
     }
   };
   const getNextPaymentDate = () => {
