@@ -167,7 +167,7 @@ setLoading(false);
                   className="outline-none p-2 rounded-lg focus:ring-2 ring-main ring-1  w-[300px]  md:w-96 "
                   placeholder=" Your email address"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail(e.target.value.toLowerCase())}
                   autoComplete="off"
                   autoCorrect="off"
                 />
