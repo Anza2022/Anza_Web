@@ -54,7 +54,7 @@ const UserBillingPage = () => {
           HOW TO MAKE YOUR PAYMENT
         </p>
 
-        <div className="flex justify-between mb-10 text-2sm p-2 bg-white dark:bg-darkmain font-normal">
+        <div className="flex justify-between mb-10 text-2sm p-2 bg-white dark:bg-darkmain font-normal hidden md:flex ">
           <p className=" mr-5">1. Choose A Plan</p>
           <p className="mr-5 text-main">{">>>"}</p>
           <p className=" mr-5 ">2. Confirm the number to pay with</p>
@@ -98,9 +98,9 @@ const BillingDetailsComponent = () => {
   }, [remaingTime]);
 
   return (
-    <div className="flex flex-col w-96 md:w-[350px]  bg-white dark:bg-darkmain rounded-lg mt-16 md:mt-0">
+    <div className="flex flex-col w-96 md:w-[350px]  bg-white dark:bg-darkmain rounded-lg mt-16 md:mt-5">
       <div className="p-4 max-w-md bg-white rounded-lg  sm:p-8 dark:bg-darkmain ">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-4 ">
           <h5
             className="text-xl font-bold leading-none text-main dark:text-indigo-400 "
             style={{ fontFamily: "Montserrat" }}
@@ -214,14 +214,14 @@ const RealtimePaymentComponent = () => {
 
   const getTotalPay = () => {
      if (selectedPlan == "Basic") {
-      //return 1;
-       return 2000;
+    return 1;
+     //  return 2000;
     } else if (selectedPlan == "Standard") {
-      //return 2;
-       return 2500;
+      return 2;
+       //return 2500;
     } else {
-      //return 3;
-       return 6800;
+      return 3;
+      // return 6800;
     }
   };
   const getNextPaymentDate = () => {
@@ -339,8 +339,58 @@ const RealtimePaymentComponent = () => {
   // };
   return (
     <div className="flex flex-col w-96 md:w-[550px] bg-white dark:bg-darkmain  rounded-lg  md:mt-0">
+
+        <div className="flex flex-col pb-0 px-5 mb-0">
+          <p className="font-normal mt-2 mb-2">Choose Your Preferred Plan</p>
+          <div className="flex justify-between font-normal  mb-3">
+            {["Basic", "Standard", "Savings"].map((e, i) => (
+              <div
+                key={e}
+                onClick={() => {
+                  console.log(e);
+                  console.log(accountSubscription[0] != undefined
+                    ? accountSubscription[0].currentSubscriptionPlan
+                    : "");
+                  if(e == (accountSubscription[0] != undefined
+                    ? accountSubscription[0].currentSubscriptionPlan
+                    : "" ) ) {
+                      showToast("You are already subscribed to this package!", "error")
+                    }else{
+                      showToast(`You are about to subscribe to ${e}`, "success")
+                              setSelectedPlan(e);     
+                    }
+                       
+                }}
+                className={`w-32 h-10 mr-2 flex items-center justify-center cursor-pointer rounded-md transition-all
+                ${
+                  selectedPlan == e
+                    ? "bg-main text-white"
+                    : "bg-gray-200 dark:bg-darksec"
+                }                
+
+                `}
+              >
+                <p className="">{e}</p>
+              </div>
+            ))}
+          </div>
+          </div>
+
+          <div className="flex flex-col pb-4 px-5 mb-0">
+          <div className="flex justify-between font-normal">
+            {["KSH 2,000", "KSH 2,500", "KSH 6,800"].map((l, m) => (
+              <div
+                key={l}
+                className={`w-32 h-10 mr-2 flex items-center justify-center cursor-pointer  transition-all`}
+              >
+                <p className="">{l}</p>
+              </div>
+            ))}
+          </div>
+          </div>
+
       <p
-        className="text-center font-black text-lg text-main dark:text-indigo-400 pt-3 mb-4"
+        className="text-center font-black text-lg text-main dark:text-indigo-400 pt-0 mb-5"
         style={{ fontFamily: "Montserrat" }}
       >
         PAY USING M-PESA
@@ -415,39 +465,6 @@ const RealtimePaymentComponent = () => {
 
       {!processingPayment && (
         <div className="flex flex-col pb-4 px-5">
-          <p className="font-normal mt-2 mb-2">Choose Your Preferred Plan</p>
-          <div className="flex justify-between font-normal  mb-3">
-            {["Basic", "Standard", "Savings"].map((e, i) => (
-              <div
-                key={e}
-                onClick={() => {
-                  console.log(e);
-                  console.log(accountSubscription[0] != undefined
-                    ? accountSubscription[0].currentSubscriptionPlan
-                    : "");
-                  if(e == (accountSubscription[0] != undefined
-                    ? accountSubscription[0].currentSubscriptionPlan
-                    : "" ) ) {
-                      showToast("You are already subscribed to this package!", "error")
-                    }else{
-                      showToast(`You are about to subscribe to ${e}`, "success")
-                              setSelectedPlan(e);     
-                    }
-                       
-                }}
-                className={`w-32 h-10 mr-2 flex items-center justify-center cursor-pointer rounded-md transition-all
-                ${
-                  selectedPlan == e
-                    ? "bg-main text-white"
-                    : "bg-gray-200 dark:bg-darksec"
-                }                
-
-                `}
-              >
-                <p className="">{e}</p>
-              </div>
-            ))}
-          </div>
           {/* <div className="flex justify-between  mb-2 items-center">
           <p className="font-bold">Choose Number of terms</p>
           <input

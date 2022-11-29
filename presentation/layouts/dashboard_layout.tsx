@@ -988,7 +988,7 @@ p-3 overflow-x-hidden dark:text-main mb-12 " style={{"height":"500px"}}
           showAvatarMenu ? "" : "hidden"
         }`}
       >
-        <div className="fixed top-16 right-1 bg-white dark:bg-darksec h-36 w-44 rounded-md mr-0.5 md:mr-2 flex flex-col   ">
+        <div className="fixed top-16 right-1 bg-white dark:bg-darksec h-44 w-44 rounded-md mr-0.5 md:mr-2 flex flex-col   ">
           <div className="absolute -top-4 text-white right-8 md:right-12">
             <MdArrowDropUp size={28} className="" />
           </div>
@@ -1003,6 +1003,12 @@ p-3 overflow-x-hidden dark:text-main mb-12 " style={{"height":"500px"}}
             className="w-full p-2 hover:bg-main flex pl-5  items-center cursor-pointer hover:text-white hover:rounded-r-lg "
           >
             My Billing
+          </div>
+          <div
+            onClick={() => router.push("/dashboard/profile/anzaTeam")}
+            className="w-full p-2 hover:bg-main flex pl-5  items-center cursor-pointer hover:text-white hover:rounded-r-lg "
+          >
+            My Team
           </div>
           <div
             onClick={() => {
