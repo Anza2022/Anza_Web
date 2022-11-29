@@ -274,6 +274,21 @@ const BonusDetailsComponent = () => {
 
 
 const UserTableComponent = () => {
+
+  var word="TEST@GMAIL.COM", masked_mail=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
+if(word.length > 4) {
+  masked_mail = masked_mail.substring(0, word.length-12) + word.substring(word.length-12);
+} else {
+  masked_mail = word;
+}
+
+var word="254745682815", masked_phone=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
+if(word.length > 4) {
+  masked_phone = masked_phone.substring(0, word.length-4) + word.substring(word.length-4);
+} else {
+  masked_phone = word;
+}
+
   return (
 
     <div className="flex w-[390px] md:w-[82%] flex-col   rounded-md dark:bg-darkmain bg-white m-1 md:m-5">
@@ -291,13 +306,16 @@ const UserTableComponent = () => {
                     FULL NAME
                 </th>
                 <th scope="col" className="py-3 px-6">
-                    EMAIL
+                EMAIL ADDRESS
                 </th>
                 <th scope="col" className="py-3 px-6">
-                    PHONE
+               PHONE NUMBER
                 </th>
                 <th scope="col" className="py-3 px-6">
                     PACKAGE
+                </th>
+                <th scope="col" className="py-3 px-6">
+                    JOINED ON
                 </th>
                 <th scope="col" className="py-3 px-6">
                     STATUS
@@ -313,19 +331,24 @@ const UserTableComponent = () => {
                     TESTER ANZA
                 </td>
                 <td className="py-4 px-6">
-                    TEST@GMAIL.COM
+                {masked_mail}
                 </td>
                 <td className="py-4 px-6">
-                    254745682815
+                {masked_phone}
                 </td>
-                <th scope="col" className="py-3 px-6">
-                    BASIC
-                </th>
+                <td className="py-4 px-6">
+                BASIC
+                </td>
+                <td className="py-4 px-6">
+                29th Nov 2022
+                </td>
                 <td className="py-4 px-6">
                     <a href="#" className="font-medium text-green-600 dark:text-blue-500 hover:underline">
                       ACTIVE
                     </a>
                 </td>
+                
+                
             </tr>
         </tbody>
     </table>
