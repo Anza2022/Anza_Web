@@ -207,7 +207,7 @@ class UserCrudRepo {
         `/auth/register?inviteCode=${invitecode}`,
         user.toMap()
       );
-      console.log(res);
+      //console.log(res);
       if (res.status == 201) {
         let data = res.data;
         let user = UserModel.fromJson(data.userData);
