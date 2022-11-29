@@ -204,7 +204,7 @@ class UserCrudRepo {
   ): Promise<[UserModel, ReferalBonusModel, AccountSubscription]> {
     try {
       let res = await axiosInstance.post(
-        `/auth/register?invitecode=${invitecode}`,
+        `/auth/register?inviteCode=${invitecode}`,
         user.toMap()
       );
       console.log(res);
