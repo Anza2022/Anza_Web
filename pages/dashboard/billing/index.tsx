@@ -219,9 +219,11 @@ const RealtimePaymentComponent = () => {
     } else if (selectedPlan == "Standard") {
       //return 2;
       return 2500;
-    } else {
+    } else if (selectedPlan == "Savings") {
+      return 6800;
+    }else {
     //return 3;
-     return 6800;
+     return 0;
     }
   };
   const getNextPaymentDate = () => {
