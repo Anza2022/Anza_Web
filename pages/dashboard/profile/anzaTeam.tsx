@@ -275,9 +275,12 @@ const BonusDetailsComponent = () => {
 
 const UserTableComponent = () => {
   return (
-    <div className="flex flex-wrap overflow-x-auto relative  sm:rounded-lg">
-      <p className=" flex text-center text-xl font-black  text-main dark:text-indigo-400 m-2"   style={{ fontFamily: "Montserrat" }}>MY TEAM</p>
 
+    <div className="flex w-[390px] md:w-[82%] flex-col   rounded-md dark:bg-darkmain bg-white m-1 md:m-5">
+      <p className=" flex text-center text-xl justify-center items-center font-black  text-main dark:text-indigo-400 m-2"   style={{ fontFamily: "Montserrat" }}>MY TEAM</p>
+
+      
+    <div className="flex flex-wrap overflow-x-auto relative  sm:rounded-lg cursor-pointer">
     <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -326,6 +329,7 @@ const UserTableComponent = () => {
             </tr>
         </tbody>
     </table>
+    </div>
     </div>
   );
 };
