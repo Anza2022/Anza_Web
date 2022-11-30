@@ -629,7 +629,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
               </div>
               <div className="flex flex-col my-2 relative">
                 <label htmlFor="phonenumber" className="mb-1">
-                  Phone Number <span className="text-red-600">i.e 712345... do not add 0</span>
+                  Phone Number <span className="text-red-600">i.e 712345... do not start with 0</span>
                 </label>
                 <input
                   type="text"
