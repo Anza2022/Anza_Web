@@ -40,6 +40,8 @@ function validateEmail(email: string) {
   return re.test(email);
 }
 
+
+
 const getCoords = async () => {
   const pos: GeolocationPosition = await new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);

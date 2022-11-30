@@ -7,6 +7,7 @@ import AppLayout from "../presentation/layouts/app_layout";
 import {
   getCurrentDate,
   showToast,
+  validateEmail,
 } from "../presentation/utils/helper_functions";
 import UserModel from "../models/user_models/user_model";
 import LoadingComponent from "../presentation/components/others/loading_component";
@@ -81,12 +82,30 @@ const SignUpPage = () => {
       showToast("Kindly enter your name", "error");
       return;
     }
-    if (email == "") {
-      showToast("Kindly enter your email", "error");
+
+    function countChars(username: string) {
+      let regex = /[^a-z]/gi;
+      let total_count = username.replace(/[^a-z]/gi, "").length;
+      console.log(total_count);
+        return total_count;
+      }
+
+
+    if (countChars(userName) < 4) {
+      showToast("Full Name entered is too short!", "error");
       return;
     }
+    if (email == "") {
+    showToast("Kindly enter your email address", "error");  
+    return;
+    }
+    if (!validateEmail(email)) {
+      showToast("Invalid email entered", "error");
+      return;
+    }
+
     if (phoneNumber == "" || phoneNumber.length < 9 || phoneNumber.length > 9) {
-      showToast("Invalid phone number", "error");
+      showToast("Invalid phone number! Double check again", "error");
       return;
     }
     if (!isNumeric(phoneNumber)) {
@@ -97,9 +116,17 @@ const SignUpPage = () => {
       showToast("Kindly enter a password", "error");
       return;
     }
-
+    if (countChars(password) < 4) {
+      showToast("Password  too short!", "error");
+      return;
+    }
+    if (countChars(confirmPassword) < 4) {
+      showToast("Confirm password  too short!", "error");
+      return;
+    }
+    
     if (password !== confirmPassword) {
-      showToast("The two passwords you have entered do not match!", "error");
+      showToast("The two passwords you have entered do not match! Double check", "error");
       return;
     }
 
@@ -200,6 +227,9 @@ const SignUpPage = () => {
       setInviteCode(invitestring);
     }
   });
+
+  const [showPlainPassword, setShowPlainPassword] = useState(false);
+  const [showPlainPassword2, setShowPlainPassword2] = useState(false);
 
   const { schools } = useContext(AppDataContext);
   useEffect(() => {
@@ -584,7 +614,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
                 />
               </div>
               <div className="flex flex-col my-2">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Email Address</label>
                 <input
                   type="email"
                   name="email"
@@ -599,7 +629,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
               </div>
               <div className="flex flex-col my-2 relative">
                 <label htmlFor="phonenumber" className="mb-1">
-                  Phone Number
+                  Phone Number <span className="text-red-600">i.e 712345... do not add 0</span>
                 </label>
                 <input
                   type="text"
@@ -617,12 +647,12 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
                   +254
                 </div>
               </div>
-              <div className="flex flex-col my-2">
+              <div className="flex flex-col mt-0 relative">
                 <label htmlFor="password" className="mb-1">
                   Password
                 </label>
                 <input
-                  type="password"
+                type={`${showPlainPassword ? "text" : "password"}`}
                   name="password"
                   id="password"
                   className="outline-none p-2 rounded-lg focus:ring-2 ring-main ring-1  w-[300px] md:w-96 dark:bg-darksec "
@@ -632,13 +662,57 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
                   autoComplete="off"
                   autoCorrect="off"
                 />
+                        <div
+          onClick={() => setShowPlainPassword(!showPlainPassword)}
+          className="absolute top-7 right-3 cursor-pointer"
+        >
+          {showPlainPassword ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mt-1 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mt-1 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          )}
+        </div>
               </div>
-              <div className="flex flex-col my-2">
+
+
+              <div className="flex flex-col mt-1 relative mb-3">
                 <label htmlFor="confirmpassword" className="mb-1">
                   Confirm Password
                 </label>
                 <input
-                  type="password"
+                  type={`${showPlainPassword2 ? "text" : "password"}`}
                   name="confirmpassword"
                   id="confirmpassword"
                   className="outline-none p-2 rounded-lg focus:ring-2 ring-main ring-1  w-[300px] md:w-96 dark:bg-darksec "
@@ -648,6 +722,48 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
                   autoComplete="off"
                   autoCorrect="off"
                 />
+                                        <div
+          onClick={() => setShowPlainPassword2(!showPlainPassword2)}
+          className="absolute top-7 right-3 cursor-pointer"
+        >
+          {showPlainPassword2 ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mt-1 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mt-1 mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+              />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+              />
+            </svg>
+          )}
+        </div>
               </div>
 
               <div className="flex w-[330px] md:w-96 self-center justify-between mt-0">
