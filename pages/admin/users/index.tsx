@@ -33,7 +33,6 @@ const AdminAppUsersPage = () => {
     try {
       let Allusers = await UserCrudRepo.getAllUsers();
       SetUserContext(Allusers);
-      //setUsers(Allusers);
     } catch (e) {
       showToast(`${e}`, "error");
     } finally {
@@ -41,11 +40,6 @@ const AdminAppUsersPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   if (userContext.length < 1) {
-  //     GetUsers();
-  //   }
-  // }, []);
 
   useEffect(() => {
     GetUsers();

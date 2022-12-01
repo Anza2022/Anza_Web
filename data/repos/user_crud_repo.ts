@@ -62,6 +62,31 @@ class UserCrudRepo {
     }
   }
 
+  static async deleteUser(id: string) {
+    let res = await axiosInstance.delete(
+      // to add route later
+      `/update_user/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${decryptString(
+            retrieveFromLocalStorage("access_token") ?? ""
+          )}`,
+        },
+      }
+    );
+    if (res.status == 200) {
+      return true;
+    } else if (res.status == apiErrorCode) {
+      throw res.data["message"];
+    } else if (res.status == tokenExpiredErrorCode) {
+      throw "Relogin to continue";
+    } else {
+      throw "Unable to delete, try again later";
+    }
+  }
+
+
+
   static async getAllUsers(): Promise<UserModel[]> {
     let res = await axiosInstance.get(
       `https://auth.anzaacademy.co/getusers/`,
@@ -90,9 +115,38 @@ class UserCrudRepo {
   }
 
 
+  static async getDownlines(parseUserData: string): Promise<UserModel[]> {
+    let res = await axiosInstance.get(
+      `https://aa42-102-217-158-14.in.ngrok.io/downlines/${parseUserData}`,
+      {
+        headers: {
+          Authorization: `Bearer ${decryptString(
+            retrieveFromLocalStorage("access_token") ?? ""
+          )}`,
+        },
+      }
+    );
+    console.log(res.data);
+    if (res.status == 200) {
+      if (res.data == null) {
+        return [];
+      }
+      let allschools = res.data.users.map((e: any) => UserModel.fromJson(e));
+      return allschools;
+    } else if (res.status == apiErrorCode) {
+      throw res.data["message"];
+    } else if (res.status == tokenExpiredErrorCode) {
+      throw "Token expired";
+    } else {
+      throw "Unable to get downlines, try again later";
+    }
+  }
 
-  static async refreshUser(): Promise<
-    [UserModel, ReferalBonusModel, AccountSubscription, UserStats]
+
+
+
+
+  static async refreshUser(): Promise<[UserModel, ReferalBonusModel, AccountSubscription, UserStats]
   > {
     if (isBrowser && retrieveFromLocalStorage("id") !== null) {
       let localid = retrieveFromLocalStorage("id");

@@ -1,6 +1,7 @@
 import router from "next/router";
 import React, { useContext, useState } from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import UserCrudRepo from "../../../data/repos/user_crud_repo";
 import LoadingComponent from "../../../presentation/components/others/loading_component";
 import { NavigationContext } from "../../../presentation/contexts/navigation_state_controller";
 import { userModelContext } from "../../../presentation/contexts/userModelContext";
@@ -72,7 +73,11 @@ const updateUser = async () => {
       updatedUser.phoneNumber = phoneNumber;
       updatedUser.isAdmin = isAdmin;
       try {
-          showToast("Coming soon", "success");        
+        let res = await UserCrudRepo.updateUser(updatedUser);
+        if (res) {
+          showToast("Updated", "success");
+          router.push("/admin/update_user");
+        } 
       } catch (e) {
         showToast(`${e}`, "error");
       } finally {
@@ -91,6 +96,12 @@ const deleteUser = async () => {
   setDeleting(true);
   try {
   showToast("Coming sooon", "success");
+  // let res = await UserCrudRepo.deleteUser(selectedVideoId);
+  //  if (res) {
+  //   SetUserContext(userContext.filter((e) => e.userId !== selectedVideoId));
+  //   showToast("Deleted", "success");
+  //   router.push("/admin/update_user");
+  // }
   } catch (e) {
     showToast(`${e}`, "error");
   } finally {

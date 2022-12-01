@@ -13,6 +13,7 @@ import {
   showToast,
 } from "../../../presentation/utils/helper_functions";
 import Avatar from 'react-avatar';
+import UserModel from "../../../models/user_models/user_model";
 
 const UserProfilePage = () => {
   const router = useRouter();
@@ -274,8 +275,28 @@ const BonusDetailsComponent = () => {
 
 
 const UserTableComponent = () => {
+  const { user, setUser, isEditing, setIsEditing } =
+  useContext(LoggedInUserContext);
+  const [downlines, setDownlines] = useState<UserModel[]>([]);
+  const [loading, setLoading] = useState(false);
+  const GetDownlines = async () => {
+    setLoading(false);
+    try {
+      let downlinesss = await UserCrudRepo.getDownlines(user[0].userId);
+      setDownlines(downlinesss);
+    } catch (e) {
+      showToast(`${e}`, "error");
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    if (downlines.length < 1) {
+      GetDownlines();
+    }
+  }, []);
 
-  var word="TEST@GMAIL.COM", masked_mail=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
+var word="TEST@GMAIL.COM", masked_mail=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
 if(word.length > 4) {
   masked_mail = masked_mail.substring(0, word.length-12) + word.substring(word.length-12);
 } else {
@@ -323,40 +344,46 @@ if(word.length > 4) {
             </tr>
         </thead>
         <tbody>
+        {/* {downlines.length < 0 && ( */}
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  1
+                  1.
                 </th>
-                <td className="py-4 px-6">
-                  No user data available
+                <td className="py-4 px-12">
+                  No user data!
                 </td>
             </tr>
+        {/* )} */}
 
-            {/* <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+   {downlines.length < 0 &&
+           downlines.map((e, i) => (
+             <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                  1
+                {`${i+1} `}.
                 </th>
                 <td className="py-4 px-6">
-                    TESTER ANZA
+                 {e.userName}
                 </td>
                 <td className="py-4 px-6">
-                {masked_mail}
+              {e.email}
                 </td>
                 <td className="py-4 px-6">
-                {masked_phone}
+            {e.phoneNumber}
                 </td>
-                <td className="py-4 px-6">
+                {/* <td className="py-4 px-6">
                 BASIC
-                </td>
+                </td> */}
                 <td className="py-4 px-6">
-                29th Nov 2022
+              {e.createdAt}
                 </td>
-                <td className="py-4 px-6">
+                {/* <td className="py-4 px-6">
                     <a href="#" className="font-medium text-green-600 dark:text-blue-500 hover:underline">
                       ACTIVE
                     </a>
-                </td>
-            </tr> */}
+                </td> */}
+            </tr>
+   ))}
+
         </tbody>
     </table>
     </div>
