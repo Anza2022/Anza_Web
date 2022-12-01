@@ -323,7 +323,16 @@ if(word.length > 4) {
             </tr>
         </thead>
         <tbody>
-            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                  1
+                </th>
+                <td className="py-4 px-6">
+                  No user data available
+                </td>
+            </tr>
+
+            {/* <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   1
                 </th>
@@ -347,9 +356,7 @@ if(word.length > 4) {
                       ACTIVE
                     </a>
                 </td>
-                
-                
-            </tr>
+            </tr> */}
         </tbody>
     </table>
     </div>
