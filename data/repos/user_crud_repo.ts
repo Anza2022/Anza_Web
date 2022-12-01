@@ -48,7 +48,7 @@ class UserCrudRepo {
 
   static async updateUser(updatedUser: UserModel): Promise<boolean> {
     let res = await axiosInstance.patch(
-      `https://auth.anzaacademy.co/updateuser/${updatedUser.userId}`,
+      `https://auth.anzaacademy.co/getusers/updateuser/${updatedUser.userId}`,
       updatedUser.toMap()
     );
     if (res.status == 200) {
@@ -98,7 +98,6 @@ class UserCrudRepo {
         },
       }
     );
-    console.log(res.data);
     if (res.status == 200) {
       if (res.data == null) {
         return [];
@@ -117,7 +116,7 @@ class UserCrudRepo {
 
   static async getDownlines(parseUserData: string): Promise<UserModel[]> {
     let res = await axiosInstance.get(
-      `https://aa42-102-217-158-14.in.ngrok.io/downlines/${parseUserData}`,
+      `https://auth.anzaacademy.co/downlines/${parseUserData}`,
       {
         headers: {
           Authorization: `Bearer ${decryptString(
