@@ -39,7 +39,7 @@ const NavbarComponent = () => {
         <div className="flex space-x-2  items-center md:h-16">
 
         <div className="flex flex-nowrap hidden md:flex py-1 text-base md:mt-2 ml-20 text-white" >
-    <p className="text-s font-normal pointer-cursor"> 33.3% (Kes. 1,000) OFF!  Limited offer till Dec. 5th, 2022 was<span className="line-through text-red-500 font-bold"> KSH 3000</span> now <span className="text-green-500 font-bold" >KSH 2000 </span> 
+    <p className="text-s font-normal pointer-cursor"> 33.3% (KSH. 1,000) OFF!  Limited offer till Dec. 5th, 2022 was<span className="line-through text-red-500 font-bold"> KSH 3000</span> now <span className="text-green-500 font-bold" >KSH 2000 </span> 
        {/* <a 
      onClick={() => {
       router.push("/dashboard/billing");
