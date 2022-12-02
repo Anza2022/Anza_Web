@@ -98,7 +98,7 @@ const ChangePasswordComponent = () => {
     }
     setLoading(true);
     try {
-        showToast("Feature coming soon!", "success");
+        showToast("Withdrawal currently not available!", "success");
     } catch (e) {
       showToast(`${e}`, "error");
     } finally {
@@ -296,6 +296,8 @@ const UserTableComponent = () => {
     }
   }, []);
 
+  console.log(downlines.length);
+
 var word="TEST@GMAIL.COM", masked_mail=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
 if(word.length > 4) {
   masked_mail = masked_mail.substring(0, word.length-12) + word.substring(word.length-12);
@@ -344,7 +346,7 @@ if(word.length > 4) {
             </tr>
         </thead>
         <tbody>
-        {downlines.length < 0 && (
+        {downlines.length <= 0 && (
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                   1.
@@ -354,7 +356,7 @@ if(word.length > 4) {
                 </td>
             </tr>
       )}
-   {downlines.length < 0 &&
+   {downlines.length > 0 &&
            downlines.map((e, i) => (
              <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
