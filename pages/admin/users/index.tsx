@@ -29,7 +29,7 @@ const AdminAppUsersPage = () => {
 
 
   const GetUsers = async () => {
-    setLoading(false);
+    setLoading(true);
     try {
       let Allusers = await UserCrudRepo.getAllUsers();
       SetUserContext(Allusers);
@@ -95,8 +95,8 @@ const AdminAppUsersPage = () => {
             </div>
           </div>
         </div>
-
             )}
+            
               {!loading && searchResults.length > 0 && (
                   <table className="table-fixed text-left p-1 m-2 rounded-lg border-2 border-main text-ellipsis ">
                     <thead

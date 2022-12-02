@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
         {loading ? (
           <div className="flex h-96 w-full justify-center items-center">
-            <LoadingComponent loading={loading} color="secondary" />
+            <LoadingComponent loading={loading} color="main" />
           </div>
         ) : (
           <div className="flex flex-wrap w-full  py-0 justify-around md:justify-start">
