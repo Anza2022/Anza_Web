@@ -35,7 +35,7 @@ const AdminTestmonialsPage = () => {
         </div>
         {loading ? (
           <div className="flex w-full h-96 items-center justify-center">
-            <LoadingComponent loading={loading} color="secondary" />
+            <LoadingComponent loading={loading} color="main" />
           </div>
         ) : testmonials.length < 1 ? (
 <div className="flex w-full h-[75vh] justify-center items-center flex-col">

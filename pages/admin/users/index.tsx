@@ -97,7 +97,7 @@ const AdminAppUsersPage = () => {
         </div>
 
             )}
-              {searchResults.length > 0 && (
+              {!loading && searchResults.length > 0 && (
                   <table className="table-fixed text-left p-1 m-2 rounded-lg border-2 border-main text-ellipsis ">
                     <thead
                       className="flex p-2 bg-main text-white font-black text-xs"
@@ -135,7 +135,7 @@ const AdminAppUsersPage = () => {
 
         {loading ? (
           <div className="flex w-full flex-col h-full justify-center items-center">
-            <LoadingComponent loading={loading} color="white" />
+            <LoadingComponent loading={loading} color="main" />
             <p>Loading users</p>
           </div>
         ) : userContext.length < 1 ? (

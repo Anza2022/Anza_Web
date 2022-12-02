@@ -34,7 +34,7 @@ const AdminFaqsPage = () => {
 
         {loading ? (
           <div className="flex w-full h-96 items-center justify-center">
-            <LoadingComponent loading={loading} color="secondary" />
+            <LoadingComponent loading={loading} color="main" />
           </div>
         ) : faqs.length < 1 ? (
 

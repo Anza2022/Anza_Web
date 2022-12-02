@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useContext, useEffect, useState } from "react";
 import AllSchoolsRepo from "../../../data/repos/all_schools_repo";
 import SchoolModel from "../../../models/curriculum/school_model";
+import LoadingComponent from "../../../presentation/components/others/loading_component";
 import { AppDataContext } from "../../../presentation/contexts/app_data_context";
 import { NavigationContext } from "../../../presentation/contexts/navigation_state_controller";
 import AdminDashboardLayout from "../../../presentation/layouts/admin_dashboard_layout";
@@ -51,13 +52,21 @@ const { schools, setSchools } = useContext(AppDataContext);
        REGISTER NEW SCHOOL
         </div>
 
-        {schools.length < 1 ? (
+        {loading &&(
+          <div className="flex w-full h-full justify-center items-center">
+            <LoadingComponent loading={loading} color="main" />
+            <p className="text-sm">Loading schools ...</p>
+          </div>
+        )}
+        
+
+        {!loading && schools.length < 1 ? (
   <div className="flex w-full h-[75vh] justify-center items-center flex-col">
   <div className="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
     <div className="flex">
       <div className="py-1"><svg className="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
       <div>
-        <p className="font-bold">Oops! No SCHOOLS available. </p>
+        <p className="font-bold">Oops! No schools available. </p>
       </div>
     </div>
   </div>

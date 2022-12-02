@@ -44,7 +44,7 @@ const AdminLiveClassesPage = () => {
         </div>
         {loading ? (
           <div className="flex w-full h-full justify-center items-center">
-            <LoadingComponent loading={loading} color="white" />
+            <LoadingComponent loading={loading} color="main" />
             <p className="text-sm">loading live classes ...</p>
           </div>
         ) : liveclasses.length < 1 ? (

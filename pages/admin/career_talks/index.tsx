@@ -34,7 +34,7 @@ const AdminCareerTalks = () => {
         </div>
         {loading ? (
           <div className="flex w-full flex-col h-full justify-center items-center">
-            <LoadingComponent loading={loading} color="white" />
+            <LoadingComponent loading={loading} color="main" />
             <p>loading career talks</p>
           </div>
         ) : talks.length < 1 ? (

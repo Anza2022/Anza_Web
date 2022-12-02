@@ -78,7 +78,7 @@ const AdminVideoLessons = () => {
 
         {loading ? (
           <div className="w-full flex items-center justify-center h-96">
-            <LoadingComponent loading={loading} color="secondary" />
+            <LoadingComponent loading={loading} color="main" />
           </div>
         ) : lessons.length < 1 ? (
           <div className="flex w-full h-[75vh] justify-center items-center flex-col">

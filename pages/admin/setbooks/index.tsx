@@ -45,7 +45,7 @@ const AdminSchemesOfWorkPage = () => {
         </div>
         {loading ? (
           <div className="flex w-full h-full justify-center items-center">
-            <LoadingComponent loading={loading} color="white" />
+            <LoadingComponent loading={loading} color="main" />
           </div>
         ) : setbooksEpisodes.length < 1 ? (
           <div className="flex w-full h-[75vh] justify-center items-center flex-col">
