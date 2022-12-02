@@ -48,7 +48,7 @@ class UserCrudRepo {
 
   static async updateUser(updatedUser: UserModel): Promise<boolean> {
     let res = await axiosInstance.patch(
-      `https://auth.anzaacademy.co/getusers/updateuser/${updatedUser.userId}`,
+      `https://auth.anzaacademy.co/updateuser/${updatedUser.userId}`,
       updatedUser.toMap()
     );
     if (res.status == 200) {

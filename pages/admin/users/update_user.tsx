@@ -75,8 +75,8 @@ const updateUser = async () => {
       try {
         let res = await UserCrudRepo.updateUser(updatedUser);
         if (res) {
-          showToast("Updated", "success");
-          router.push("/admin/update_user");
+          showToast("User info Updated", "success");
+          router.push("/admin/users/update_user");
         } 
       } catch (e) {
         showToast(`${e}`, "error");
