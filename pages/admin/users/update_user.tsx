@@ -20,7 +20,7 @@ const { userContext, SetUserContext } = useContext(userModelContext);
 let user = userContext.filter((e) => e.userId == selectedVideoId)[0];
 
 //state
-const [userName, setUsername] = useState(user != undefined ? user.schoolName : "");
+const [userName, setUsername] = useState(user != undefined ? user.userName : "");
 
 const [email, setEmail] = useState(
   user != undefined ? user.email : ""
@@ -128,6 +128,8 @@ const deleteUser = async () => {
                 className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
               />
             </div>
+
+            {accountType == "student" &&(
             <div className="flex flex-col m-2">
               <label htmlFor="title">Class Level</label>
               <select
@@ -144,6 +146,8 @@ const deleteUser = async () => {
                 ))}
               </select>
             </div>
+            )}
+
             <div className="flex flex-col m-2">
               <label htmlFor="topic"> Account Type</label>
               <input

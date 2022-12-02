@@ -17,7 +17,7 @@ const AdminAppUsersPage = () => {
   const { setSelectedVideoId } = useContext(NavigationContext);
   const { userContext, SetUserContext } = useContext(userModelContext);
 
-  console.log(userContext);
+  //console.log(userContext);
 
   const [searchvalue, setSearchvalue] = useState("");
   const [searchResults, setSearchResults] = useState<UserModel[]>([]);
