@@ -298,19 +298,19 @@ const UserTableComponent = () => {
 
   console.log(downlines.length);
 
-var word="TEST@GMAIL.COM", masked_mail=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
+  function maskMe(parseMe : string){
+var word=parseMe, masked_mail=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
 if(word.length > 4) {
   masked_mail = masked_mail.substring(0, word.length-12) + word.substring(word.length-12);
-} else {
-  masked_mail = word;
+  return masked_mail;
 }
+  }
 
-var word="254745682815", masked_phone=word.replace(/\w/g, "*"); //[a-zA-Z0-9_]
-if(word.length > 4) {
-  masked_phone = masked_phone.substring(0, word.length-4) + word.substring(word.length-4);
-} else {
-  masked_phone = word;
-}
+  const maskPhone = (word: string, num = 4, mask = '*') =>
+  `${word}`.slice(-num).padStart(`${word}`.length, mask);
+
+  
+
 
   return (
 
@@ -340,9 +340,6 @@ if(word.length > 4) {
                 <th scope="col" className="py-3 px-6">
                     JOINED ON
                 </th>
-                <th scope="col" className="py-3 px-6">
-                    STATUS
-                </th>
             </tr>
         </thead>
         <tbody>
@@ -366,22 +363,17 @@ if(word.length > 4) {
                  {e.userName}
                 </td>
                 <td className="py-4 px-6">
-              {e.email}
+              {maskMe(e.email)}
                 </td>
                 <td className="py-4 px-6">
-            {e.phoneNumber}
+            {maskPhone(e.phoneNumber)}
                 </td>
-                {/* <td className="py-4 px-6">
-                BASIC
-                </td> */}
+                  {/* profilePicUrl is the package name  */}
+<td className="py-4 px-6"> {e.profilePicUrl} </td>
+
                 <td className="py-4 px-6">
               {e.createdAt}
                 </td>
-                {/* <td className="py-4 px-6">
-                    <a href="#" className="font-medium text-green-600 dark:text-blue-500 hover:underline">
-                      ACTIVE
-                    </a>
-                </td> */}
             </tr>
    ))}
 

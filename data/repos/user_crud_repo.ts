@@ -116,7 +116,7 @@ class UserCrudRepo {
 
   static async getDownlines(parseUserData: string): Promise<UserModel[]> {
     let res = await axiosInstance.get(
-      `https://auth.anzaacademy.co/downlines/${parseUserData}`,
+      `https://anzaacademy.co/payment/downlines/${parseUserData}`,
       {
         headers: {
           Authorization: `Bearer ${decryptString(
@@ -125,12 +125,12 @@ class UserCrudRepo {
         },
       }
     );
-   // console.log(res.data);
+  // console.log(res.data);
     if (res.status == 200) {
       if (res.data == null) {
         return [];
       }
-      let allschools = res.data.users.map((e: any) => UserModel.fromJson(e));
+      let allschools = res.data.downlines.map((e: any) => UserModel.fromJson(e));
       return allschools;
     } else if (res.status == apiErrorCode) {
       throw res.data["message"];
