@@ -378,7 +378,7 @@ const BonusDetailsComponent = () => {
                       </p>
                   </div>
                   <div className="inline-flex items-center text-base font-semibold text-main dark:text-main">
-                  {formatStringToMoney(bonusData[0].amountEarned)}
+                  {"KSH "}   {formatStringToMoney(bonusData[0].amountEarned)}
                   </div>
               </div>
           </li>
@@ -394,7 +394,7 @@ const BonusDetailsComponent = () => {
                       </p>
                   </div>
                   <div className="inline-flex items-center text-base font-semibold text-main dark:text-main">
-                  {formatStringToMoney(bonusData[0].withdrawnAmout)}
+                  {"KSH "}   {formatStringToMoney(bonusData[0].withdrawnAmount)}
                   </div>
               </div>
           </li>
@@ -408,7 +408,7 @@ const BonusDetailsComponent = () => {
                       </p>
                   </div>
                   <div className="inline-flex items-center text-base font-semibold text-main dark:text-main">
-                  {formatStringToMoney(bonusData[0].availableAmount)}
+                  {"KSH "}    {formatStringToMoney(bonusData[0].availableAmount)}
                   </div>
               </div>
           </li>
