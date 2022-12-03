@@ -5,7 +5,7 @@ class ReferalBonusModel {
     public bonusCode: string,
     public invitedBy: string,
     public amountEarned: number,
-    public withdrawnAmout: number,
+    public withdrawnAmount: number,
     public referredUsersIds: string[]
   ) {}
 
@@ -16,7 +16,7 @@ class ReferalBonusModel {
       json.bonusCode,
       json.invitedBy,
       json.amountEarned,
-      json.withdrawnAmout,
+      json.withdrawnAmount,
       json.referredUsersIds
     );
   }
@@ -27,12 +27,12 @@ class ReferalBonusModel {
       myBonusCode: this.bonusCode,
       invitedBy: this.invitedBy,
       totalAmountEarned: this.amountEarned,
-      withdrawnAmout: this.withdrawnAmout,
+      withdrawnAmout: this.withdrawnAmount,
       referredUsersIds: this.referredUsersIds,
     };
   }
   public get availableAmount(): number {
-    return this.amountEarned - this.withdrawnAmout;
+    return this.amountEarned - this.withdrawnAmount;
   }
 }
 
@@ -45,6 +45,6 @@ interface BonusJson {
   invitedBy: string;
   amountEarned: number;
   availableAmount: number;
-  withdrawnAmout: number;
+  withdrawnAmount: number;
   referredUsersIds: string[];
 }
