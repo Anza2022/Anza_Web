@@ -116,14 +116,15 @@ const SignUpPage = () => {
       showToast("Kindly enter a password", "error");
       return;
     }
-    if (countChars(password) < 4) {
-      showToast("Password  too short!", "error");
-      return;
-    }
-    if (countChars(confirmPassword) < 4) {
-      showToast("Confirm password  too short!", "error");
-      return;
-    }
+    
+    // if (countChars(password) < 4) {
+    //   showToast("Password  too short!", "error");
+    //   return;
+    // }
+    // if (countChars(confirmPassword) < 4) {
+    //   showToast("Confirm password  too short!", "error");
+    //   return;
+    // }
     
     if (password !== confirmPassword) {
       showToast("The two passwords you have entered do not match! Double check", "error");
