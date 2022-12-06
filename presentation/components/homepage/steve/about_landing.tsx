@@ -15,7 +15,7 @@ const AboutLanding = () => {
   return (
     <div className="flex flex-col w-full   bg-indigo-900 dark:bg-darksec justify-center  text-white mt-12 scroll-behavior: smooth md:h-screen">
 
-<div className="flex   md-hidden py-1    text-white" >
+{/* <div className="flex   md-hidden py-1    text-white" >
     <p className="text-s mt-2 ml-3 font-normal pointer-cursor "> 33.3% (KSH 1,000) OFF!  Limited offer till Dec. 5th, 2022 was<span className="line-through text-red-500 font-bold"> KSH 3,000</span> now <span className="text-green-500 font-bold" >KSH 2,000 </span>   
     <div className="flex justify-around mt-2">
       <div></div>
@@ -27,7 +27,7 @@ const AboutLanding = () => {
             <div></div>
     </div>
             </p>
-    </div>
+    </div> */}
 
 <div style={{"paddingTop":"56.25%","position":"relative"}} className="mt-3">
 <iframe  src="https://player.vdocipher.com/v2/?otp=20160313versUSE323IH0Z76nXU1Q7kI2OIqQEkRHc1xbDYeav2SZMz7zGJCiNWJ&playbackInfo=eyJ2aWRlb0lkIjoiNTFjY2VmZTllNzM3NGMwNzkyNDFmY2QxOWY5MWIwNTYifQ==&primaryColor=008080&autoplay=true&loop=true&noClipstat=true" style={{"border":"0","maxWidth":"100%", "position":"absolute", "top":"0","left":"0","height":"100%","width":"100%"}} allowFullScreen={true}  allow="encrypted-media"></iframe>
