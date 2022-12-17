@@ -290,7 +290,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
 
 
     let plans: PricingPlan[] = [
-      new PricingPlan("Basic", "2,000.00", "/3 months", "Popular", [
+      new PricingPlan("Easy", "1,000.00", "/1 month", "Popular", [
         "Ad-free watching.",
         "Current class revision material.",
         "Revise at anywhere at your own pace.",
@@ -299,7 +299,7 @@ const DashboardLayout = (props: PropsWithChildren<{}>) => {
         "Access to career talks.",
         "Premium support.",
       ]),
-      new PricingPlan("Standard", "2,500.00", "/3 months", "Recommended", [
+      new PricingPlan("Basic", "2,000.00", "/3 months", "Recommended", [
         "Ad-free watching.",
         "Unlimited revision materials.",
         "Revise at anywhere at your own pace.",
