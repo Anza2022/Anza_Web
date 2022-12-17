@@ -380,7 +380,7 @@ const RealtimePaymentComponent = () => {
 
           <div className="flex flex-col pb-4 px-5 mb-0">
           <div className="flex justify-between font-normal">
-            {["KSH 1,000", "KSH 2,500", "KSH 6,800"].map((l, m) => (
+            {["KSH 1,000", "KSH 2,000", "KSH 6,800"].map((l, m) => (
               <div
                 key={l}
                 className={`w-32 h-10 mr-2 flex items-center justify-center cursor-pointer  transition-all`}
