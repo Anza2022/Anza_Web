@@ -64,8 +64,7 @@ class UserCrudRepo {
 
   static async deleteUser(id: string) {
     let res = await axiosInstance.delete(
-      // to add route later
-      `/update_user/${id}`,
+      `https://auth.anzaacademy.co/deleteuser/${id}`,
       {
         headers: {
           Authorization: `Bearer ${decryptString(

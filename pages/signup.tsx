@@ -566,14 +566,14 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
 
               </div>
 
-              <div className="flex w-[300px] md:w-96 self-center justify-end mt-2">
+              <div className="flex w-[300px] md:w-96 self-center justify-end mt-12">
                 <div
                   onClick={() => {
                     if (validateFirstStep()) {
                       setCurrentStep(1);
                     }
                   }}
-                  className="flex items-center mt-0 bg-main rounded-md text-white cursor-pointer px-7 py-2 hover:dark:bg-indigo-700 hover:bg-indigo-700 focus:outline-none "
+                  className="flex items-center mt-1 bg-main rounded-md text-white cursor-pointer px-7 py-2 hover:dark:bg-indigo-700 hover:bg-indigo-700 focus:outline-none "
                 >
                   Continue
                 </div>
@@ -644,7 +644,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
                   autoComplete="off"
                   autoCorrect="off"
                 />
-                <div className="flex absolute top-4 rounded-l-lg left-0 px-3 py-3 bg-main mt-1 text-white">
+                <div className="flex absolute  rounded-l-lg left-0 px-3 py-3 bg-main mt-11 md:mt-6 text-white">
                   +254
                 </div>
               </div>
@@ -767,7 +767,7 @@ By registering you agree to the <strong>ANZA ACADEMY</strong>
         </div>
               </div>
 
-              <div className="flex w-[330px] md:w-96 self-center justify-between mt-0">
+              <div className="flex w-[330px] md:w-96 self-center justify-around mt-0">
                 <div
                   onClick={() => setCurrentStep(0)}
                   className="flex items-center border-2 border-main rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-main transition-all cursor-pointer px-7 py-2"

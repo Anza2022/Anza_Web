@@ -95,13 +95,12 @@ const deleteUser = async () => {
   }
   setDeleting(true);
   try {
-  showToast("Coming sooon", "success");
-  // let res = await UserCrudRepo.deleteUser(selectedVideoId);
-  //  if (res) {
-  //   SetUserContext(userContext.filter((e) => e.userId !== selectedVideoId));
-  //   showToast("Deleted", "success");
-  //   router.push("/admin/update_user");
-  // }
+  let res = await UserCrudRepo.deleteUser(selectedVideoId);
+   if (res) {
+    SetUserContext(userContext.filter((e) => e.userId !== selectedVideoId));
+    showToast("Deleted", "success");
+    router.push("/admin/users");
+  }
   } catch (e) {
     showToast(`${e}`, "error");
   } finally {
