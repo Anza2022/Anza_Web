@@ -338,9 +338,9 @@ const SignUpPage = () => {
                     />
                     <p className={`text-lg font-semibold`}>Student</p>
                   </div>
-                  <a href="https://forms.gle/WZyFdZUFyfJNJWJdA" rel="noreferrer" target="_blank">
+                  {/* <a href="https://forms.gle/WZyFdZUFyfJNJWJdA" rel="noreferrer" target="_blank"> */}
                   <div
-                    //onClick={() => setAccountType("teacher")}
+                    onClick={() => setAccountType("teacher")}
                     className={`flex flex-col h-32 w-[130px] md:w-40 rounded-lg cursor-pointer items-center justify-around  transition-all   ${
                       accountType == "teacher"
                         ? "bg-main text-white"
@@ -356,7 +356,7 @@ const SignUpPage = () => {
                     <p className={`text-lg font-semibold`}>Teacher</p>
                   
                   </div> 
-                   </a>
+                   {/* </a> */}
                   {/* <div
                     onClick={() => setAccountType("school")}
                     className={`flex flex-col h-32 w-[100px] md:w-36 rounded-lg cursor-pointer items-center justify-around  ${
