@@ -69,6 +69,7 @@ const SignUpPage = () => {
     "Mwangaza Secondary school",
     "Maryhill Girls High school",
     "Dagoretti High school",
+    "Starehe Girls' Centre",
     "Others",
   ];
 
