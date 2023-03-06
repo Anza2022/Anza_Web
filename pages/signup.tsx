@@ -61,6 +61,17 @@ const SignUpPage = () => {
     "Computer",
   ];
 
+  let schoolSamples = [
+    "Kerarapon Secondary School",
+    "Kayole south secondary school",
+    "Pumwani girls High school",
+    "Starehe Boys' Centre and School",
+    "Mwangaza Secondary school",
+    "Maryhill Girls High school",
+    "Dagoretti High school",
+    "Others",
+  ];
+
   //user context
   const {
     setUser,
@@ -378,7 +389,25 @@ const SignUpPage = () => {
                         {" "}
                         School Name
                       </label>
-                      <input
+
+                      <select
+                        name="schoolname"
+                        id="schoolname"
+                        className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
+                        onChange={(e) =>
+                          setSchoolname(e.target.value.toLowerCase())
+                        }
+                      >
+                        <option value={""}>Select School</option>
+                        {schoolSamples.map((e) => (
+                          <option value={e.toLowerCase()} key={e}>
+                            {e}
+                          </option>
+                        ))}
+                      </select>
+
+
+                      {/* <input
                         className="w-[300px]  md:w-96 outline-none focus:ring-2 ring-main ring-1   rounded-lg p-2 dark:bg-darksec"
                         list="allschools"
                         id="schoolname"
@@ -396,7 +425,7 @@ const SignUpPage = () => {
                             <option key={e} value={e} />
                           ))}
                         <option value={"Anza Academy"} />
-                      </datalist>
+                      </datalist> */}
                     </div>
                     <div className="flex justify-center  flex-col self-center">
                       <label htmlFor="classlevel" className="text-sm  mb-1">
@@ -440,7 +469,25 @@ const SignUpPage = () => {
                         {" "}
                         School Name
                       </label>
-                      <input
+
+                      <select
+                        name="schoolname"
+                        id="schoolname"
+                        className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
+                        onChange={(e) =>
+                          setSchoolname(e.target.value.toLowerCase())
+                        }
+                      >
+                        <option value={""}>Select School</option>
+                        {schoolSamples.map((e) => (
+                          <option value={e.toLowerCase()} key={e}>
+                            {e}
+                          </option>
+                        ))}
+                      </select>
+
+
+                      {/* <input
                         className="w-[300px]  focus:ring-2 ring-main ring-1  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
                         list="allschools"
                         id="schoolname"
@@ -459,7 +506,7 @@ const SignUpPage = () => {
                           .map((e) => (
                             <option key={e} value={e} />
                           ))}
-                      </datalist>
+                      </datalist> */}
                     </div>
                     <div className="flex justify-between mx-2">
                       <div className="flex flex-col">
