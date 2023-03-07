@@ -89,6 +89,10 @@ const updateUser = async () => {
   }
 };
 
+let packages = ["Easy ~ KSH 1,000 / 1 month", "Basic ~ KSH 2,000 / 3 months", "Savings ~ KSH 6,800 / 1 year","ANZA WELCOME PACKAGE"];
+let packageDurations = ["1 Month", "2 Months", "3 Months", "4 Months", "5 Months", "6 Months", "7 Months"];
+
+
 const deleteUser = async () => {
   if (deleting) {
     return;
@@ -114,7 +118,7 @@ const deleteUser = async () => {
 <div className="flex-1 flex flex-col bg-gray-200 dark:bg-darksec min-h-screen py-16 md:ml-52 w-full ">
         <div className="flex h-12 items-center justify-center bg-white dark:bg-darkmain pl-5  md:pl-10">
           <div className="flex text-main font-black text-2xl">
-            Update Users
+            {userName.toUpperCase()} DETAILS.
           </div>
         </div>
         <div className="flex flex-col  items-center w-full p-3">
@@ -201,6 +205,130 @@ const deleteUser = async () => {
           
           </div>
         </div>
+
+
+        <div className="flex flex-col  items-center w-full p-2">
+        <div className="flex text-main font-black text-2xl mb-2">
+           Current Subscription Details
+          </div>
+          <div className="flex flex-wrap w-full justify-start">
+            <div className="flex flex-col m-2">
+              <label htmlFor="topic"> Package Name</label>
+              <input
+              //  value={schoolName}
+              //    onChange={(e) => setSchool(e.target.value)}
+                className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              />
+            </div>
+
+            <div className="flex flex-col m-2">
+            <label htmlFor="chapternumber">Subscription Start Date</label>
+            <input
+              // value={createdAt}
+              //  onChange={(e) => setCreatedAt(e.target.value)}
+              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              type="text"
+            />
+          </div>
+
+          <div className="flex flex-col m-2">
+            <label htmlFor="chapternumber">Subscription End Date</label>
+            <input
+              // value={createdAt}
+              //  onChange={(e) => setCreatedAt(e.target.value)}
+              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              type="text"
+            />
+          </div>
+
+          <div className="flex flex-col m-2">
+            <label htmlFor="chapternumber">Resubscriptions Times</label>
+            <input
+              // value={createdAt}
+              //  onChange={(e) => setCreatedAt(e.target.value)}
+              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              type="text"
+            />
+          </div>
+
+          </div>
+        </div>
+
+
+
+        <div className="flex flex-col  items-center w-full p-3">
+        <div className="flex text-main font-black text-2xl mb-2">
+          Activate Package
+          </div>
+          <div className="flex flex-wrap w-full justify-start">
+            <div className="flex flex-col m-2">
+              <label htmlFor="topic"> Choose Package Name</label>
+
+              <select
+                        name="classlevel"
+                        id="classlevel"
+                        className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
+                        // onChange={(e) =>
+                        //   setClassLevel(e.target.value.toLowerCase())
+                        // }
+                      >
+                        <option value={""}>CHoose Package Name</option>
+                        {packages.map((e) => (
+                          <option value={e.toLowerCase()} key={e}>
+                            {e}
+                          </option>
+                        ))}
+                      </select>
+
+              {/* <input
+              //  value={schoolName}
+              //    onChange={(e) => setSchool(e.target.value)}
+                className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              /> */}
+            </div>
+
+            <div className="flex flex-col m-2">
+            <label htmlFor="chapternumber">Package Duration</label>
+            {/* <input
+              // value={createdAt}
+              //  onChange={(e) => setCreatedAt(e.target.value)}
+              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
+              type="text"
+            /> */}
+
+<select
+name="classlevel"
+id="classlevel"
+className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
+// onChange={(e) =>
+//   setClassLevel(e.target.value.toLowerCase())
+// }
+>
+<option value={""}>Select Package Duration</option>
+{packageDurations.map((e) => (
+<option value={e.toLowerCase()} key={e}>
+{e}
+</option>
+))}
+</select>
+
+          </div>
+
+          <div
+            // onClick={updateUser}
+            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-main p-0 text-white"
+          >
+            {updating && <LoadingComponent loading={updating} color="white" />}
+            <p className="font-bold">
+              {" "}
+              {updating ? "activating ..." : "ACTIVATE PACKAGE"}
+            </p>
+          </div>
+
+
+          </div>
+        </div>
+
 
         <div className="flex flex-wrap justify-around mt-9">
           <div

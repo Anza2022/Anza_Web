@@ -218,6 +218,10 @@ const SignUpPage = () => {
         showToast("Kindly select subjects", "error");
         return false;
       }
+      if (terms == "") {
+        showToast("Kindly Read and Acccept ANZA ACADEMY terms and policies", "error");
+        return false;
+      }
     }
     if (accountType == "school") {
       if (schoolname == "") {

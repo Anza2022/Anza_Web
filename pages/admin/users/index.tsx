@@ -16,16 +16,15 @@ const AdminAppUsersPage = () => {
   const [users, setUsers] = useState<UserModel[]>([]);
   const { setSelectedVideoId } = useContext(NavigationContext);
   const { userContext, SetUserContext } = useContext(userModelContext);
-
   //console.log(userContext);
 
-  const [searchvalue, setSearchvalue] = useState("");
-  const [searchResults, setSearchResults] = useState<UserModel[]>([]);
-  const searchLesson = (value: string) => {
-    setSearchResults(
-      users.filter((e) => e.userName.toLowerCase().includes(value))
-    );
-  };
+const [searchvalue, setSearchvalue] = useState("");
+const [searchResults, setSearchResults] = useState<UserModel[]>([]);
+const searchLesson = (value: string) => {
+setSearchResults(
+users.filter((e) => e.userName.toLowerCase().includes(value))
+);
+};
 
 
   const GetUsers = async () => {
@@ -56,7 +55,7 @@ const AdminAppUsersPage = () => {
           </div>
         </div>
 
-        {!loading && (
+        {/* {!loading && (
           <div className="flex  h-10 mb-2  mt-2 items-center justify-center w-full ">
             <input
               className="outline-none p-1  pl-4 w-[90%] md:w-[600px]  bg-white dark:bg-darkmain rounded-md"
@@ -69,7 +68,7 @@ const AdminAppUsersPage = () => {
               }}
             />
           </div>
-        )}
+        )} */}
 
 {!loading && searchvalue.length > 0 && (
           <div className="flex  overflow-scroll max-h-screen " style={{"scrollbarWidth" : "auto"}}>
@@ -149,7 +148,7 @@ const AdminAppUsersPage = () => {
   </div>
 </div>
 </div>
-        ) : searchvalue.length < 1 &&(
+        ) : searchvalue.length < 1 && (
           <div className="flex  overflow-scroll max-h-screen " style={{"scrollbarWidth" : "auto"}}>
             <table className="table-fixed text-left p-1 m-2 rounded-lg border-2 border-main text-ellipsis ">
               <thead
