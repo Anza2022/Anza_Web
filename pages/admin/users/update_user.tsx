@@ -15,6 +15,8 @@ import { showToast } from "../../../presentation/utils/helper_functions";
 const AdminUpdateUserPage = () => {
 const [updating, setUpdating] = useState(false);
 const [deleting, setDeleting] = useState(false);
+const [activating, setActivating] = useState(false);
+const [revoking, setRevoking] = useState(false);
 const { selectedVideoId } = useContext(NavigationContext);
 const { userContext, SetUserContext } = useContext(userModelContext);
 let user = userContext.filter((e) => e.userId == selectedVideoId)[0];
@@ -110,6 +112,22 @@ const deleteUser = async () => {
   } finally {
     setDeleting(false);
   }
+};
+
+
+const activatePackage = async () => {
+  if (activating) {
+    return;
+  }
+  setActivating(true);
+  showToast(`Activation coming Soon`, "error");
+};
+const revokePackage = async () => {
+  if (revoking) {
+    return;
+  }
+  setRevoking(true);
+  showToast(`Package revoking coming Soon`, "error");
 };
 
 
@@ -351,10 +369,10 @@ className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-no
 
         <div className="flex flex-wrap justify-around mt-0">
           <div
-            // onClick={updateUser}
+            onClick={activatePackage}
             className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-main p-2 mt-2 text-white"
           >
-            {updating && <LoadingComponent loading={updating} color="white" />}
+            {updating && <LoadingComponent loading={activating} color="white" />}
             <p className="font-bold">
               {" "}
               {updating ? "activating ..." : "ACTIVATE PACKAGE"}
@@ -362,10 +380,10 @@ className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-no
           </div>
 
           <div
-            // onClick={deleteUser}
+            onClick={revokePackage}
             className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-red-600 p-2 mt-2 text-white"
           >
-            {deleting && <LoadingComponent loading={deleting} color="white" />}
+            {deleting && <LoadingComponent loading={revoking} color="white" />}
             <p className="font-bold">
               {" "}
               {deleting ? "revoking..." : "REVOKE PACKAGE"}
