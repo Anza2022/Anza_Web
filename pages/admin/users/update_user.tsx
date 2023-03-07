@@ -207,7 +207,40 @@ const deleteUser = async () => {
         </div>
 
 
-        <div className="flex flex-col  items-center w-full p-2">
+        <div className="flex flex-wrap justify-around mt-4">
+          <div
+            onClick={updateUser}
+            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-main p-2 mt-2 text-white"
+          >
+            {updating && <LoadingComponent loading={updating} color="white" />}
+            <p className="font-bold">
+              {" "}
+              {updating ? "updating ..." : "Update User"}
+            </p>
+          </div>
+          <div
+            onClick={() => router.push("/admin/users")}
+            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-amber-600 p-2 mt-2 text-white"
+          >
+            Cancel Process
+          </div>
+          <div
+            onClick={deleteUser}
+            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-red-600 p-2 mt-2 text-white"
+          >
+            {deleting && <LoadingComponent loading={deleting} color="white" />}
+            <p className="font-bold">
+              {" "}
+              {deleting ? "deleting ..." : " Delete User"}
+            </p>
+          </div>
+        </div>
+
+
+
+
+
+        <div className="flex flex-col  items-center w-full p-2 mt-5">
         <div className="flex text-main font-black text-2xl mb-2">
            Current Subscription Details
           </div>
@@ -256,7 +289,7 @@ const deleteUser = async () => {
 
 
 
-        <div className="flex flex-col  items-center w-full p-3">
+        <div className="flex flex-col  items-center w-full p-4">
         <div className="flex text-main font-black text-2xl mb-2">
           Activate Package
           </div>
@@ -313,10 +346,13 @@ className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-no
 </select>
 
           </div>
+          </div>
+        </div>
 
+        <div className="flex flex-wrap justify-around mt-0">
           <div
             // onClick={updateUser}
-            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-main p-0 text-white"
+            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-main p-2 mt-2 text-white"
           >
             {updating && <LoadingComponent loading={updating} color="white" />}
             <p className="font-bold">
@@ -325,39 +361,30 @@ className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-no
             </p>
           </div>
 
-
-          </div>
-        </div>
-
-
-        <div className="flex flex-wrap justify-around mt-9">
           <div
-            onClick={updateUser}
-            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-main p-2 text-white"
-          >
-            {updating && <LoadingComponent loading={updating} color="white" />}
-            <p className="font-bold">
-              {" "}
-              {updating ? "updating ..." : "Update User"}
-            </p>
-          </div>
-          <div
-            onClick={() => router.push("/admin/users")}
-            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-amber-600 p-2 text-white"
-          >
-            Cancel Process
-          </div>
-          <div
-            onClick={deleteUser}
-            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-red-600 p-2 text-white"
+            // onClick={deleteUser}
+            className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-red-600 p-2 mt-2 text-white"
           >
             {deleting && <LoadingComponent loading={deleting} color="white" />}
             <p className="font-bold">
               {" "}
-              {deleting ? "deleting ..." : " Delete User"}
+              {deleting ? "revoking..." : "REVOKE PACKAGE"}
             </p>
           </div>
+
+          <div>
+              {""}
+            </div>
+            <div>
+              {""}
+            </div>
+
+            
+
+
         </div>
+
+
       </div>
 
 
