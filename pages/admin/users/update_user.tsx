@@ -323,7 +323,7 @@ const revokePackage = async () => {
                         //   setClassLevel(e.target.value.toLowerCase())
                         // }
                       >
-                        <option value={""}>CHoose Package Name</option>
+                        <option value={""}>Choose Package Name</option>
                         {packages.map((e) => (
                           <option value={e.toLowerCase()} key={e}>
                             {e}
