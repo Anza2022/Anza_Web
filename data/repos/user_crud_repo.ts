@@ -85,6 +85,29 @@ class UserCrudRepo {
   }
 
 
+  static async activatePackage(id: string, sub_type: string) {
+    let res = await axiosInstance.get(
+      `https://auth.anzaacademy.co/update_sub/${id}/${sub_type}`,
+      {
+        headers: {
+          Authorization: `Bearer ${decryptString(
+            retrieveFromLocalStorage("access_token") ?? ""
+          )}`,
+        },
+      }
+    );
+    if (res.status == 200) {
+      return true;
+    } else if (res.status == apiErrorCode) {
+      throw res.data["message"];
+    } else if (res.status == tokenExpiredErrorCode) {
+      throw "Relogin to continue";
+    } else {
+      throw "Unable to activate package, try again later";
+    }
+  }
+
+
 
   static async getAllUsers(): Promise<UserModel[]> {
     let res = await axiosInstance.get(

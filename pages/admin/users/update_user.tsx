@@ -53,6 +53,9 @@ const [secondarySubject, setsecondarySubject] = useState(
   user != undefined ? user.secondarySubject : ""
 );
 
+const [mpackage, setPackage] = useState("");
+
+
 const updateUser = async () => {
   if (user != undefined) {
     if (
@@ -91,8 +94,8 @@ const updateUser = async () => {
   }
 };
 
-let packages = ["Easy ~ KSH 1,000 / 1 month", "Basic ~ KSH 2,000 / 3 months", "Savings ~ KSH 6,800 / 1 year","ANZA WELCOME PACKAGE"];
-let packageDurations = ["1 Month", "2 Months", "3 Months", "4 Months", "5 Months", "6 Months", "7 Months"];
+let packages = ["Termly", "Termly Plus", "Savings"];
+//let packageDurations = ["1 Month", "2 Months", "3 Months", "4 Months", "5 Months", "6 Months", "7 Months"];
 
 
 const deleteUser = async () => {
@@ -116,12 +119,29 @@ const deleteUser = async () => {
 
 
 const activatePackage = async () => {
+  if (mpackage == "") {
+    showToast("Kindly choose a package to activate", "error");
+    return;
+  }
   if (activating) {
     return;
   }
   setActivating(true);
-  showToast(`Activation coming Soon`, "error");
+  try {
+  let res = await UserCrudRepo.activatePackage(selectedVideoId, mpackage);
+   if (res) {
+    SetUserContext(userContext.filter((e) => e.userId !== selectedVideoId));
+    showToast("Package activated", "success");
+    router.push("/admin/users");
+  }
+  } catch (e) {
+    showToast(`${e}`, "error");
+  } finally {
+    setActivating(false);
+  }
 };
+
+
 const revokePackage = async () => {
   if (revoking) {
     return;
@@ -314,14 +334,13 @@ const revokePackage = async () => {
           <div className="flex flex-wrap w-full justify-start">
             <div className="flex flex-col m-2">
               <label htmlFor="topic"> Choose Package Name</label>
-
               <select
-                        name="classlevel"
-                        id="classlevel"
+                        name="mpackage"
+                        id="mpackage"
                         className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
-                        // onChange={(e) =>
-                        //   setClassLevel(e.target.value.toLowerCase())
-                        // }
+                        onChange={(e) =>
+                          setPackage(e.target.value.toLowerCase())
+                        }
                       >
                         <option value={""}>Choose Package Name</option>
                         {packages.map((e) => (
@@ -330,40 +349,7 @@ const revokePackage = async () => {
                           </option>
                         ))}
                       </select>
-
-              {/* <input
-              //  value={schoolName}
-              //    onChange={(e) => setSchool(e.target.value)}
-                className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
-              /> */}
             </div>
-
-            <div className="flex flex-col m-2">
-            <label htmlFor="chapternumber">Package Duration</label>
-            {/* <input
-              // value={createdAt}
-              //  onChange={(e) => setCreatedAt(e.target.value)}
-              className="outline-none bg-white rounded-xl px-3 py-1.5 w-72 dark:bg-darkmain"
-              type="text"
-            /> */}
-
-<select
-name="classlevel"
-id="classlevel"
-className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
-// onChange={(e) =>
-//   setClassLevel(e.target.value.toLowerCase())
-// }
->
-<option value={""}>Select Package Duration</option>
-{packageDurations.map((e) => (
-<option value={e.toLowerCase()} key={e}>
-{e}
-</option>
-))}
-</select>
-
-          </div>
           </div>
         </div>
 
@@ -379,7 +365,7 @@ className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-no
             </p>
           </div>
 
-          <div
+          {/* <div
             onClick={revokePackage}
             className="w-60 flex justify-center items-center cursor-pointer rounded-xl bg-red-600 p-2 mt-2 text-white"
           >
@@ -388,7 +374,7 @@ className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-no
               {" "}
               {deleting ? "revoking..." : "REVOKE PACKAGE"}
             </p>
-          </div>
+          </div> */}
 
           <div>
               {""}
