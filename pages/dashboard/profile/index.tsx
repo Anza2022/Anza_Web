@@ -245,7 +245,7 @@ onClick={() => setIsEditing(!isEditing)}
                       </p>
                   </div>
                   <div className="inline-flex items-center text-base font-semibold text-main dark:text-main">
-                      {user[0].accountType.toUpperCase()}
+                     {" ( "} {user[0].primarySubject.toUpperCase()} {" , "} {user[0].secondarySubject.toUpperCase()} {" ) "}  {user[0].accountType.toUpperCase()}
                   </div>
               </div>
           </li>
