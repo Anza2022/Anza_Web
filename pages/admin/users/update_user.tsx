@@ -339,12 +339,12 @@ const revokePackage = async () => {
                         id="mpackage"
                         className="w-[300px]  focus:ring-2 ring-main ring-1 bg-white  md:w-96 outline-none  rounded-lg p-2 dark:bg-darksec"
                         onChange={(e) =>
-                          setPackage(e.target.value.toLowerCase())
+                          setPackage(e.target.value)
                         }
                       >
                         <option value={""}>Choose Package Name</option>
                         {packages.map((e) => (
-                          <option value={e.toLowerCase()} key={e}>
+                          <option value={e} key={e}>
                             {e}
                           </option>
                         ))}
