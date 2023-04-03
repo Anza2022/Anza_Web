@@ -70,6 +70,8 @@ const SignUpPage = () => {
     "Maryhill Girls High school",
     "Dagoretti High school",
     "Starehe Girls' Centre",
+    "Embulbul Secondary School",
+    "Waylight Secondary School",
     "Others",
   ];
 

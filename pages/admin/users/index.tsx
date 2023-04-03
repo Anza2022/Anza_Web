@@ -39,7 +39,6 @@ users.filter((e) => e.userName.toLowerCase().includes(value))
     }
   };
 
-
   useEffect(() => {
     GetUsers();
   }, []);

@@ -1,5 +1,5 @@
 import router from "next/router";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import UserCrudRepo from "../../../data/repos/user_crud_repo";
 import LoadingComponent from "../../../presentation/components/others/loading_component";
@@ -11,6 +11,7 @@ import {
   subjectOptions,
 } from "../../../presentation/utils/constants";
 import { showToast } from "../../../presentation/utils/helper_functions";
+import UserModel from "../../../models/user_models/user_model";
 
 const AdminUpdateUserPage = () => {
 const [updating, setUpdating] = useState(false);
@@ -20,8 +21,8 @@ const [revoking, setRevoking] = useState(false);
 const { selectedVideoId } = useContext(NavigationContext);
 const { userContext, SetUserContext } = useContext(userModelContext);
 let user = userContext.filter((e) => e.userId == selectedVideoId)[0];
-
 //state
+const [userID, setUserID] = useState(user != undefined ? user.userId : "");
 const [userName, setUsername] = useState(user != undefined ? user.userName : "");
 
 const [email, setEmail] = useState(
@@ -54,7 +55,6 @@ const [secondarySubject, setsecondarySubject] = useState(
 );
 
 const [mpackage, setPackage] = useState("");
-
 
 const updateUser = async () => {
   if (user != undefined) {
@@ -140,6 +140,28 @@ const activatePackage = async () => {
     setActivating(false);
   }
 };
+
+
+const [downlines, setDownlines] = useState<UserModel[]>([]);
+const [loading, setLoading] = useState(false);
+const GetDownlines = async () => {
+  setLoading(false);
+  try {
+    let downlinesss = await UserCrudRepo.getDownlines(userID);
+    setDownlines(downlines);
+  } catch (e) {
+    showToast(`${e}`, "error");
+  } finally {
+    setLoading(false);
+  }
+};
+useEffect(() => {
+  if (downlines.length < 1) {
+    GetDownlines();
+  }
+}, []);
+console.log(downlines.length);
+
 
 
 const revokePackage = async () => {
