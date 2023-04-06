@@ -142,13 +142,13 @@ const activatePackage = async () => {
 };
 
 
-const [downlines, setDownlines] = useState<UserModel[]>([]);
+const [userPackageData, setUserPackageData] = useState<UserModel[]>([]);
 const [loading, setLoading] = useState(false);
 const GetDownlines = async () => {
   setLoading(false);
   try {
-    let downlinesss = await UserCrudRepo.getDownlines(userID);
-    setDownlines(downlines);
+    let downlinesss = await UserCrudRepo.getUserPackage(userID);
+    setUserPackageData(userPackageData);
   } catch (e) {
     showToast(`${e}`, "error");
   } finally {
@@ -156,11 +156,12 @@ const GetDownlines = async () => {
   }
 };
 useEffect(() => {
-  if (downlines.length < 1) {
+  if (userPackageData.length < 1) {
     GetDownlines();
   }
 }, []);
-console.log(downlines.length);
+console.log(userPackageData.length);
+console.log(userPackageData);
 
 
 

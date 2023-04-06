@@ -190,6 +190,33 @@ class UserCrudRepo {
     }
   }
 
+  static async getUserPackage(parseUserData: string): Promise<UserModel[]> {
+    let res = await axiosInstance.get(
+      `https://auth.anzaacademy.co/getuser/${parseUserData}`,
+      {
+        headers: {
+          Authorization: `Bearer ${decryptString(
+            retrieveFromLocalStorage("access_token") ?? ""
+          )}`,
+        },
+      }
+    );
+  // console.log(res.data);
+    if (res.status == 200) {
+      if (res.data == null) {
+        return [];
+      }
+      let allschools = res.data.downlines.map((e: any) => UserModel.fromJson(e));
+      return allschools;
+    } else if (res.status == apiErrorCode) {
+      throw res.data["message"];
+    } else if (res.status == tokenExpiredErrorCode) {
+      throw "Token expired";
+    } else {
+      throw "Unable to get user data, try again later";
+    }
+  }
+
 
 
 

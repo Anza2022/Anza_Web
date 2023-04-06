@@ -72,6 +72,7 @@ const SignUpPage = () => {
     "Starehe Girls' Centre",
     "Embulbul Secondary School",
     "Waylight Secondary School",
+    "Brookfield High school",
     "Others",
   ];
 
