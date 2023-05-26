@@ -245,8 +245,7 @@ const ViewVideoLessonsPage = () => {
   const [videos, setVideos] = useState<any[""]>([]);
 
   useEffect(() => {
-       fetch(`https://infinitersinvests.com/ANZA/anza_api?otp=${selectedVdocipher}`, {
-        // fetch(`https://zetlandsolutions.com/ANZA/anzaApi?otp=${selectedVideoId}`, {
+       fetch(`https://davee.co.ke/ANZA/anzaApi?otp=${selectedVdocipher}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', },
       })

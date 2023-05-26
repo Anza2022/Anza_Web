@@ -18,8 +18,7 @@ const ViewSetbookPage = () => {
   const [videos, setVideos] = useState<any[""]>([]);
   useEffect(() => {
       // get directly from my api
-       fetch(`https://infinitersinvests.com/ANZA/anza_api?otp=${selectedVideoId}`, {
-        // fetch(`https://zetlandsolutions.com/ANZA/anzaApi?otp=${selectedVideoId}`, {
+       fetch(`https://davee.co.ke/ANZA/anzaApi?otp=${selectedVideoId}`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json', },
       })
